@@ -7,8 +7,14 @@
 </head>
 <body>
     
-    <h1>Hello, World!</h1>
-    <p><i>~Prince</i></p>
+   <div>
+            <form action="">
+                <input type="text" name="login_email" placeholder = "email....">
+                <input type="text" name="login_password" placeholder = "password....">
+                <input type="submit" name="btn_login" value = "log in">
+            </form>
+            <a href="">already have an account? log in</a>
+   </div>
 
 </body>
 </html>
