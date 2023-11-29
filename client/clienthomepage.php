@@ -7,5 +7,6 @@
 </head>
 <body>
         <h1>home page</h1>
+        <p>Ito ay home page</p>
 </body>
 </html>
