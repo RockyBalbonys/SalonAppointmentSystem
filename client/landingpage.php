@@ -6,7 +6,15 @@
     <title>Salon</title>
 </head>
 <body>
-    
+        <navbar>
+            <div>
+                <ul>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="register.php">Sign up</a></li>
+                </ul>
+            </div>
+            
+        </navbar>
         <h1>landing page</h1>
 </body>
 </html>
