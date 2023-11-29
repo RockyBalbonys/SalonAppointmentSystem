@@ -14,6 +14,7 @@
                 <input type="submit" name="btn_login" value = "log in">
             </form>
             <!-- <a href="">register</a> -->
+            <p>salon log in</p>
    </div>
 
 </body>
