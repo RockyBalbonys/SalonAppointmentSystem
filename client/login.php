@@ -15,6 +15,7 @@
             </form>
             <!-- <a href="">register</a> -->
             <p>salon log in</p>
+            <p>services</p>
    </div>
 
 </body>
