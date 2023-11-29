@@ -1,27 +1,41 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon | Log in</title>
+    
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    
-   <div>
-            <form method="post">
-                <input type="text" name="login_email" placeholder = "email....">
-                <input type="password" name="login_password" placeholder = "password....">
-                <input type="submit" name="btn_login" value = "log in">
-            </form>
-            <!-- <a href="">register</a> -->
-            <p+>salon log in</p>
-            <p>services</p>
+
+   <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" class="border p-3">
+                    <div class="form-group">
+                        <label for="login_email">Email:</label>
+                        <input type="text" class="form-control" name="login_email" id="login_email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Password:</label>
+                        <input type="password" class="form-control" name="login_password" id="login_password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" name="btn_login" class="btn btn-primary">Log in</button>
+                </form>
+            </div>
+        </div>
    </div>
+
+   <!-- Add Bootstrap JS and Popper.js (required for Bootstrap) -->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>
+
 
 <?php
     include  "connection.php";  
