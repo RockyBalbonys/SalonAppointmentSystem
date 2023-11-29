@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
                 <input type="submit" name="btn_login" value = "log in">
             </form>
             <!-- <a href="">register</a> -->
-            <p>salon log in</p>
+            <p+>salon log in</p>
             <p>services</p>
    </div>
 
