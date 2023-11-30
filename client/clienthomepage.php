@@ -1,3 +1,7 @@
+<?php
+    include  "connection.php";  
+    include "session.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,8 @@
     <title>Home</title>
 </head>
 <body>
-        <h1>home page</h1>
-        <p>Ito ay home page</p>
+        <?php
+            echo "<h1>WELCOME BACK, " . $_SESSION["username"] . "!<h1>";
+        ?>
 </body>
 </html>

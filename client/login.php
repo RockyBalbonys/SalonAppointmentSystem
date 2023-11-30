@@ -1,3 +1,8 @@
+<?php
+    include  "connection.php";  
+    include "session.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +43,7 @@
 
 
 <?php
-    include  "connection.php";  
+  
     if (isset( $_POST["login_email"])) {
         $login_email = $_POST["login_email"];
         $login_password = $_POST["login_password"];
@@ -48,6 +53,7 @@
         if ($query->num_rows > 0) {
             $row = $query->fetch_assoc();
              if ($login_password ===$row['user_password']) {
+                $_SESSION["username"] = $row["user_firstname"];
                 header("Location: http://localhost/SalonAppointmentSystem/client/clienthomepage.php");
             } else {
                 echo "wrong email/password!";
