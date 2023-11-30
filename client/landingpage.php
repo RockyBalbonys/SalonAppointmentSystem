@@ -14,7 +14,7 @@
       font-family: Arial, sans-serif;
     }
     .jumbotron {
-      background-image: url('salon_bg.jpg');
+      background-image: url('salonbackground.webp');
       background-size: cover;
       color: #fff;
       text-align: center;
@@ -61,25 +61,25 @@
       <div class="row">
         <div class="col-lg-4 mb-4">
           <div class="card">
-            <div class="card-body">
+            <div class="btn btn-secondary">
               <h5 class="card-title">Haircut</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Manicure & Pedicure</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="card-text">forda short hair</p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card">
             <div class="btn btn-secondary">
-              <h5 class="card-title">Spa Treatments</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h5 class="card-title">Hair Perm</h5>
+              <p class="card-text">If you want to curl your hair, click here!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <div class="btn btn-secondary">
+              <h5 class="card-title">Rebond</h5>
+              <p class="card-text">bagsak na hair para sa bagsak na grades</p>
             </div>
           </div>
         </div>
@@ -93,10 +93,10 @@
       <h2 class="text-center mb-4">About Us</h2>
       <div class="row">
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget convallis turpis.</p>
+          <p>We are the Group 6 from BSCS 3B</p>
         </div>
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget convallis turpis.</p>
+          <p>Prince Lawrence Jacinto, Jayann Rose Gerente, Juliet Bautista</p>
         </div>
       </div>
     </div>
