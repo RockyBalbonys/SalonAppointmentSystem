@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon | Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <div>
-        <form method="post">
-            <input type="text" name="reg_firstname" placeholder="First name">
-            <input type="text" name="reg_lastname" placeholder="Last name">
-            <select  name="reg_gender" placeholder="Gender">
+    <div class="container">
+        <form method="post" class="border border-black">
+            <div class="container text-center ">
+                <input class="form-control-sm col" type="text" name="reg_firstname" placeholder="First name">
+                <input class="form-control-sm col" type="text" name="reg_lastname" placeholder="Last name">
+                <select class="form-control-sm col" name="reg_gender" placeholder="Gender">
                     <option value=0>Select Gender</option>
                     <option value=1>Male</option>
                     <option value=2>Female</option>
                     <option value=3>Other</option>
             </select>
-            <input type="text" name="reg_phonenumber" placeholder="Phone number">
-            <input type="text" name="reg_email" placeholder="E-mail">
-            <input type="password" name="reg_password" placeholder="Password">
-            <input type="submit" value = "register">
+            </div>
+            <div class="container text-center">
+                <input class="form-control-sm col" type="text" name="reg_phonenumber" placeholder="Phone number">
+                <input class="form-control-sm col" type="text" name="reg_email" placeholder="E-mail">    
+            </div>
+            <div class="container text-center">
+                <input class="form-control-sm" type="password" name="reg_password" placeholder="Password">
+                <input class="form-control-sm" type="submit" value = "register">
+            </div>
+            
         </form>
     </div>
         <?php
@@ -44,5 +52,8 @@
       
         
         ?>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
