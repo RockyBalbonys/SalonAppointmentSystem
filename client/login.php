@@ -54,6 +54,8 @@
             $row = $query->fetch_assoc();
              if ($login_password ===$row['user_password']) {
                 $_SESSION["username"] = $row["user_firstname"];
+                $_SESSION["user_id"] = $row["user_id"];
+
                 header("Location: http://localhost/SalonAppointmentSystem/client/clienthomepage.php");
             } else {
                 echo "wrong email/password!";
