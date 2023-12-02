@@ -1,6 +1,7 @@
 <?php
     include  "connection.php";  
     include "session.php";
+    if (isset($_SESSION["user_firstname"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +19,6 @@
             <div><a href="landingpage.php">Salon Name</a></div>
             <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
         </navbar>
-        <?php
-            echo "<h1>WELCOME BACK, " . $_SESSION["user_firstname"] . "!<h1>";
-        ?>
             <form method = "get" class="">
                 <input name="book_date" type="date" class ="row col-3 mb-2">
                 <input name="book_time" type="time" class ="row col-3 mb-2">
@@ -52,8 +50,14 @@
             ?>    
         </div>
             
-           
+    
        
 
 </body>
 </html>
+
+<?php
+    } else {
+        header("Location: 404.php");
+    }
+?>

@@ -26,7 +26,8 @@
                  $selectAllAppointments = "SELECT * FROM tbl_bookings 
                  JOIN tbl_users 
                  ON tbl_bookings.booking_user = tbl_users.user_id 
-                 WHERE $user_id = tbl_bookings.booking_user;";
+                 WHERE $user_id = tbl_bookings.booking_user
+                 ORDER BY booking_date ASC, booking_time ASC;";
                  $query = mysqli_query($conn, $selectAllAppointments);
                  
                  if (mysqli_query($conn, $selectAllAppointments)) {

@@ -28,6 +28,7 @@
                         <input type="password" class="form-control" name="login_password" id="login_password" placeholder="Enter your password">
                     </div>
                     <button type="submit" name="btn_login" class="btn btn-primary">Log in</button>
+                    <a href="register.php">register</a>
                 </form>
             </div>
         </div>
@@ -58,7 +59,7 @@
                 $_SESSION["user_lastname"] = $row["user_lastname"];
                 $_SESSION["user_gender"] = $row["user_gender"];
                 $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
-                        
+
                 header("Location: clienthomepage.php");
             } else {
                 echo "wrong email/password!";
