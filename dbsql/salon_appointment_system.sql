@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 08:53 AM
+-- Generation Time: Dec 02, 2023 at 03:40 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `salon_appointment_system`
 --
-CREATE DATABASE IF NOT EXISTS `salon_appointment_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `salon_appointment_system`;
 
 -- --------------------------------------------------------
 
@@ -33,8 +31,29 @@ CREATE TABLE `tbl_bookings` (
   `booking_id` int NOT NULL,
   `booking_user` int NOT NULL,
   `booking_date` date NOT NULL,
-  `booking_status` varchar(10) COLLATE utf8mb4_general_ci NOT NULL
+  `booking_time` time(6) NOT NULL,
+  `booking_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_booking_status`
+--
+
+CREATE TABLE `tbl_booking_status` (
+  `booking_status_id` int NOT NULL,
+  `booking_status` varchar(11) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_booking_status`
+--
+
+INSERT INTO `tbl_booking_status` (`booking_status_id`, `booking_status`) VALUES
+(1, 'upcoming'),
+(2, 'done'),
+(3, 'deleted');
 
 -- --------------------------------------------------------
 
@@ -94,6 +113,12 @@ ALTER TABLE `tbl_bookings`
   ADD PRIMARY KEY (`booking_id`);
 
 --
+-- Indexes for table `tbl_booking_status`
+--
+ALTER TABLE `tbl_booking_status`
+  ADD PRIMARY KEY (`booking_status_id`);
+
+--
 -- Indexes for table `tbl_gender`
 --
 ALTER TABLE `tbl_gender`
@@ -114,6 +139,12 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_bookings`
   MODIFY `booking_id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_booking_status`
+--
+ALTER TABLE `tbl_booking_status`
+  MODIFY `booking_status_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_gender`
