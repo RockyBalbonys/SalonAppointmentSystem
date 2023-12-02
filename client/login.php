@@ -53,9 +53,12 @@
         if ($query->num_rows > 0) {
             $row = $query->fetch_assoc();
              if ($login_password ===$row['user_password']) {
-                $_SESSION["username"] = $row["user_firstname"];
                 $_SESSION["user_id"] = $row["user_id"];
-                
+                $_SESSION["user_firstname"] = $row["user_firstname"];
+                $_SESSION["user_lastname"] = $row["user_lastname"];
+                $_SESSION["user_gender"] = $row["user_gender"];
+                $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
+                        
                 header("Location: clienthomepage.php");
             } else {
                 echo "wrong email/password!";
