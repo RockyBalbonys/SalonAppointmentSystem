@@ -1,3 +1,7 @@
+<?php
+include "connection.php";
+include "session.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +55,14 @@
   <div class="jumbotron">
     <h1 class="display-4">Welcome to our Salon</h1>
     <p class="lead">Book your appointment now!</p>
-    <a class="btn btn-primary btn-lg" href="login.php" role="button">Book Appointment</a>
+    <?php
+      if (isset($_SESSION["user_id"])) {
+        echo "<a class='btn btn-primary btn-lg' href='clienthomepage.php' role='button'>Book Appointment</a>";    
+      } else {
+        echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Book Appointment</a>";
+      }
+    ?>
+    
   </div>
 
   <!-- Services Section -->
