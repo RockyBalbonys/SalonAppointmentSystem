@@ -16,7 +16,7 @@
         <div class="container container-sm align-items-center justify">
         <navbar class="navbar border">
             <div><a href="landingpage.php">Salon Name</a></div>
-            <div><a href="profile.php"><?php echo $_SESSION["username"]; ?></a><span> | </span><a href="login.php">logout</a></div>
+            <div><a href="profile.php"><?php echo $_SESSION["username"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
         </navbar>
         <?php
             echo "<h1>WELCOME BACK, " . $_SESSION["username"] . "!<h1>";

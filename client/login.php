@@ -55,8 +55,8 @@
              if ($login_password ===$row['user_password']) {
                 $_SESSION["username"] = $row["user_firstname"];
                 $_SESSION["user_id"] = $row["user_id"];
-
-                header("Location: http://localhost/SalonAppointmentSystem/client/clienthomepage.php");
+                
+                header("Location: clienthomepage.php");
             } else {
                 echo "wrong email/password!";
             }
@@ -64,5 +64,5 @@
             echo "wrong email/password!";
         }
      }
-   
+
 ?>
