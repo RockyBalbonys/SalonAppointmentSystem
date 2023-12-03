@@ -30,6 +30,7 @@
                     <button type="submit" name="btn_login" class="btn btn-primary">Log in</button>
                     <a href="register.php">register</a>
                 </form>
+                <a href="http://localhost/SalonAppointmentSystem/admin/adminlogin.php"> log in as an admin</a>
             </div>
         </div>
    </div>
@@ -67,6 +68,6 @@
         } else {
             echo "wrong email/password!";
         }
-     }
+    }
 
 ?>

@@ -23,8 +23,9 @@
                 <input name="book_date" type="date" class ="row col-3 mb-2">
                 <input name="book_time" type="time" class ="row col-3 mb-2">
                 <textarea name="book_comment" id="" cols="15" rows="3" placeholder="Comments..." class="row col-4 mb-2"></textarea>
-                <input type="submit" value="Book" class="row col-3 mb-2">
+                <input type="submit" value="Book" class="row col-3 mb-2" >
             </form>
+
             <?php
     
                 if (isset($_GET["book_date"])) {
