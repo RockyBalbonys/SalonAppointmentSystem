@@ -13,7 +13,6 @@
 </head>
 <body>
 <div class="col-md-6">
-                <p>or log in as an admin:</p>
                 <form method="post" class="border p-3">
                     <div class="form-group">
                         <label for="login_email">Email:</label>
@@ -24,7 +23,6 @@
                         <input type="password" class="form-control" name="admin_password" id="admin_password" placeholder="Enter your password">
                     </div>
                     <button type="submit" name="btn_login" class="btn btn-primary">Log in</button>
-                    <a href="register.php">register</a>
                 </form>
             </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
