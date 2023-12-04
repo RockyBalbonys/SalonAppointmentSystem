@@ -19,12 +19,39 @@
             <div><a href="landingpage.php">Salon Name</a></div>
             <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
         </navbar>
-            <form method = "get" class="">
+            <div class="h1">Services</div>
+            <form method = "get" class="form-group text-center">
+                <div class="card-container row">
+                    <div class="card col-3">
+                        <label for="">
+                            <img src="https://i.imgflip.com/2kt4gg.jpg" alt="">
+                            rebond
+                        </label>
+                        <br><input type="radio" value="test">
+                    </div>
+                    <div class="card col-3">
+                        <label for="">
+                            <img src="https://i.imgflip.com/2kt4gg.jpg" alt="">
+                            rebond
+                        </label>
+                        <br><input type="radio" value="test">
+                    </div>
+                    <div class="card col-3">
+                        <label for="">
+                            <img src="https://i.imgflip.com/2kt4gg.jpg" alt="">
+                            rebond
+                        </label>
+                        <br><input type="radio" value="test">
+                    </div>
+                </div>
+                
+                
                 <input name="book_date" type="date" class ="row col-3 mb-2">
                 <input name="book_time" type="time" class ="row col-3 mb-2">
                 <textarea name="book_comment" id="" cols="15" rows="3" placeholder="Comments..." class="row col-4 mb-2"></textarea>
                 <input type="submit" value="Book" class="row col-3 mb-2" >
             </form>
+           
 
             <?php
     
