@@ -8,137 +8,233 @@ include "session.php";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salon Appointment Website</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <style>
-    /* Add your custom styles here */
-    body {
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
-    }
-    .jumbotron {
-      background-image: url('salonbackground.webp');
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-      padding: 150px 0;
-    }
-  </style>
+  <link rel="icon" type="img/png" href="#">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Salon</a>
-      <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button class="btn btn-secondary">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
+<div class="soc-media">
+        <a href="https://www.facebook.com/jayannrose.g/">
+        <i class="fa-brands fa-facebook-f" style="color: #b55e5a;"></i></a>
+        <a href="https://www.instagram.com/jayannrose_/">
+        <i class="fa-brands fa-instagram" style="color: #b55e5a;"></i></a>
+        <a href="https://twitter.com/jayyyyannn">
+        <i class="fa-brands fa-x-twitter" style="color: #b55e5a;"></i></a>
+        <a href="mailto:gerente.jayannrose.bscs2021@gmail.com">
+        <i class="fa-thin fa-at" style="color: #b55e5a;"></i></a>
     </div>
-  </nav>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="width">
+            <div class="logo"><a href="#">recover.hair<span></span></a></div>
+            <ul class="menu">
+                <li><a href="#home">home</a></li>
+                <li><a href="#bio">about</a></li>
+                <li><a href="#activities">services</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            </div>
+    </nav>
 
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <h1 class="display-4">Welcome to our Salon</h1>
-    <p class="lead">Book your appointment now!</p>
-    <?php
+    <!--HOME-->
+    <section class="home" id="home">
+        <div class="width">
+            <div class="home-subject">
+                <div class="text-1">
+                    Hey,
+                </div>
+                <div class="text-2">
+                    LUXURIOUS
+                </div>
+                <div class="text-2">
+                    HAIR FOR YOU
+                </div>
+                <a href="#booknow" class="text-3">
+                    Book now!
+                </a>
+                <?php
       if (isset($_SESSION["user_id"])) {
         echo "<a class='btn btn-primary btn-lg' href='clienthomepage.php' role='button'>Book Appointment</a>";    
       } else {
         echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Book Appointment</a>";
       }
-    ?>
-    
-  </div>
+      ?>
+            </div>
+        </div>
+    </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Our Services</h2>
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <div class="btn btn-secondary">
-              <h5 class="card-title">Haircut</h5>
-              <p class="card-text">forda short hair</p>
+<!--About-->
+<section class="bio" id="bio">
+    <div class="width">
+        <h2 class="title">About Us</h2>
+        <div class="bio-subject">
+            <div class="column left">
+                <img src="assets/hairabout2.png" alt="">
             </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <div class="btn btn-secondary">
-              <h5 class="card-title">Hair Perm</h5>
-              <p class="card-text">If you want to curl your hair, click here!</p>
+            <div class="column right">
+                <div class="text">
+                   Recover <span>Hair.</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mauris et magna tincidunt consequat..<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mauris et magna tincidunt consequat.</p>
+                <a href="file:///C:/Users/Jay%20Ann/Downloads/_Resume.pdf">View Full Details</a>
             </div>
-          </div>
         </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card">
-            <div class="btn btn-secondary">
-              <h5 class="card-title">Rebond</h5>
-              <p class="card-text">bagsak na hair para sa bagsak na grades</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- About Section -->
-  <section id="about" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-4">About Us</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <p>We are the Group 6 from BSCS 3B</p>
+<!--Services-->
+<section class="project" id="activities">
+    <div class="width">
+        <h2 class="title">Our Services</h2>
+        <p>Gallery</p>
+        <div class="carousel owl-carousel">
+            <div class="card">
+            <div class="box">
+                <a href="#1">
+                <img src="assets/haircut.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Haircut</div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <p>Prince Lawrence Jacinto, Jayann Rose Gerente, Juliet Bautista</p>
+        <div class="card">
+            <div class="box">
+                <a href="#1">
+                <img src="assets/rebond.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Hair Rebond</div>
+            </div>
         </div>
-      </div>
+        <div class="card">
+            <div class="box">
+                <a href="#3">
+                <img src="assets/color.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Hair Color</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#4">
+                <img src="assets/brazilian.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Hair Brazilian</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#5">
+                <img src="assets/highlights.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Highlights</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#6">
+                <img src="../Personal Portfolio/assets/Project6.png" alt="" width="600" height="600"></a>
+                <div class="text">Idk</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#7">
+                <img src="../Personal Portfolio/assets/Project7.png" alt="" width="600" height="600"></a>
+                <div class="text">idk</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#8">
+                <img src="../Personal Portfolio/assets/Project8.png" alt="" width="600" height="600"></a>
+                <div class="text">idk</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <img src="../Personal Portfolio/assets/Project9.jpg" alt="" width="600" height="600">
+                <div class="text">idk</div>
+            </div>
+        </div>
+
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Contact Us</h2>
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name">
+
+
+
+<!--Contacts-->
+<section class="contact" id="contact">
+    <div class="width">
+        <h2 class="title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="column left">
+                <div class="text">
+                    Don't hesitate to reach out
+                </div>
+                <div class="icons">
+                    <div class="row">
+                        <i class="fas fa-user"></i>
+                        <div class="info">
+                            <div class="head">Name</div>
+                            <div class="sub-title">Lorem</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info">
+                            <div class="head">Address</div>
+                            <div class="sub-title">Caloocan City</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="info">
+                            <div class="head">Tel No:</div>
+                            <div class="sub-title">09XXXXXXXXX</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info">
+                            <div class="head">Email</div>
+                            <div class="sub-title">gerente.jayannrose.bscs2021@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email">
+            <div class="column right">
+            <div class="text">Message us</div>
+            <form action="https://formspree.io/f/mbjwwpke" method="POST" method="POST">
+                <div class="field name">
+                    <input type="text" placeholder="Name" required>
+                </div>
+                <div class="field email">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                
+                <div class="field textarea">
+                    <textarea cols="30" rows="10" placeholder="Message" required></textarea>
+                </div>
+                <div class="button">
+                    <button type="submit">Send message</button>
+                </div>    
+                </div>
+            </form>
             </div>
-            <div class="form-group">
-              <textarea class="form-control" placeholder="Message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-          </form>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--footer-->
+<footer>
+    <span class="far fa-copyright"></span>Recover Hair.
+</footer>
+    <script src="script.js"></script>
 </body>
 </html>
