@@ -9,7 +9,7 @@ include "session.php";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salon Appointment Website</title>
   <link rel="icon" type="img/png" href="#">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
