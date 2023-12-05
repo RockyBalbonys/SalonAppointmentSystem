@@ -39,6 +39,7 @@ include "session.php";
                 <li><a href="#bio">about</a></li>
                 <li><a href="#services">services</a></li>
                 <li><a href="#contact">contact</a></li>
+                <li class="signup"><a href="#signup">sign up</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fa-solid fa-bars"></i>
