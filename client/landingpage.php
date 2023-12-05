@@ -37,7 +37,7 @@ include "session.php";
             <ul class="menu">
                 <li><a href="#home">home</a></li>
                 <li><a href="#bio">about</a></li>
-                <li><a href="#activities">services</a></li>
+                <li><a href="#services">services</a></li>
                 <li><a href="#contact">contact</a></li>
             </ul>
             <div class="menu-btn">
@@ -76,7 +76,7 @@ include "session.php";
 <!--About-->
 <section class="bio" id="bio">
     <div class="width">
-        <h2 class="title">About Us</h2>
+        <h2 class="title">About Our Salon</h2>
         <div class="bio-subject">
             <div class="column left">
                 <img src="assets/hairabout2.png" alt="">
