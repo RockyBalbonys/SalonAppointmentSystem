@@ -39,7 +39,7 @@ include "session.php";
                 <li><a href="#bio">about</a></li>
                 <li><a href="#services">services</a></li>
                 <li><a href="#contact">contact</a></li>
-                <li class="signup"><a href="#signup">sign up</a></li>
+                <li class="signup"><a href="register.php">sign up</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fa-solid fa-bars"></i>
@@ -60,16 +60,13 @@ include "session.php";
                 <div class="text-2">
                     HAIR FOR YOU
                 </div>
-                <a href="#booknow" class="text-3">
-                    Book now!
-                </a>
                 <?php
-      if (isset($_SESSION["user_id"])) {
-        echo "<a class='btn btn-primary btn-lg' href='clienthomepage.php' role='button'>Book Appointment</a>";    
-      } else {
-        echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Book Appointment</a>";
-      }
-      ?>
+                    if (isset($_SESSION["user_id"])) {
+                        echo "<a class='text-3' href='clienthomepage.php' role='button'>Book Now</a>";    
+                    } else {
+                        echo "<a class='text-3' href='login.php' role='button'>Book Now</a>";
+                    }
+                      ?>
             </div>
         </div>
     </section>
