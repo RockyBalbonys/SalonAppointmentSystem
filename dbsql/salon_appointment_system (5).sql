@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 03:02 PM
+-- Generation Time: Dec 06, 2023 at 03:19 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `salon_appointment_system`
 --
+CREATE DATABASE IF NOT EXISTS `salon_appointment_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `salon_appointment_system`;
 
 -- --------------------------------------------------------
 
