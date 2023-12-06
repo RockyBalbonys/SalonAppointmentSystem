@@ -41,8 +41,8 @@ include "session.php";
                 <li><a href="#services">services</a></li>
                 <li><a href="#contact">contact</a></li>
                 <button class="login-btn">
-            Book Appointment
-            </button>
+                Book Appointment
+                </button>
             </ul>
             
             <div class="menu-btn">
@@ -65,19 +65,44 @@ include "session.php";
             </div>
             <div class="form-content">
                 <h2>LOGIN</h2>
-                <form action="#">
+                <form method="post">
                     <div class="input-field">
-                        <input type="text" required>
+                        <input type="text" name="login_email" required >
                         <label>Email</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
+                        <input type="password" name="login_password"  required>
                         <label>Password</label>
                     </div>
                     <a href="#" class="forgot-pass">Forgot Password?</a>
                     <button type="submit">
                         Log In
                     </button>
+                    <?php
+                           if (isset( $_POST["login_email"])) {
+                            $login_email = $_POST["login_email"];
+                            $login_password = $_POST["login_password"];
+                            $check = "SELECT * FROM tbl_users WHERE `user_email` = '$login_email'";
+                            $query = mysqli_query($conn, $check);
+                    
+                            if ($query->num_rows > 0) {
+                                $row = $query->fetch_assoc();
+                                 if ($login_password ===$row['user_password']) {
+                                    $_SESSION["user_id"] = $row["user_id"];
+                                    $_SESSION["user_firstname"] = $row["user_firstname"];
+                                    $_SESSION["user_lastname"] = $row["user_lastname"];
+                                    $_SESSION["user_gender"] = $row["user_gender"];
+                                    $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
+                    
+                                    header("Location: clienthomepage.php");
+                                } else {
+                                    echo "wrong email/password!";
+                                }
+                            } else {
+                                echo "wrong email/password!";
+                            }
+                        }
+                    ?>
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
@@ -92,13 +117,25 @@ include "session.php";
             </div>
             <div class="form-content">
                 <h2>SIGNUP</h2>
-                <form action="#">
+                <form method="post">
                     <div class="input-field">
-                        <input type="text" required>
-                        <label>Enter your email</label>
+                        <input type="text" name="reg_firstname"required>
+                        <label>First Name</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
+                        <input type="text" name="reg_lastname"required>
+                        <label>Last Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="reg_phonenumber" required>
+                        <label>Phone Number</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="reg_email" required>
+                        <label>Create Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="reg_password" required>
                         <label>Create Password</label>
                     </div>
                     <div class="policy-text">
@@ -111,6 +148,25 @@ include "session.php";
                     <button type="submit">
                         Sign Up
                     </button>
+                    <?php
+                        if (isset($_POST["reg_firstname"])) {
+                            $reg_firstname = $_POST["reg_firstname"];
+                            $reg_lastname = $_POST["reg_lastname"];
+                            $reg_gender = $_POST["reg_gender"];
+                            $reg_phonenumber = $_POST["reg_phonenumber"];
+                            $reg_email = $_POST["reg_email"];
+                            $reg_password = $_POST["reg_password"];
+                            
+                            $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) 
+                                        VALUES ('$reg_email','$reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
+                            
+                            if (mysqli_query($conn, $add)) {
+                                echo "user added successfully";
+                            } else {
+                                echo "failed";
+                            }
+                        }
+                    ?>
                 </form>
                 <div class="bottom-link">
                     Already have an account?
