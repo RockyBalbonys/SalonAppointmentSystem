@@ -42,14 +42,18 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>Service Chosen</th>
                                     </tr>
                                 </thead>
                                 <tbody>';
 
                         while ($row = mysqli_fetch_array($query)) {
                             echo '<tr>';
-                            echo '<td>' . $row["booking_date"] . '</td>';
-                            echo '<td>' . $row["booking_time"] . '</td>';
+                            $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
+                            echo '<td>' . $formattedDate . '</td>';
+                            $formattedTime = date('h:i A', strtotime($row["booking_time"]));
+                            echo '<td>' . $formattedTime . '</td>';
+                            echo '<td>' . $row["booking_service"] . '</td>';
                             echo '</tr>';
                         }
 
