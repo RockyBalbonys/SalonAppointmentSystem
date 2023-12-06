@@ -15,7 +15,7 @@
         <div class="container">
             <nav class="navbar border">
                 <div><a href="landingpage.php">Salon Name</a></div>
-                <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
+                <div><a href="clienthomepage.php">Book</a><span> | </span><a href="logout.php">logout</a></div>
             </nav>
               <div>
                  <?php 
