@@ -15,7 +15,8 @@ include "session.php";
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="script.js" defer></script>
 </head>
 <body>
 <div class="soc-media">
@@ -36,16 +37,88 @@ include "session.php";
             <div class="logo"><a href="#">recover.hair<span></span></a></div>
             <ul class="menu">
                 <li><a href="#home">home</a></li>
-                <li><a href="#bio">about</a></li>
+                <li><a href="#about">about</a></li>
                 <li><a href="#services">services</a></li>
                 <li><a href="#contact">contact</a></li>
-                <li class="signup"><a href="#signup">sign up</a></li>
+                <button class="login-btn">
+            Book Appointment
+            </button>
             </ul>
+            
             <div class="menu-btn">
                 <i class="fa-solid fa-bars"></i>
             </div>
             </div>
     </nav>
+    <!-- Popup Form-->
+    <div class="blur-bg-overlay">
+
+    </div>
+    <div class="form-popup">
+        <span class="close-btn material-symbols-outlined">
+            close
+        </span>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2>Hello</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+            </div>
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                    <button type="submit">
+                        Log In
+                    </button>
+                </form>
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" id="signup-link">Signup</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Create Account</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+            </div>
+            <div class="form-content">
+                <h2>SIGNUP</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Create Password</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox">
+                        <label for="policy">
+                            I agree the
+                            <a href="#">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">
+                        Sign Up
+                    </button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="#" id="login-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--HOME-->
     <section class="home" id="home">
@@ -60,8 +133,8 @@ include "session.php";
                 <div class="text-2">
                     HAIR FOR YOU
                 </div>
-                <a href="#booknow" class="text-3">
-                    Book now!
+                <a href="#about" class="text-3">
+                    09XXXXXXXXX
                 </a>
                 <?php
       if (isset($_SESSION["user_id"])) {
@@ -75,7 +148,7 @@ include "session.php";
     </section>
 
 <!--About-->
-<section class="bio" id="bio">
+<section class="bio" id="about">
     <div class="width">
         <h2 class="title">About Our Salon</h2>
         <div class="bio-subject">
@@ -94,7 +167,7 @@ include "session.php";
 </section>
 
 <!--Services-->
-<section class="project" id="activities">
+<section class="project" id="services">
     <div class="width">
         <h2 class="title">Our Services</h2>
         <p>Gallery</p>
@@ -236,6 +309,6 @@ include "session.php";
 <footer>
     <span class="far fa-copyright"></span>Recover Hair.
 </footer>
-    <script src="script.js"></script>
+    
 </body>
 </html>
