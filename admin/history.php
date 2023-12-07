@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon Admin</title>
+    <title>Booking History</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
@@ -15,7 +15,7 @@
     <div class="container">
             <nav class="navbar">
                 <div class="nav-item">ADMIN PAGE</div>
-                <div class="nav-item"><a href  ="history.php">History</a> | <a href="logout.php">Log Out</a></div>
+                <div class="nav-item"><a href  ="adminpage.php">Bookings</a> | <a href="logout.php">Log Out</a></div>
             </nav>
             <div class="h2">
                 Welcome, Admin!
