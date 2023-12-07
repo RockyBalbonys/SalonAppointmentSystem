@@ -7,8 +7,8 @@ include "session.php";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salon Appointment Website</title>
-  <link rel="icon" type="img/png" href="#">
+  <title>Recover.hair</title>
+  <link rel="icon" type="png/jpg" href="assets/logo.png">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -60,8 +60,8 @@ include "session.php";
         </span>
         <div class="form-box login">
             <div class="form-details">
-                <h2>Hello</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+                <h2></h2>
+                <p></p>
             </div>
             <div class="form-content">
                 <h2>LOGIN</h2>
@@ -110,10 +110,11 @@ include "session.php";
                 </div>
             </div>
         </div>
+
         <div class="form-box signup">
             <div class="form-details">
-                <h2>Create Account</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+                <h2></h2>
+                <p></p>
             </div>
             <div class="form-content">
                 <h2>SIGNUP</h2>
@@ -132,7 +133,7 @@ include "session.php";
                     </div>
                     <div class="input-field">
                         <input type="text" name="reg_email" required>
-                        <label>Create Password</label>
+                        <label>Email</label>
                     </div>
                     <div class="input-field">
                         <input type="password" name="reg_password" required>
@@ -192,13 +193,7 @@ include "session.php";
                 <a href="#about" class="text-3">
                     09XXXXXXXXX
                 </a>
-                <?php
-      if (isset($_SESSION["user_id"])) {
-        echo "<a class='btn btn-primary btn-lg' href='clienthomepage.php' role='button'>Book Appointment</a>";    
-      } else {
-        echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Book Appointment</a>";
-      }
-      ?>
+                
             </div>
         </div>
     </section>
@@ -312,7 +307,7 @@ include "session.php";
                         <i class="fas fa-user"></i>
                         <div class="info">
                             <div class="head">Name</div>
-                            <div class="sub-title">Lorem</div>
+                            <div class="sub-title">Hair Recover.</div>
                         </div>
                     </div>
                     <div class="row">
@@ -333,7 +328,7 @@ include "session.php";
                         <i class="fas fa-envelope"></i>
                         <div class="info">
                             <div class="head">Email</div>
-                            <div class="sub-title">gerente.jayannrose.bscs2021@gmail.com</div>
+                            <div class="sub-title">recover.hair@gmail.com</div>
                         </div>
                     </div>
                 </div>
@@ -363,7 +358,13 @@ include "session.php";
 
 <!--footer-->
 <footer>
-    <span class="far fa-copyright"></span>Recover Hair.
+    <div class="footer-text">
+        <span class="far fa-copyright"></span>Recover Hair.
+    </div>
+    <div class="footer-btn">
+        <button class=btn-loginasadmin>log in as admin</button>
+    </div>
+    
 </footer>
     
 </body>
