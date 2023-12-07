@@ -79,30 +79,42 @@ include "session.php";
                         Log In
                     </button>
                     <?php
-                           if (isset( $_POST["login_email"])) {
-                            $login_email = $_POST["login_email"];
-                            $login_password = $_POST["login_password"];
-                            $check = "SELECT * FROM tbl_users WHERE `user_email` = '$login_email'";
-                            $query = mysqli_query($conn, $check);
-                    
-                            if ($query->num_rows > 0) {
-                                $row = $query->fetch_assoc();
-                                 if ($login_password ===$row['user_password']) {
-                                    $_SESSION["user_id"] = $row["user_id"];
-                                    $_SESSION["user_firstname"] = $row["user_firstname"];
-                                    $_SESSION["user_lastname"] = $row["user_lastname"];
-                                    $_SESSION["user_gender"] = $row["user_gender"];
-                                    $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
-                    
-                                    header("Location: clienthomepage.php");
-                                } else {
-                                    echo "wrong email/password!";
-                                }
-                            } else {
-                                echo "wrong email/password!";
-                            }
+                if (isset($_POST["login_email"])) {
+                    $login_email = $_POST["login_email"];
+                    $login_password = $_POST["login_password"];
+
+                    // Using prepared statement to prevent SQL injection
+                    $check = "SELECT * FROM tbl_users WHERE `user_email` = ?";
+                    $stmt = $conn->prepare($check);
+                    $stmt->bind_param("s", $login_email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $hashed_password = $row['user_password'];
+                        echo $hashed_password;
+                        if (password_verify($login_password, $hashed_password)) {
+                            $_SESSION["user_id"] = $row["user_id"];
+                            $_SESSION["user_firstname"] = $row["user_firstname"];
+                            $_SESSION["user_lastname"] = $row["user_lastname"];
+                            $_SESSION["user_gender"] = $row["user_gender"];
+                            $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
+
+                            // Redirect to clienthomepage.php
+                            header("Location: clienthomepage.php");
+                            exit(); // Ensure that the script stops execution after the redirect
+                        } else {
+                            echo "Wrong email/password!";
                         }
-                    ?>
+                    } else {
+                        echo "Wrong email/password!";
+                    }
+
+                    $stmt->close();
+                }
+            ?>
+
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
@@ -157,9 +169,10 @@ include "session.php";
                             $reg_phonenumber = $_POST["reg_phonenumber"];
                             $reg_email = $_POST["reg_email"];
                             $reg_password = $_POST["reg_password"];
+                            $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
                             
                             $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) 
-                                        VALUES ('$reg_email','$reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
+                                        VALUES ('$reg_email','$hashed_reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
                             
                             if (mysqli_query($conn, $add)) {
                                 echo "user added successfully";
@@ -361,10 +374,6 @@ include "session.php";
     <div class="footer-text">
         <span class="far fa-copyright"></span>Recover Hair.
     </div>
-    <div class="footer-btn">
-        <button class=btn-loginasadmin>log in as admin</button>
-    </div>
-    
 </footer>
     
 </body>

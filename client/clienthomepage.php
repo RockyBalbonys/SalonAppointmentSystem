@@ -80,7 +80,7 @@
         <label><h1>Services</h1></label>
 
             <div class= "picture-box">
-            <form method = "get" class="form-group text-center">
+            <form method = "POST" class="form-group text-center">
                 <div class="card-container row">
                     <div class="card col-3 ">
                         <label for="">
@@ -188,11 +188,11 @@
 
             <?php
     
-                if (isset($_GET["book_date"])) {
-                    $service = $_GET["service"];
-                    $book_date = $_GET["book_date"];
-                    $book_time = $_GET["book_time"];
-                    $book_comment = $_GET["book_comment"];
+                if (isset($_POST["book_date"])) {
+                    $service = $_POST["service"];
+                    $book_date = $_POST["book_date"];
+                    $book_time = $_POST["book_time"];
+                    $book_comment = $_POST["book_comment"];
                     
                     $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
                     VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
@@ -203,11 +203,6 @@
                         echo $book_time . "<br>";
                         echo $book_comment . "<br>";
                     }
-
-                    
-                    
-
-
                 }
             ?>    
         </div>
