@@ -348,22 +348,36 @@ include "session.php";
             </div>
             <div class="column right">
             <div class="text">Message us</div>
-            <form action="https://formspree.io/f/mbjwwpke" method="POST" method="POST">
+            <form method="POST">
                 <div class="field name">
-                    <input type="text" placeholder="Name" required>
+                    <input type="text" name="mess_sender"placeholder="Name" required>
                 </div>
                 <div class="field email">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" name="mess_email" placeholder="Email" required>
                 </div>
                 
                 <div class="field textarea">
-                    <textarea cols="30" rows="10" placeholder="Message" required></textarea>
+                    <textarea cols="30" rows="10" name="mess_content" placeholder="Message" required></textarea>
                 </div>
                 <div class="button">
                     <button type="submit">Send message</button>
                 </div>    
                 </div>
             </form>
+                    <?php
+                        if (isset($_POST["mess_content"])) {
+                            $mess_sender = $_POST["mess_sender"];
+                            $mess_email = $_POST["mess_email"];
+                            $mess_content = $_POST["mess_content"];
+                            
+                            $book = "INSERT INTO `tbl_messages`(`mess_sender`, `mess_email`, `mess_content`) 
+                            VALUES ('$mess_sender', '$mess_email','$mess_content')";
+        
+                            if (mysqli_query($conn, $book)) {
+                                echo "<script> alert('message sent!'); </script";
+                            }
+                        }
+                    ?>
             </div>
         </div>
     </div>
