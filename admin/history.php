@@ -15,7 +15,7 @@
     <div class="container">
              <nav class="navbar">
                 <div class="nav-item">ADMIN PAGE</div>
-                <div class="nav-item"><a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <a href  ="history.php">History</a> | <a href="logout.php">Log Out</a></div>
+                <div class="nav-item"><a href  ="adminpage.php">Bookings</a> | <a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <!-- <a href  ="history.php">History</a> | --> <a href="logout.php">Log Out</a></div>
             </nav>
             <div class="h2">
                 Booking History

@@ -123,7 +123,7 @@ html{
     border: 1px solid #ffffff;
     border-radius: 10px;
     transform: translate(-50%, -100%);
-    z-index: 4;
+    z-index: 6;
 }
 .show-popup .form-popup {
     opacity: 1;
@@ -685,4 +685,8 @@ footer{
         .home .home-content .text-3{
             font-size: 27px;
         } 
+}
+
+.z-5 {
+    z-index: 5;
 }

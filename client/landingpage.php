@@ -32,7 +32,7 @@ include "session.php";
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
-    <nav class="navbar">
+    <nav class="navbar z-5">
         <div class="width">
             <div class="logo"><a href="#">recover.hair<span></span></a></div>
             <ul class="menu">
@@ -42,6 +42,11 @@ include "session.php";
                 <li><a href="#contact">contact</a></li>
                 <button class="login-btn">
                 Book Appointment
+                <?php
+                    if (isset($_SESSION["user_id"])) {
+                        header("location: clienthomepage.php");
+                    } 
+                ?>
                 </button>
             </ul>
             
@@ -105,10 +110,10 @@ include "session.php";
                             header("Location: clienthomepage.php");
                             exit(); // Ensure that the script stops execution after the redirect
                         } else {
-                            echo "Wrong email/password!";
+                            echo "<script>alert('Wrong password!');</script>";
                         }
                     } else {
-                        echo "Wrong email/password!";
+                        echo "<script>alert('Wrong password!');</script>";
                     }
 
                     $stmt->close();
@@ -203,10 +208,7 @@ include "session.php";
                 <div class="text-2">
                     HAIR FOR YOU
                 </div>
-                <a href="#about" class="text-3">
-                    09XXXXXXXXX
-                </a>
-                
+
             </div>
         </div>
     </section>

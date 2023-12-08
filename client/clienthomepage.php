@@ -11,7 +11,7 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="img/png" href="#">
-
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
@@ -25,13 +25,6 @@
         /* Custom styles */
         body {
             background-color: #fcf0e1;
-        }
-        .navbar {
-            background-color: #b55e5a;
-            color: #fff;
-        }
-        .container {
-            margin-top: 20px;
         }
         .picture-box {
             display: flex;
@@ -66,13 +59,14 @@
 
 </head>
 <body>
-<navbar class="navbar">
-
-            <div><a href="landingpage.php">recover.hair</a></div>
+        <navbar class="navbar">
+        <div class="logo"><a href="landingpage.php">recover.hair<span></span></a></div>
             <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
         </navbar>
         <div class="container">
         
+<br>
+<br>
 <br>
 <br>
 <br>
