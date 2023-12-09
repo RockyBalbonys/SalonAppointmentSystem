@@ -113,7 +113,7 @@ include "session.php";
                             echo "<script>alert('Wrong password!');</script>";
                         }
                     } else {
-                        echo "<script>alert('Wrong password!');</script>";
+                        echo "<script>alert('Wrong password 2!');</script>";
                     }
 
                     $stmt->close();
