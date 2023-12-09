@@ -7,8 +7,8 @@ include "session.php";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salon Appointment Website</title>
-  <link rel="icon" type="img/png" href="#">
+  <title>Recover.hair</title>
+  <link rel="icon" type="png/jpg" href="assets/logo.png">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -32,7 +32,7 @@ include "session.php";
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
-    <nav class="navbar">
+    <nav class="navbar z-5">
         <div class="width">
             <div class="logo"><a href="#">recover.hair<span></span></a></div>
             <ul class="menu">
@@ -42,6 +42,11 @@ include "session.php";
                 <li><a href="#contact">contact</a></li>
                 <button class="login-btn">
                 Book Appointment
+                <?php
+                    if (isset($_SESSION["user_id"])) {
+                        header("location: clienthomepage.php");
+                    } 
+                ?>
                 </button>
             </ul>
             
@@ -60,8 +65,8 @@ include "session.php";
         </span>
         <div class="form-box login">
             <div class="form-details">
-                <h2>Hello</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+                <h2></h2>
+                <p></p>
             </div>
             <div class="form-content">
                 <h2>LOGIN</h2>
@@ -79,30 +84,42 @@ include "session.php";
                         Log In
                     </button>
                     <?php
-                           if (isset( $_POST["login_email"])) {
-                            $login_email = $_POST["login_email"];
-                            $login_password = $_POST["login_password"];
-                            $check = "SELECT * FROM tbl_users WHERE `user_email` = '$login_email'";
-                            $query = mysqli_query($conn, $check);
-                    
-                            if ($query->num_rows > 0) {
-                                $row = $query->fetch_assoc();
-                                 if ($login_password ===$row['user_password']) {
-                                    $_SESSION["user_id"] = $row["user_id"];
-                                    $_SESSION["user_firstname"] = $row["user_firstname"];
-                                    $_SESSION["user_lastname"] = $row["user_lastname"];
-                                    $_SESSION["user_gender"] = $row["user_gender"];
-                                    $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
-                    
-                                    header("Location: clienthomepage.php");
-                                } else {
-                                    echo "wrong email/password!";
-                                }
-                            } else {
-                                echo "wrong email/password!";
-                            }
+                if (isset($_POST["login_email"])) {
+                    $login_email = $_POST["login_email"];
+                    $login_password = $_POST["login_password"];
+
+                    // Using prepared statement to prevent SQL injection
+                    $check = "SELECT * FROM tbl_users WHERE `user_email` = ?";
+                    $stmt = $conn->prepare($check);
+                    $stmt->bind_param("s", $login_email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $hashed_password = $row['user_password'];
+                        echo $hashed_password;
+                        if (password_verify($login_password, $hashed_password)) {
+                            $_SESSION["user_id"] = $row["user_id"];
+                            $_SESSION["user_firstname"] = $row["user_firstname"];
+                            $_SESSION["user_lastname"] = $row["user_lastname"];
+                            $_SESSION["user_gender"] = $row["user_gender"];
+                            $_SESSION["user_phonenumber"] = $row["user_phonenumber"];
+
+                            // Redirect to clienthomepage.php
+                            header("Location: clienthomepage.php");
+                            exit(); // Ensure that the script stops execution after the redirect
+                        } else {
+                            echo "<script>alert('Wrong password 1!');</script>";
                         }
-                    ?>
+                    } else {
+                        echo "<script>alert('Wrong password 2!');</script>";
+                    }
+
+                    $stmt->close();
+                }
+            ?>
+
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
@@ -110,10 +127,11 @@ include "session.php";
                 </div>
             </div>
         </div>
+
         <div class="form-box signup">
             <div class="form-details">
-                <h2>Create Account</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, delectus! Quod nisi, porro laborum, quidem esse laudantium voluptatem molestias maxime, error dolorem reprehenderit a sequi blanditiis assumenda rerum ipsa doloribus?</p>
+                <h2></h2>
+                <p></p>
             </div>
             <div class="form-content">
                 <h2>SIGNUP</h2>
@@ -132,7 +150,7 @@ include "session.php";
                     </div>
                     <div class="input-field">
                         <input type="text" name="reg_email" required>
-                        <label>Create Password</label>
+                        <label>Email</label>
                     </div>
                     <div class="input-field">
                         <input type="password" name="reg_password" required>
@@ -156,9 +174,10 @@ include "session.php";
                             $reg_phonenumber = $_POST["reg_phonenumber"];
                             $reg_email = $_POST["reg_email"];
                             $reg_password = $_POST["reg_password"];
+                            $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
                             
                             $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) 
-                                        VALUES ('$reg_email','$reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
+                                        VALUES ('$reg_email','$hashed_reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
                             
                             if (mysqli_query($conn, $add)) {
                                 echo "user added successfully";
@@ -189,16 +208,7 @@ include "session.php";
                 <div class="text-2">
                     HAIR FOR YOU
                 </div>
-                <a href="#about" class="text-3">
-                    09XXXXXXXXX
-                </a>
-                <?php
-      if (isset($_SESSION["user_id"])) {
-        echo "<a class='btn btn-primary btn-lg' href='clienthomepage.php' role='button'>Book Appointment</a>";    
-      } else {
-        echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Book Appointment</a>";
-      }
-      ?>
+
             </div>
         </div>
     </section>
@@ -312,7 +322,7 @@ include "session.php";
                         <i class="fas fa-user"></i>
                         <div class="info">
                             <div class="head">Name</div>
-                            <div class="sub-title">Lorem</div>
+                            <div class="sub-title">Hair Recover.</div>
                         </div>
                     </div>
                     <div class="row">
@@ -333,29 +343,43 @@ include "session.php";
                         <i class="fas fa-envelope"></i>
                         <div class="info">
                             <div class="head">Email</div>
-                            <div class="sub-title">gerente.jayannrose.bscs2021@gmail.com</div>
+                            <div class="sub-title">recover.hair@gmail.com</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="column right">
             <div class="text">Message us</div>
-            <form action="https://formspree.io/f/mbjwwpke" method="POST" method="POST">
+            <form method="POST">
                 <div class="field name">
-                    <input type="text" placeholder="Name" required>
+                    <input type="text" name="mess_sender"placeholder="Name" required>
                 </div>
                 <div class="field email">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" name="mess_email" placeholder="Email" required>
                 </div>
                 
                 <div class="field textarea">
-                    <textarea cols="30" rows="10" placeholder="Message" required></textarea>
+                    <textarea cols="30" rows="10" name="mess_content" placeholder="Message" required></textarea>
                 </div>
                 <div class="button">
                     <button type="submit">Send message</button>
                 </div>    
                 </div>
             </form>
+                    <?php
+                        if (isset($_POST["mess_content"])) {
+                            $mess_sender = $_POST["mess_sender"];
+                            $mess_email = $_POST["mess_email"];
+                            $mess_content = $_POST["mess_content"];
+                            
+                            $book = "INSERT INTO `tbl_messages`(`mess_sender`, `mess_email`, `mess_content`) 
+                            VALUES ('$mess_sender', '$mess_email','$mess_content')";
+        
+                            if (mysqli_query($conn, $book)) {
+                                echo "<script> alert('message sent!'); </script";
+                            }
+                        }
+                    ?>
             </div>
         </div>
     </div>
@@ -363,7 +387,9 @@ include "session.php";
 
 <!--footer-->
 <footer>
-    <span class="far fa-copyright"></span>Recover Hair.
+    <div class="footer-text">
+        <span class="far fa-copyright"></span>Recover Hair.
+    </div>
 </footer>
     
 </body>

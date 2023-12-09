@@ -11,7 +11,7 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="img/png" href="#">
-    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
@@ -94,30 +94,22 @@
 
 </head>
 <body>
-
-    <div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
-    </div>
-    <navbar class="navbar">
-
-
-            <div class= "logo"><a href="landingpage.php">recover.hair<span></span></a></div>
-            <div class= "logo"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
-            <div class="menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-    </div>
-    </navbar>
+        <navbar class="navbar">
+        <div class="logo"><a href="landingpage.php">recover.hair<span></span></a></div>
+            <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
+        </navbar>
         <div class="container">
         
 <br>
 <br>
 <br>
 <br>
+<br>
 
-        <label><h1 class="custom-title">Services</h1></label>
-        <div class= "picture-box">
-            <form method = "get" class="form-group text-center">
+        <label><h1>Services</h1></label>
+
+            <div class= "picture-box">
+            <form method = "POST" class="form-group text-center">
                 <div class="card-container row">
         <div class="card col-3 picture-item" onclick="handleImageClick(this)">
                          <input type="radio" id="radioBtn" name="service" class="sr-only">
@@ -235,11 +227,11 @@
 
             <?php
     
-                if (isset($_GET["book_date"])) {
-                    $service = $_GET["service"];
-                    $book_date = $_GET["book_date"];
-                    $book_time = $_GET["book_time"];
-                    $book_comment = $_GET["book_comment"];
+                if (isset($_POST["book_date"])) {
+                    $service = $_POST["service"];
+                    $book_date = $_POST["book_date"];
+                    $book_time = $_POST["book_time"];
+                    $book_comment = $_POST["book_comment"];
                     
                     $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
                     VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
@@ -250,11 +242,6 @@
                         echo $book_time . "<br>";
                         echo $book_comment . "<br>";
                     }
-
-                    
-                    
-
-
                 }
             ?>    
         </div>

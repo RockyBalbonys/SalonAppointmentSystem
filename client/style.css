@@ -121,8 +121,10 @@ html{
     opacity: 0;
     pointer-events: none;
     background: #fcf0e1;
-    border: 2px solid #b55e5a;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
     transform: translate(-50%, -100%);
+    z-index: 6;
 }
 .show-popup .form-popup {
     opacity: 1;
@@ -251,7 +253,7 @@ form button:hover {
 }
 /*menu*/
 .menu-btn{
-    color: #b55e5a;
+    color: #381d1a;
     font-size: 23px;
     cursor: pointer;
     display: none;
@@ -426,7 +428,7 @@ font-family: 'Ubuntu', sans-serif;
 }
 /*Services*/
 .project{
-    color: #fff;
+    color: #381d1a;
     background: #fcf0e1;
 }
 .project p{
@@ -560,6 +562,14 @@ footer{
     background: #b55e5a;
     padding: 20px 23px;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-loginasadmin {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ffffff;
 }
 
 /*popup responsive*/
@@ -689,3 +699,6 @@ footer{
         } 
 }
 
+.z-5 {
+    z-index: 5;
+}

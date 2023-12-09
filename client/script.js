@@ -44,7 +44,7 @@ $('.carousel').owlCarousel({
 });
 });
  
- // Show popup
+// Show popup
 const showPopupBtn = document.querySelector(".login-btn");
 const formPopup = document.querySelector(".form-popup");
 const hidePopupBtn = document.querySelector(".form-popup .close-btn");
@@ -52,17 +52,35 @@ const loginSignupLink = document.querySelectorAll(".form-box .bottom-link a");
 
 showPopupBtn.addEventListener("click", () => {
     console.log("Login button clicked");
-  document.body.classList.add("show-popup");
+    document.body.classList.add("show-popup");
 });
 
 // Hide popup
 hidePopupBtn.addEventListener("click", () => {
-  document.body.classList.remove("show-popup");
+    document.body.classList.remove("show-popup");
 });
 
 loginSignupLink.forEach(link => {
     link.addEventListener("click", (e) => {
         e.preventDefault();
-        formPopup.classList[link.id === "signup-link" ? 'add' : 'remove'] ("show-signup");
+        formPopup.classList[link.id === "signup-link" ? 'add' : 'remove']("show-signup");
     });
 });
+
+// Function to attempt login
+function attemptLogin() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    // Simplified example: Check if email and password are correct
+    if (email === 'example@email.com' && password === 'password123') {
+        // Handle successful login
+        console.log('Login successful');
+    } else {
+        // Handle incorrect login
+        console.log('Login failed, try again');
+        // You can display an error message to the user or perform other actions
+        // but don't remove the "show-popup" class to keep the modal visible
+    }
+}
+

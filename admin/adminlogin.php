@@ -13,6 +13,7 @@
 </head>
 <body>
 <div class="col-md-6">
+    <p class="display">Log in as Admin</p>
                 <form method="post" class="border p-3">
                     <div class="form-group">
                         <label for="login_email">Email:</label>
