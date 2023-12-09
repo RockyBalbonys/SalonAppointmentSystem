@@ -110,7 +110,7 @@ include "session.php";
                             header("Location: clienthomepage.php");
                             exit(); // Ensure that the script stops execution after the redirect
                         } else {
-                            echo "<script>alert('Wrong password!');</script>";
+                            echo "<script>alert('Wrong password 1!');</script>";
                         }
                     } else {
                         echo "<script>alert('Wrong password 2!');</script>";
