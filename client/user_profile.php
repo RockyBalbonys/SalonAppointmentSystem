@@ -10,6 +10,7 @@
     <title>User Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="img/png" href="#">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
@@ -17,21 +18,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="script.js" defer></script>
-
     
 
     <style>
         /* Custom styles */
         body {
             background-color: #fcf0e1;
+            font-size: 20px;
         }
         .navbar {
             background-color: #b55e5a;
             color: #fff;
         }
         .container {
-            margin-top: 20px;
+            margin-top: 1px;
         }
+        body {
+            background-color: #fcf0e1; 
+        
+        }
+        .navbar {
+            background-color: #b55e5a;
+            color: #fff;
+        }
+
 
 
     </style>
@@ -39,12 +49,21 @@
 </head>
 <body>
 
-            <navbar class="navbar h-100">
-                <div><a href="landingpage.php">recover.hair</a></div>
-                <div><a href="clienthomepage.php">Services</a><span> | </span><a href="logout.php">Logout</a></div>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+            <navbar class="navbar">
+                <div class="logo"><a href="landingpage.php">recover.hair</a></div>
+                <div class= "logo"><a href="clienthomepage.php">Services</a><span> | </span><a href="logout.php">Logout</a></div>
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             </navbar>
             <div class="container">
         
+        <br>
+        <br>
+        <br>
         <br>
 
               <div>
@@ -96,6 +115,9 @@
                  ?>
                  
               </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </div>
 
 

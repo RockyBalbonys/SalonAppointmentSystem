@@ -8,6 +8,7 @@
 html{
     scroll-behavior: smooth;
 }
+
 .width{
     max-width: 1300px;
     padding: 0 80px;
@@ -300,7 +301,7 @@ form button:hover {
 /*home*/
 .home{
     display: flex;
-    background-image: url('assets/bgsalon.svg');
+    background-image: url('assets/omgbg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -676,3 +677,4 @@ footer{
             font-size: 27px;
         } 
 }
+

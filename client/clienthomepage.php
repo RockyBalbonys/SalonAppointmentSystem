@@ -11,7 +11,7 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="img/png" href="#">
-
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
@@ -21,43 +21,71 @@
     <script src="script.js" defer></script>
 
 
+
+
     <style>
         /* Custom styles */
+        .card-container row {
+            width: 400px; 
+            height: 300px; 
+            background-color: lightgray;
+            border: 1px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card col{
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+        }
         body {
             background-color: #fcf0e1;
+            font-size: 20px;
+
+        
         }
         .navbar {
             background-color: #b55e5a;
             color: #fff;
         }
         .container {
-            margin-top: 20px;
+            margin-top: 1px;
         }
         .picture-box {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 5px;
+            margin-left: 70px
         }
         .picture-item {
-            margin: 10px;
-            width: 200px;
+            margin: 30px;
+            width: 300px;
+            height: 300px;
             cursor: pointer;
         }
         .picture-item img {
             width: 100%;
             height: auto;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 1px;
             transition: border 0.3s ease-in-out;
         }
         .picture-item p {
-            margin-top: 5px;
+            margin-top: 2px;
             font-size: 14px;
         }
         .picture-item.selected img {
-            border: 2px solid #b55e5a; /* Change border color to indicate selection */
+            border: 1px solid #b55e5a; 
         }
+        .mb-2{
+            margin-left: 300px;
+            justify-content: center;
+        }
+        .custom-title{
+            font size: 100px;
+        }
+
   
 
     </style>
@@ -66,112 +94,131 @@
 
 </head>
 <body>
-<navbar class="navbar">
 
-            <div><a href="landingpage.php">recover.hair</a></div>
-            <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
-        </navbar>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <navbar class="navbar">
+
+
+            <div class= "logo"><a href="landingpage.php">recover.hair<span></span></a></div>
+            <div class= "logo"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+    </div>
+    </navbar>
         <div class="container">
         
 <br>
 <br>
 <br>
+<br>
 
-        <label><h1>Services</h1></label>
-
-            <div class= "picture-box">
+        <label><h1 class="custom-title">Services</h1></label>
+        <div class= "picture-box">
             <form method = "get" class="form-group text-center">
                 <div class="card-container row">
-                    <div class="card col-3 ">
-                        <label for="">
-                            <img src="assets/haircut.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Haircut
-                            (P1100)
+        <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/haircut.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Haircut (P1100)
                         </label>
-                        <br><input type="radio" value=1 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/rebond.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Rebond
-                            (P1200)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/color.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Color (P1000)
                         </label>
-                        <br><input type="radio" value=2 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/color.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Color
-                            (P1000)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/brazilian.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Brazilian (P2000)
                         </label>
-                        <br><input type="radio" value=3 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/brazilian.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Brazilian
-                            (P2000)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/highlights.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Highlights (P1400)
                         </label>
-                        <br><input type="radio" value=4 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/highlights.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Highlights
-                            (P1400)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/permhair.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Perm (P4000)
                         </label>
-                        <br><input type="radio" value=5 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/permhair.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Perm
-                            (P4000)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/extension.webp" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Extension (P3500)
                         </label>
-                        <br><input type="radio" value=3 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/extension.webp" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Extension
-                            (P3500)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/blowdry.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Blow Dry (P1000)
                         </label>
-                        <br><input type="radio" value=3 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/blowdry.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Blow Dry
-                            (P1000)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/keratin.jpg" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Keratin Treatment (P2500)
                         </label>
-                        <br><input type="radio" value=3 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/keratin.jpg" alt="" class="h-100 w-50">
-                            <br>
-                            Keratin Treatment
-                            (P2500)
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                        <label for="radioBtn" >
+                         <a href="#">
+                         <img src="assets/hairstyles.webp" alt="" class="h-150 w-100">
+                         </a>
+                         <br>
+                         Hair Styling (P3500)
                         </label>
-                        <br><input type="radio" value=3 name="service">
+                         <br>
                     </div>
-                    <div class="card col-3">
-                        <label for="">
-                            <img src="assets/hairstyles.webp" alt="" class="h-100 w-50">
-                            <br>
-                            Hair Styling
-                            (P3500)
-                        </label>
-                        <br><input type="radio" value=3 name="service">
-                    </div>
+
                 </div>
                    
                
@@ -217,17 +264,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <script>
-        // JavaScript to handle image selection
-        document.addEventListener('DOMContentLoaded', function () {
-            let pictures = document.querySelectorAll('.picture-item');
+ 
+       function handleImageClick(clickedElement) {
+       clickedElement.classList.toggle('selected');
 
-            pictures.forEach(function (picture) {
-                picture.addEventListener('click', function () {
-                    picture.classList.toggle('selected');
-                });
-            });
-        });
-    </script>
+
+        let radioButton = clickedElement.querySelector('input[type="radio"]');
+
+        if (radioButton) {
+         radioButton.checked = !radioButton.checked;
+         }
+        }
+</script>
 
 </body>
 </html>
