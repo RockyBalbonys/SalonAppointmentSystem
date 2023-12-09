@@ -368,6 +368,17 @@ section .title{
 }
 
 /*about section*/
+.bio{
+display: flex;
+background-image: url('assets/aboutbg.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+color: #381d1a;
+min-height: 500px;
+font-family: 'Ubuntu', sans-serif;
+}
 .bio .title{
     color: #381d1a;
 }
