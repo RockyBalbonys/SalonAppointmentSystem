@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 03:19 PM
+-- Generation Time: Dec 09, 2023 at 04:53 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.0
 
@@ -56,21 +56,6 @@ CREATE TABLE `tbl_bookings` (
   `booking_time` time(6) NOT NULL,
   `booking_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_bookings`
---
-
-INSERT INTO `tbl_bookings` (`booking_id`, `booking_user`, `booking_service`, `booking_date`, `booking_time`, `booking_status`) VALUES
-(19, 1, 3, '0000-00-00', '00:00:00.000000', '1'),
-(20, 1, 1, '2023-12-21', '21:40:00.000000', '1'),
-(21, 3, 0, '2023-12-14', '17:33:00.000000', '1'),
-(22, 3, 0, '2023-12-14', '17:33:00.000000', '1'),
-(23, 3, 0, '2023-12-14', '17:33:00.000000', '1'),
-(24, 3, 4, '2023-12-16', '20:00:00.000000', '1'),
-(25, 6, 1, '2023-12-29', '13:56:00.000000', '1'),
-(26, 1, 1, '2023-12-31', '12:45:00.000000', '1'),
-(27, 1, 1, '2023-12-31', '12:45:00.000000', '1');
 
 -- --------------------------------------------------------
 
@@ -138,13 +123,34 @@ INSERT INTO `tbl_gender` (`gender_id`, `gender`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_messages`
+--
+
+CREATE TABLE `tbl_messages` (
+  `mess_id` int NOT NULL,
+  `mess_sender` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `mess_email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `mess_content` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_messages`
+--
+
+INSERT INTO `tbl_messages` (`mess_id`, `mess_sender`, `mess_email`, `mess_content`) VALUES
+(7, 'Prince', 'rocky@wahaha.com', 0x617364666164666164666164666166),
+(9, 'Prince', 'asdfasdfafaf@yahoo.com', 0x617364666166646166);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_users`
 --
 
 CREATE TABLE `tbl_users` (
   `user_id` int NOT NULL,
   `user_email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_password` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_firstname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `user_lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `user_gender` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
@@ -156,12 +162,9 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) VALUES
-(1, 'rockybalbonys@gmail.com', 'wahaha', 'Rocky', 'Balbonys', '1', '09999999999'),
-(2, 'thomason@gmail.com', 'wahaha1', 'Thomason', 'McKinley', '1', '09123456789'),
-(3, 'analyn@gmail.com', 'wahaha2', 'Analyn', 'Muko', '3', '09192913123'),
-(4, 'larrybato@gmail.com', 'wahaha123', 'Larry', ' bato', '1', ' 0917356284'),
-(5, 'harrypota@yahoo.com', 'wahaha5', 'Harry', ' Potter', '3', ' 0937548975'),
-(6, 'prince@yahoo.com', 'wahaha', 'prince', ' lawrence', '', ' 0917356284');
+(9, 'mangtomas@yahoo.com', '$2y$10$D3UvgPY7tnM7/hO0tfkaLuhunrlD3EwVxkcF5gVXGt3AeIgaLXxvW', 'Mang', ' Tomas', '', ' 0913434531'),
+(10, 'rockybalbonys@gmail.com', '$2y$10$irZOr6gOMdJmSCbRsAboDueyU0P40cjG8yHrjhRcUaTpzlfEVsjk6', 'Rocky', ' Balbonys', '', ' 0911111111'),
+(11, 'manghose@gmail.com', '$2y$10$p4pDMAshvTqSCjrjvv8w/O6aLUznhzACKlNXlOne1K7ayX5arW6HO', 'Mang', ' Hose', '', ' 0914345473');
 
 --
 -- Indexes for dumped tables
@@ -198,6 +201,12 @@ ALTER TABLE `tbl_gender`
   ADD PRIMARY KEY (`gender_id`);
 
 --
+-- Indexes for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
+  ADD PRIMARY KEY (`mess_id`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
@@ -217,7 +226,7 @@ ALTER TABLE `tbl_admin_users`
 -- AUTO_INCREMENT for table `tbl_bookings`
 --
 ALTER TABLE `tbl_bookings`
-  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_booking_services`
@@ -238,10 +247,16 @@ ALTER TABLE `tbl_gender`
   MODIFY `gender_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
+  MODIFY `mess_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
