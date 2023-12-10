@@ -78,16 +78,29 @@
         .picture-item.selected img {
             border: 4px solid #b55e5a; 
         }
-        .mb-2{
-            margin-left: 300px;
-            justify-content: center;
-        }
+
         .custom-title{
             font size: 100px;
         }
         .col-3 mb-2{
             color: #381d1a;
         }
+        .mb-100{
+            margin-bottom: 100px;
+        }
+
+        .navbar-1 {
+            font-family: Arial, Helvetica, sans-serif;
+            
+        }
+        a:link {
+  color: whitesmoke;
+}
+
+/* visited link */
+a:visited {
+  color: whitesmoke;
+}
 
 
     </style>
@@ -98,7 +111,7 @@
 <body>
         <navbar class="navbar">
         <div class="logo"><a href="landingpage.php">recover.hair<span></span></a></div>
-            <div><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
+            <div class="navbar-1"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
         </navbar>
         <div class="container">
         
@@ -218,10 +231,19 @@
                
             </div>
                 
-        <label for="">Select Time and Date:</label>
-                <input name="book_date" type="date" class ="row col-3 mb-2">
-                <input name="book_time" type="time" class ="row col-3 mb-2">
-                <input type="submit" value="Book" class="btn btn-primary row col-3 mb-2"  >
+            <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <label for="" class="text-center">Select Time and Date:</label>
+    </div>
+    <div class="col-12 text-center mb-100">
+      <input name="book_date" type="date" class="mb-2">
+      <input name="book_time" type="time" class="mb-2">
+      <input type="submit" value="Book" class="btn btn-primary mb-2">
+    </div>
+  </div>
+</div>
+
                 
             </form>
            
@@ -242,7 +264,12 @@
                 }
             ?>    
         </div>
-            
+            <!--footer-->
+<footer>
+    <div class="footer-text" >
+        <span class="far fa-copyright"></span>Recover Hair.
+    </div>
+</footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
