@@ -112,7 +112,7 @@
             <form method = "POST" class="form-group text-center">
                 <div class="card-container row">
         <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" value="1" id="radioBtn" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/haircut.jpg" alt="" class="h-150 w-100">
@@ -123,7 +123,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" value="2" id="radioBtn" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/color.jpg" alt="" class="h-150 w-100">
@@ -134,7 +134,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="3" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/brazilian.jpg" alt="" class="h-150 w-100">
@@ -145,7 +145,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="4" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/highlights.jpg" alt="" class="h-150 w-100">
@@ -156,7 +156,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="5" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/permhair.jpg" alt="" class="h-150 w-100">
@@ -167,7 +167,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="6" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/extension.webp" alt="" class="h-150 w-100">
@@ -178,7 +178,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="7" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/blowdry.jpg" alt="" class="h-150 w-100">
@@ -189,7 +189,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="8" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/keratin.jpg" alt="" class="h-150 w-100">
@@ -200,7 +200,7 @@
                          <br>
                     </div>
                     <div class="card col-3 picture-item" onclick="handleImageClick(this)">
-                         <input type="radio" id="radioBtn" name="service" class="sr-only">
+                         <input type="radio" id="radioBtn" value="9" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
                          <img src="assets/hairstyles.webp" alt="" class="h-150 w-100">
@@ -219,8 +219,7 @@
         <label for="">Select Time and Date:</label>
                 <input name="book_date" type="date" class ="row col-3 mb-2">
                 <input name="book_time" type="time" class ="row col-3 mb-2">
-                <textarea name="book_comment" id="" cols="15" rows="3" placeholder="Comments..." class="row col-4 mb-2"></textarea>
-                <input type="submit" value="Book" class="row col-3 mb-2"  >
+                <input type="submit" value="Book" class="btn btn-primary row col-3 mb-2"  >
                 
             </form>
            
@@ -231,16 +230,12 @@
                     $service = $_POST["service"];
                     $book_date = $_POST["book_date"];
                     $book_time = $_POST["book_time"];
-                    $book_comment = $_POST["book_comment"];
                     
                     $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
                     VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
 
                     if (mysqli_query($conn, $book)) {
-                        echo $service . "<br>";
-                        echo $book_date ."<br>";
-                        echo $book_time . "<br>";
-                        echo $book_comment . "<br>";
+                        echo "<script> alert('booked successfully!') </script>";
                     }
                 }
             ?>    
@@ -250,19 +245,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-    <script>
- 
-       function handleImageClick(clickedElement) {
-       clickedElement.classList.toggle('selected');
+                <script>
+            
+                function handleImageClick(clickedElement) {
+                clickedElement.classList.toggle('selected');
 
 
-        let radioButton = clickedElement.querySelector('input[type="radio"]');
+                    let radioButton = clickedElement.querySelector('input[type="radio"]');
 
-        if (radioButton) {
-         radioButton.checked = !radioButton.checked;
-         }
-        }
-</script>
+                    if (radioButton) {
+                    radioButton.checked = !radioButton.checked;
+                    }
+                    }
+            </script>
 
 </body>
 </html>

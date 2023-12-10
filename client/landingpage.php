@@ -98,7 +98,6 @@ include "session.php";
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         $hashed_password = $row['user_password'];
-                        echo $hashed_password;
                         if (password_verify($login_password, $hashed_password)) {
                             $_SESSION["user_id"] = $row["user_id"];
                             $_SESSION["user_firstname"] = $row["user_firstname"];
@@ -111,6 +110,7 @@ include "session.php";
                             exit(); // Ensure that the script stops execution after the redirect
                         } else {
                             echo "<script>alert('Wrong password 1!');</script>";
+
                         }
                     } else {
                         echo "<script>alert('Wrong password 2!');</script>";
@@ -167,25 +167,35 @@ include "session.php";
                         Sign Up
                     </button>
                     <?php
-                        if (isset($_POST["reg_firstname"])) {
-                            $reg_firstname = $_POST["reg_firstname"];
-                            $reg_lastname = $_POST["reg_lastname"];
-                            $reg_gender = $_POST["reg_gender"];
-                            $reg_phonenumber = $_POST["reg_phonenumber"];
-                            $reg_email = $_POST["reg_email"];
-                            $reg_password = $_POST["reg_password"];
-                            $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
-                            
+                    if (isset($_POST["reg_firstname"])) {
+                        $reg_firstname = $_POST["reg_firstname"];
+                        $reg_lastname = $_POST["reg_lastname"];
+                        $reg_gender = $_POST["reg_gender"];
+                        $reg_phonenumber = $_POST["reg_phonenumber"];
+                        $reg_email = $_POST["reg_email"];
+                        $reg_password = $_POST["reg_password"];
+                        $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
+
+                        // Check if the email already exists
+                        $check_email_query = "SELECT * FROM `tbl_users` WHERE `user_email` = '$reg_email'";
+                        $check_result = mysqli_query($conn, $check_email_query);
+
+                        if (mysqli_num_rows($check_result) > 0) {
+                            echo "<script>alert('Email already exists!');</script>";
+                        } else {
+                            // Email doesn't exist, proceed to add the new user
                             $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) 
-                                        VALUES ('$reg_email','$hashed_reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
-                            
+                                    VALUES ('$reg_email','$hashed_reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
+
                             if (mysqli_query($conn, $add)) {
                                 echo "user added successfully";
                             } else {
                                 echo "failed";
                             }
                         }
+                    }
                     ?>
+
                 </form>
                 <div class="bottom-link">
                     Already have an account?

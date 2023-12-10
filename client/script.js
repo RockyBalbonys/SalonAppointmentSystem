@@ -66,21 +66,3 @@ loginSignupLink.forEach(link => {
         formPopup.classList[link.id === "signup-link" ? 'add' : 'remove']("show-signup");
     });
 });
-
-// Function to attempt login
-function attemptLogin() {
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    // Simplified example: Check if email and password are correct
-    if (email === 'example@email.com' && password === 'password123') {
-        // Handle successful login
-        console.log('Login successful');
-    } else {
-        // Handle incorrect login
-        console.log('Login failed, try again');
-        // You can display an error message to the user or perform other actions
-        // but don't remove the "show-popup" class to keep the modal visible
-    }
-}
-
