@@ -429,7 +429,7 @@ font-family: 'Ubuntu', sans-serif;
 /*Services*/
 .project{
     color: #381d1a;
-    background: #fcf0e1;
+    background-image: url('assets/pagee.png');
 }
 .project p{
     color: #111;
@@ -473,6 +473,9 @@ font-family: 'Ubuntu', sans-serif;
     border-color: #b55e5a;
 }
 /* contact */
+.contact{
+    background-image: url('assets/contactbg.png');
+}
 .contact .contact-content .column{
     width: calc(50% - 30px);
 }

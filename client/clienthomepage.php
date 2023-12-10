@@ -39,7 +39,7 @@
             padding: 20px;
         }
         body {
-            background-color: #fcf0e1;
+            background-image: url('assets/bgdesign.png');
             font-size: 20px;
 
         
@@ -76,7 +76,7 @@
             font-size: 14px;
         }
         .picture-item.selected img {
-            border: 1px solid #b55e5a; 
+            border: 4px solid #b55e5a; 
         }
         .mb-2{
             margin-left: 300px;
@@ -85,8 +85,10 @@
         .custom-title{
             font size: 100px;
         }
+        .col-3 mb-2{
+            color: #381d1a;
+        }
 
-  
 
     </style>
 
@@ -245,19 +247,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-                <script>
+    <script>
             
-                function handleImageClick(clickedElement) {
-                clickedElement.classList.toggle('selected');
+            function handleImageClick(clickedElement) {
+            clickedElement.classList.toggle('selected');
 
 
-                    let radioButton = clickedElement.querySelector('input[type="radio"]');
+                let radioButton = clickedElement.querySelector('input[type="radio"]');
 
-                    if (radioButton) {
-                    radioButton.checked = !radioButton.checked;
-                    }
-                    }
-            </script>
+                if (radioButton) {
+                radioButton.checked = !radioButton.checked;
+                }
+                }
+        </script>
 
 </body>
 </html>

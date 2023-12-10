@@ -286,28 +286,36 @@ include "session.php";
         <div class="card">
             <div class="box">
                 <a href="#6">
-                <img src="../Personal Portfolio/assets/Project6.png" alt="" width="600" height="600"></a>
-                <div class="text">Idk</div>
+                <img src="assets/extension.webp" alt="" width="600" height="600"></a>
+                <div class="text">Hair Extension</div>
             </div>
         </div>
         <div class="card">
             <div class="box">
                 <a href="#7">
-                <img src="../Personal Portfolio/assets/Project7.png" alt="" width="600" height="600"></a>
-                <div class="text">idk</div>
+                <img src="assets/blowdry.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Blow Dry</div>
             </div>
         </div>
         <div class="card">
             <div class="box">
                 <a href="#8">
-                <img src="../Personal Portfolio/assets/Project8.png" alt="" width="600" height="600"></a>
-                <div class="text">idk</div>
+                <img src="assets/hairstyles.webp" alt="" width="600" height="600"></a>
+                <div class="text">Hairstyles</div>
             </div>
         </div>
         <div class="card">
             <div class="box">
-                <img src="../Personal Portfolio/assets/Project9.jpg" alt="" width="600" height="600">
-                <div class="text">idk</div>
+                <a href="8">
+                <img src="assets/keratin.jpg" alt="" width="600" height="600">
+                <div class="text">Hair Keratin</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="box">
+                <a href="#8">
+                <img src="assets/permhair.jpg" alt="" width="600" height="600"></a>
+                <div class="text">Hair Perm</div>
             </div>
         </div>
 
