@@ -39,7 +39,7 @@
             padding: 20px;
         }
         body {
-            background-image: url('assets/bgdesign.png');
+            background: #fcf0e1;
             font-size: 20px;
 
         

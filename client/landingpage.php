@@ -229,7 +229,7 @@ include "session.php";
         <h2 class="title">About Our Salon</h2>
         <div class="bio-subject">
             <div class="column left">
-                <img src="assets/hairabout2.png" alt="">
+                
             </div>
             <div class="column right">
                 <div class="text">
@@ -257,7 +257,7 @@ include "session.php";
         </div>
         <div class="card">
             <div class="box">
-                <a href="#1">
+                <a href="#2">
                 <img src="assets/rebond.jpg" alt="" width="600" height="600"></a>
                 <div class="text">Hair Rebond</div>
             </div>
@@ -306,14 +306,14 @@ include "session.php";
         </div>
         <div class="card">
             <div class="box">
-                <a href="8">
+                <a href="#8">
                 <img src="assets/keratin.jpg" alt="" width="600" height="600">
                 <div class="text">Hair Keratin</div>
             </div>
         </div>
         <div class="card">
             <div class="box">
-                <a href="#8">
+                <a href="#9">
                 <img src="assets/permhair.jpg" alt="" width="600" height="600"></a>
                 <div class="text">Hair Perm</div>
             </div>

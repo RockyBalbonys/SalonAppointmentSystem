@@ -303,7 +303,7 @@ form button:hover {
 /*home*/
 .home{
     display: flex;
-    background-image: url('assets/omgbg.png');
+    background-image: url('assets/hey.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -372,7 +372,7 @@ section .title{
 /*about section*/
 .bio{
 display: flex;
-background-image: url('assets/aboutbg.png');
+background-image: url('assets/bohobg.png');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -383,6 +383,7 @@ font-family: 'Ubuntu', sans-serif;
 }
 .bio .title{
     color: #381d1a;
+    margin-bottom: 100px;
 }
 .bio .bio-subject .left{
     width: 45%;
@@ -429,7 +430,7 @@ font-family: 'Ubuntu', sans-serif;
 /*Services*/
 .project{
     color: #381d1a;
-    background-image: url('assets/pagee.png');
+    background: #fcf0e1;
 }
 .project p{
     color: #111;
@@ -474,7 +475,7 @@ font-family: 'Ubuntu', sans-serif;
 }
 /* contact */
 .contact{
-    background-image: url('assets/contactbg.png');
+    background: #fcf0e1;
 }
 .contact .contact-content .column{
     width: calc(50% - 30px);
