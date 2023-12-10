@@ -113,7 +113,7 @@
             <div class= "picture-box">
             <form method = "POST" class="form-group text-center">
                 <div class="card-container row">
-        <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+        <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" value="1" id="radioBtn" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -124,7 +124,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" value="2" id="radioBtn" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -135,7 +135,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="3" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -146,7 +146,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="4" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -157,7 +157,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="5" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -168,7 +168,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="6" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -179,7 +179,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="7" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -190,7 +190,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="8" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -201,7 +201,7 @@
                         </label>
                          <br>
                     </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this)">
+                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" id="radioBtn" value="9" name="service" class="sr-only">
                         <label for="radioBtn" >
                          <a href="#">
@@ -249,16 +249,31 @@
     
     <script>
             
-            function handleImageClick(clickedElement) {
-            clickedElement.classList.toggle('selected');
+            function handleImageClick(clickedElement, event) {
+    // Prevent the default behavior of the click event
+    event.preventDefault();
+
+    // Get the radio button within the clicked card
+    const radioButton = clickedElement.querySelector('input[type="radio"]');
+
+    // Check the radio button if it's not already checked
+    if (radioButton && !radioButton.checked) {
+        radioButton.checked = true;
+
+        // Uncheck all other radio buttons in the same group
+        const radioGroupName = radioButton.getAttribute('name');
+        const otherRadioButtons = document.querySelectorAll(`.card-container input[name="${radioGroupName}"]:not(#${radioButton.id})`);
+        
+        otherRadioButtons.forEach(button => {
+            button.checked = false;
+        });
+    }
+
+    // Toggle the 'selected' class for styling
+    clickedElement.classList.toggle('selected');
+}
 
 
-                let radioButton = clickedElement.querySelector('input[type="radio"]');
-
-                if (radioButton) {
-                radioButton.checked = !radioButton.checked;
-                }
-                }
         </script>
 
 </body>
