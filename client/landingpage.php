@@ -145,56 +145,67 @@ include "session.php";
                         <label>Last Name</label>
                     </div>
                     <div class="input-field">
-                        <input type="text" name="reg_phonenumber" required>
+                        <input type="text" name="reg_phonenumber" pattern="[0-9]*" maxlength="11" required>
                         <label>Phone Number</label>
                     </div>
+
                     <div class="input-field">
                         <input type="text" name="reg_email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="reg_password" required>
+                        <input type="password" name="reg_password" id="reg_password" required>
                         <label>Create Password</label>
                     </div>
+                    <div class="input-field">
+                        <input type="password" name="confirm_password" id="confirm_password" required>
+                        <label>Confirm Password</label>
+                        <div id="password_match_message" style="color: red;"></div>
+                    </div>
                     <div class="policy-text">
-                        <input type="checkbox">
+                        <input type="checkbox" required>
                         <label for="policy">
-                            I agree the
+                            I agree to the
                             <a href="#">Terms & Conditions</a>
                         </label>
                     </div>
                     <button type="submit">
                         Sign Up
                     </button>
-                    <?php
-                    if (isset($_POST["reg_firstname"])) {
-                        $reg_firstname = $_POST["reg_firstname"];
-                        $reg_lastname = $_POST["reg_lastname"];
-                        $reg_gender = $_POST["reg_gender"];
-                        $reg_phonenumber = $_POST["reg_phonenumber"];
-                        $reg_email = $_POST["reg_email"];
-                        $reg_password = $_POST["reg_password"];
-                        $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
+                        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $reg_firstname = $_POST["reg_firstname"];
+                $reg_lastname = $_POST["reg_lastname"];
+                $reg_phonenumber = $_POST["reg_phonenumber"];
+                $reg_email = $_POST["reg_email"];
+                $reg_password = $_POST["reg_password"];
+                $hashed_reg_password = password_hash($reg_password, PASSWORD_DEFAULT);
 
-                        // Check if the email already exists
-                        $check_email_query = "SELECT * FROM `tbl_users` WHERE `user_email` = '$reg_email'";
-                        $check_result = mysqli_query($conn, $check_email_query);
+                // Validate email format
+                if (!filter_var($reg_email, FILTER_VALIDATE_EMAIL)) {
+                    echo "<script>alert('Invalid email format!');</script>";
+                } else {
+                    // Check if the email already exists
+                    $check_email_query = "SELECT * FROM `tbl_users` WHERE `user_email` = '$reg_email'";
+                    $check_result = mysqli_query($conn, $check_email_query);
 
-                        if (mysqli_num_rows($check_result) > 0) {
-                            echo "<script>alert('Email already exists!');</script>";
+                    if (mysqli_num_rows($check_result) > 0) {
+                        echo "<script>alert('Email already exists!');</script>";
+                    } else {
+                        // Email doesn't exist, proceed to add the new user
+                        $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_phonenumber`) 
+                                VALUES ('$reg_email','$hashed_reg_password','$reg_firstname','$reg_lastname','$reg_phonenumber')";
+
+                        if (mysqli_query($conn, $add)) {
+                            echo "user added successfully";
                         } else {
-                            // Email doesn't exist, proceed to add the new user
-                            $add = "INSERT INTO `tbl_users`(`user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_gender`, `user_phonenumber`) 
-                                    VALUES ('$reg_email','$hashed_reg_password','$reg_firstname',' $reg_lastname','$reg_gender',' $reg_phonenumber')";
-
-                            if (mysqli_query($conn, $add)) {
-                                echo "user added successfully";
-                            } else {
-                                echo "failed";
-                            }
+                            echo "failed";
                         }
                     }
-                    ?>
+                }
+            }
+    ?>
+
 
                 </form>
                 <div class="bottom-link">
@@ -409,6 +420,37 @@ include "session.php";
         <span class="far fa-copyright"></span>Recover Hair.
     </div>
 </footer>
+
+<script>
+    $(document).ready(function () {
+        // Function to check if the passwords match
+        function checkPasswordMatch() {
+            var password = $("#reg_password").val();
+            var confirmPassword = $("#confirm_password").val();
+
+            if (password != confirmPassword) {
+                $("#password_match_message").html("Passwords do not match!");
+                return false;
+            } else {
+                $("#password_match_message").html("");
+                return true;
+            }
+        }
+
+        // Event handler for password and confirm password fields
+        $("#reg_password, #confirm_password").keyup(checkPasswordMatch);
+
+        // Event handler for form submission
+        $("form").submit(function (e) {
+            if (!checkPasswordMatch()) {
+                alert("Passwords do not match. Please check your passwords.");
+                e.preventDefault(); // Prevent form submission if passwords don't match
+            }
+        });
+    });
+</script>
+
+
     
 </body>
 </html>
