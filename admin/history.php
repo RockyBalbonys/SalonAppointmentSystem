@@ -22,9 +22,7 @@
             </div>
             <div>
                 <?php
-                    $selectAllAppointments = "SELECT * FROM tbl_bookings 
-                     JOIN tbl_users 
-                     ON tbl_bookings.booking_user = tbl_users.user_id
+                    $selectAllAppointments = "SELECT * FROM tbl_history
                      ORDER BY booking_date ASC, booking_time ASC;"; 
                    
                     $query = mysqli_query($conn, $selectAllAppointments);

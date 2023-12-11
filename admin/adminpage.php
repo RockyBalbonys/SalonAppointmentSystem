@@ -15,10 +15,20 @@
     <div class="container">
             <nav class="navbar">
                 <div class="nav-item">ADMIN PAGE</div>
-                <div class="nav-item"> <a href  ="adminpage.php">Bookings</a> | <a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <!-- <a href  ="history.php">History</a> | --> <a href="logout.php">Log Out</a></div>
+                <div class="nav-item"> <a href  ="adminpage.php">Bookings</a> | <a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <a href  ="history.php">History</a> | <a href="logout.php">Log Out</a></div>
             </nav>
             <div class="h2">
                 Welcome, Admin!
+            </div>
+            <div class="container row text-center">
+                <div class="text-center col-6">
+                    Upcoming Appointments: 
+                    <div class="text-center">0</div>
+                </div>
+                <div class="text-center col-6">
+                    <div class="text-center "></div>Finished Appointments: 
+                    <div>0</div>
+                </div>
             </div>
             <div>
                 <?php
@@ -50,7 +60,7 @@
                                $formattedTime = date('h:i A', strtotime($row["booking_time"]));
                                echo '<td>' . $formattedTime . '</td>';
                                echo '<td>' . $row["booking_status"] . '</td>';
-                               echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div>" . '</td>';
+                               echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div> <div class='btn delete-btn btn-warning'>Cancel</div>" . '</td>';
                                echo '</tr>';
                            }
    

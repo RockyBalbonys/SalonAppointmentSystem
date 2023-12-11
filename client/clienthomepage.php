@@ -128,7 +128,7 @@ a:visited {
         <label><h1>Services</h1></label>
 
             <div class= "picture-box">
-            <form method = "POST" class="form-group text-center">
+            <form method = "POST" class="form-group text-center" required>
                 <div class="card-container row">
         <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
                          <input type="radio" value="1" id="radioBtn" name="service" class="sr-only">
@@ -242,7 +242,14 @@ a:visited {
     </div>
     <div class="col-12 text-center mb-100">
       <input name="book_date" type="date" class="mb-2">
-      <input name="book_time" type="time" class="mb-2">
+      <select name="book_time" type="text" class="mb-2">
+            <option value="9:00 PM">9:00 am - 11:00 am</option>
+            <option value="11:00 PM">11:00 am - 1:00 pm</option>
+            <option value="1:00 PM">1:00 pm - 3:00 pm</option>
+            <option value="3:00 PM">3:00 pm - 5:00 pm</option>
+            <option value="5:00 PM">5:00 pm - 7:00 pm</option>
+      </select>
+        
       <input type="submit" value="Book" class="btn btn-primary mb-2">
     </div>
   </div>
@@ -253,20 +260,43 @@ a:visited {
            
 
             <?php
-    
-                if (isset($_POST["book_date"])) {
-                    $service = $_POST["service"];
-                    $book_date = $_POST["book_date"];
-                    $book_time = $_POST["book_time"];
-                    
-                    $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
-                    VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
+if (isset($_POST["book_date"])) {
+    $service = $_POST["service"];
+    $book_date = $_POST["book_date"];
+    $book_time = $_POST["book_time"];
+    $book_weekday = date('w', strtotime($book_date));
+    $formattedbookdate = strtotime($book_date);
+    $dateTime = new DateTime($book_time);
+    $formattedbooktime = $dateTime->format('h:i:s.u');
+    $currentdate = strtotime(date("Y-m-d"));
 
-                    if (mysqli_query($conn, $book)) {
-                        echo "<script> alert('booked successfully!') </script>";
-                    }
+    if ($book_weekday != 0) {
+        if ($formattedbookdate > $currentdate) {
+            // Check if there is an existing booking with the same date and time
+            $existingBookingQuery = "SELECT * FROM `tbl_bookings` WHERE `booking_date` = '$book_date' AND `booking_time` = '$formattedbooktime'";
+            $existingBookingResult = mysqli_query($conn, $existingBookingQuery);
+            if (mysqli_num_rows($existingBookingResult) > 0) {
+                echo "<script> alert('Booking conflict! Please choose a different date and time.')</script>";
+            } else {
+                // If no conflict, proceed with the booking
+                $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
+                            VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
+                
+                if (mysqli_query($conn, $book)) {
+                    echo "<script> alert('Booked successfully!')</script>";
+                } else {
+                    echo "<script> alert('Error booking!')</script>";
                 }
-            ?>    
+            }
+        } else {
+            echo "<script> alert('Invalid Date! Please try again.')</script>";
+        }
+    } else {
+        echo "<script>alert('SUNDAY IS NOT AVAILABLE, PLEASE SELECT ANOTHER DAY')</script>";
+    }
+}
+?>
+
         </div>
             <!--footer-->
 <footer>
