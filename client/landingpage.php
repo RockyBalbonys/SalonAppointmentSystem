@@ -32,7 +32,7 @@ include "session.php";
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
-    <nav class="navbar z-5">
+    <nav class="navbar z-5 left-column">
         <div class="width">
             <div class="logo"><a href="#">recover.hair<span></span></a></div>
             <ul class="menu">

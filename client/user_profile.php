@@ -41,8 +41,18 @@
             background-color: #b55e5a;
             color: #fff;
         }
+        .navbar-2{
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 20px;
+        }
+        a:link {
+  color: whitesmoke;
+}
 
-
+/* visited link */
+a:visited {
+  color: whitesmoke;
+}
 
     </style>
 
@@ -54,7 +64,7 @@
     </div>
             <navbar class="navbar">
                 <div class="logo"><a href="landingpage.php">recover.hair</a></div>
-                <div class= "logo"><a href="clienthomepage.php">Services</a><span> | </span><a href="logout.php">Logout</a></div>
+                <div class= "navbar-2"><a href="clienthomepage.php">Services</a><span> | </span><a href="logout.php">Logout</a></div>
             <div class="menu-btn">
                 <i class="fa-solid fa-bars"></i>
             </div>

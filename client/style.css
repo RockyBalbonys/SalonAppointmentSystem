@@ -260,15 +260,15 @@ form button:hover {
 }
 .soc-media{
     position: fixed;
-    height: 125px;
+    height: 30px;
     width: 30px;
-    background: #fcf0e1;
-    right: 0;
+
+    left: 0;
     bottom: 50%;
     text-align: center;
     color: #28334AFF;
     z-index: 9999;
-    padding: 5px 0;
+    padding: 20px 0;
     font-size: 20px;
     cursor: pointer;
     margin: 5px;
@@ -303,7 +303,7 @@ form button:hover {
 /*home*/
 .home{
     display: flex;
-    background-image: url('assets/bghome.png');
+    background-image: url('assets/mainbackk.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -372,7 +372,7 @@ section .title{
 /*about section*/
 .bio{
 display: flex;
-background-image: url('assets/bohobg.png');
+background-image: url('assets/secondbg.png');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -430,7 +430,7 @@ font-family: 'Ubuntu', sans-serif;
 /*Services*/
 .project{
     color: #381d1a;
-    background: #fcf0e1;
+    background: #F1DFB6;
 }
 .project p{
     color: #111;

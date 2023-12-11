@@ -37,10 +37,12 @@
             width: 300px;
             height: 300px;
             padding: 20px;
+
         }
         body {
             background: #fcf0e1;
             font-size: 16px;
+            font-family: 'Ubuntu', sans-serif;
 
         
         }
@@ -90,7 +92,9 @@
         }
 
         .navbar-1 {
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 20px;
             
         }
         a:link {
