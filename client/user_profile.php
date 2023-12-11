@@ -24,7 +24,7 @@
         /* Custom styles */
         body {
             background-color: #fcf0e1;
-            font-size: 20px;
+            font-size: 16px;
         }
         .navbar {
             background-color: #b55e5a;

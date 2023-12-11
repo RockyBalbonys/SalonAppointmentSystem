@@ -303,7 +303,7 @@ form button:hover {
 /*home*/
 .home{
     display: flex;
-    background-image: url('assets/hey.png');
+    background-image: url('assets/bghome.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
