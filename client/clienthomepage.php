@@ -40,7 +40,7 @@
         }
         body {
             background: #fcf0e1;
-            font-size: 20px;
+            font-size: 16px;
 
         
         }
@@ -73,7 +73,7 @@
         }
         .picture-item p {
             margin-top: 2px;
-            font-size: 14px;
+            font-size: 8px;
         }
         .picture-item.selected img {
             border: 4px solid #b55e5a; 
