@@ -23,9 +23,10 @@
             <div>
             <?php
     // SELECT query
-    $selectAllAppointments = "SELECT * FROM tbl_history 
-        JOIN tbl_users ON tbl_history.booking_user = tbl_users.user_id
-        ORDER BY booking_date DESC, booking_time DESC";
+    $selectAllAppointments = "SELECT * FROM tbl_history
+    JOIN tbl_users ON tbl_history.booking_user = tbl_users.user_id
+    JOIN tbl_booking_status ON tbl_history.booking_status = tbl_booking_status.booking_status_id
+    ORDER BY tbl_history.booking_date DESC, tbl_history.booking_time DESC;";
 
     // Execute the SELECT query
     $query = mysqli_query($conn, $selectAllAppointments);
@@ -43,7 +44,6 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Status</th>
-                            <th>Buttons</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -57,7 +57,6 @@
             $formattedTime = date('h:i A', strtotime($row["booking_time"]));
             echo '<td>' . $formattedTime . '</td>';
             echo '<td>' . $row["booking_status"] . '</td>';
-            echo '<td>' . "<div class='btn delete-btn btn-danger'>Delete</div>" . '</td>';
             echo '</tr>';
         }
 

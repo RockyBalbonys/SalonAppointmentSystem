@@ -267,7 +267,7 @@ if (isset($_POST["book_date"])) {
     $book_weekday = date('w', strtotime($book_date));
     $formattedbookdate = strtotime($book_date);
     $dateTime = new DateTime($book_time);
-    $formattedbooktime = $dateTime->format('h:i:s.u');
+    $formattedbooktime = $dateTime->format('h:i a');
     $currentdate = strtotime(date("Y-m-d"));
 
     if ($book_weekday != 0) {

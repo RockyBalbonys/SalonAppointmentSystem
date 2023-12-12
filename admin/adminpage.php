@@ -23,11 +23,55 @@
             <div class="container row text-center">
                 <div class="text-center col-6">
                     Upcoming Appointments: 
-                    <div class="text-center">0</div>
+                    <div class="text-center"><?php 
+                    $countActive = "SELECT COUNT(*) AS row_count 
+                   FROM `tbl_bookings` 
+                   WHERE booking_status = 1";
+                   $result = mysqli_query($conn, $countActive);
+                   // Check if the query was successful
+                   if ($result) {
+                       // Fetch the result as an associative array
+                       $row = mysqli_fetch_assoc($result);
+                   
+                       // Access the count
+                       $rowCount = $row['row_count'];
+                   
+                       // Output the count
+                       echo $rowCount;
+                   
+                       // Free the result set
+                       mysqli_free_result($result);
+                   } else {
+                       // Handle the query error
+                       echo "Error: " . mysqli_error($conn);
+                   }
+                    ?></div>
                 </div>
                 <div class="text-center col-6">
                     <div class="text-center "></div>Finished Appointments: 
-                    <div>0</div>
+                    <div><?php 
+                    $countActive = "SELECT COUNT(*) AS row_count 
+                   FROM `tbl_history` 
+                   WHERE booking_status = 2";
+                   $result = mysqli_query($conn, $countActive);
+                   // Check if the query was successful
+                   if ($result) {
+                       // Fetch the result as an associative array
+                       $row = mysqli_fetch_assoc($result);
+                   
+                       // Access the count
+                       $rowCount = $row['row_count'];
+                   
+                       // Output the count
+                       echo $rowCount;
+                   
+                       // Free the result set
+                       mysqli_free_result($result);
+                   } else {
+                       // Handle the query error
+                       echo "Error: " . mysqli_error($conn);
+                   }
+                    ?></div>
                 </div>
             </div>
             <div>
@@ -75,26 +119,27 @@
     </div>
 
     <script>
-            $(document).ready(function() {
-                // Handle delete button click
-                $('.delete-btn').on('click', function() {
-                    var bookingId = $(this).closest('tr').data('booking-id');
+           $(document).ready(function() {
+    // Handle delete button click
+    $('.delete-btn').on('click', function() {
+        var bookingId = $(this).closest('tr').data('booking-id');
 
-                    // Send AJAX request to delete.php with bookingId and move to history
-                    $.ajax({
-                        type: 'POST',
-                        url: 'delete_and_move_to_history.php', // Create a new PHP script for this operation
-                        data: { bookingId: bookingId },
-                        success: function(response) {
-                            // Remove the row from the table
-                            $('#bookingTable tr[data-booking-id="' + bookingId + '"]').remove();
-                        },
-                        error: function(error) {
-                            console.error('Error deleting booking:', error);
-                        }
-                    });
-                });
-            });
+        // Send AJAX request to delete.php with bookingId and move to history
+        $.ajax({
+            type: 'POST',
+            url: 'delete_and_move_to_history.php', // Create a new PHP script for this operation
+            data: { bookingId: bookingId },
+            success: function(response) {
+                // Remove the row from the table
+                $('#bookingTable tr[data-booking-id="' + bookingId + '"]').remove();
+            },
+            error: function(error) {
+                console.error('Error deleting booking:', error);
+            }
+        });
+    });
+});
+
         </script>
 </body>
 </html>
