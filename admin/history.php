@@ -15,48 +15,69 @@
     <div class="container">
              <nav class="navbar">
                 <div class="nav-item">ADMIN PAGE</div>
-                <div class="nav-item"><a href  ="adminpage.php">Bookings</a> | <a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <!-- <a href  ="history.php">History</a> | --> <a href="logout.php">Log Out</a></div>
+                <div class="nav-item"><a href  ="adminpage.php">Bookings</a> | <a href  ="users.php">Users</a> | <a href  ="messages.php">Messages</a> | <a href  ="history.php">History</a> | <a href="logout.php">Log Out</a></div>
             </nav>
             <div class="h2">
                 Booking History
             </div>
             <div>
-                <?php
-                    $selectAllAppointments = "SELECT * FROM tbl_history
-                     ORDER BY booking_date ASC, booking_time ASC;"; 
-                   
-                    $query = mysqli_query($conn, $selectAllAppointments);
-                    
-                    if (mysqli_query($conn, $selectAllAppointments)) {
-                       echo '<table class="table table-bordered" id="bookingTable">
-                                   <thead>
-                                       <tr>
-                                           <th>User</th>
-                                           <th>Date</th>
-                                           <th>Time</th>
-                                           <th>Status</th>
-                                           <th>Buttons</th>
-                                       </tr>
-                                   </thead>
-                                   <tbody>';
-   
-                           while ($row = mysqli_fetch_array($query)) {
-                               echo '<tr data-booking-id="' . $row["booking_id"] . '">';
-                               echo '<td>' . $row["user_firstname"] . " " . $row["user_lastname"] . '</td>';
-                               $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
-                               echo '<td>' .  $formattedDate . '</td>';
-                               $formattedTime = date('h:i A', strtotime($row["booking_time"]));
-                               echo '<td>' . $formattedTime . '</td>';
-                               echo '<td>' . $row["booking_status"] . '</td>';
-                               echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div>" . '</td>';
-                               echo '</tr>';
-                           }
-   
-                           echo '</tbody>
-                               </table>';
-   
-                    }
-                ?>
+            <?php
+    // SELECT query
+    $selectAllAppointments = "SELECT * FROM tbl_history 
+        JOIN tbl_users ON tbl_history.booking_user = tbl_users.user_id
+        ORDER BY booking_date DESC, booking_time DESC";
+
+    // Execute the SELECT query
+    $query = mysqli_query($conn, $selectAllAppointments);
+
+    if (!$query) {
+        // Handle SELECT query errors
+        echo "Error fetching appointments: " . mysqli_error($conn);
+    } else {
+        // Output the table for SELECT results
+        echo '<table class="table table-bordered" id="bookingTable">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th> 
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+
+        while ($row = mysqli_fetch_array($query)) {
+            echo '<tr data-booking-id="' . $row["booking_id"] . '">';
+            echo '<td>' . $row["booking_id"] .  '</td>';
+            echo '<td>' . $row["user_firstname"] . " " . $row["user_lastname"] . '</td>';
+            $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
+            echo '<td>' .  $formattedDate . '</td>';
+            $formattedTime = date('h:i A', strtotime($row["booking_time"]));
+            echo '<td>' . $formattedTime . '</td>';
+            echo '<td>' . $row["booking_status"] . '</td>';
+            echo '<td>' . "<div class='btn delete-btn btn-danger'>Delete</div>" . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody></table>';
+
+        // UPDATE query
+        $updateStatusQuery = "UPDATE tbl_history 
+            SET booking_status = 2
+            WHERE booking_status = 1";
+
+        // Execute the UPDATE query
+        if (mysqli_query($conn, $updateStatusQuery)) {
+            // Update was successful
+        } else {
+            // Handle UPDATE query errors
+            echo "Error updating status: " . mysqli_error($conn);
+        }
+    }
+?>
+
             </div>
     </div>
 

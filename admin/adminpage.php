@@ -43,6 +43,7 @@
                        echo '<table class="table table-bordered" id="bookingTable">
                                    <thead>
                                        <tr>
+                                           <th>Booking_ID</th>
                                            <th>User</th>
                                            <th>Date</th>
                                            <th>Time</th>
@@ -54,13 +55,14 @@
    
                            while ($row = mysqli_fetch_array($query)) {
                                echo '<tr data-booking-id="' . $row["booking_id"] . '">';
+                               echo '<td>' . $row["booking_id"] . '</td>';
                                echo '<td>' . $row["user_firstname"] . " " . $row["user_lastname"] . '</td>';
                                $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
                                echo '<td>' .  $formattedDate . '</td>';
                                $formattedTime = date('h:i A', strtotime($row["booking_time"]));
                                echo '<td>' . $formattedTime . '</td>';
                                echo '<td>' . $row["booking_status"] . '</td>';
-                               echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div> <div class='btn delete-btn btn-warning'>Cancel</div>" . '</td>';
+                               echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div>" . '</td>';
                                echo '</tr>';
                            }
    
@@ -73,26 +75,26 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Handle delete button click
-            $('.delete-btn').on('click', function() {
-                var bookingId = $(this).closest('tr').data('booking-id');
+            $(document).ready(function() {
+                // Handle delete button click
+                $('.delete-btn').on('click', function() {
+                    var bookingId = $(this).closest('tr').data('booking-id');
 
-                // Send AJAX request to delete.php with bookingId
-                $.ajax({
-                    type: 'POST',
-                    url: 'delete.php',
-                    data: { bookingId: bookingId },
-                    success: function(response) {
-                        // Remove the row from the table
-                        $('#bookingTable tr[data-booking-id="' + bookingId + '"]').remove();
-                    },
-                    error: function(error) {
-                        console.error('Error deleting booking:', error);
-                    }
+                    // Send AJAX request to delete.php with bookingId and move to history
+                    $.ajax({
+                        type: 'POST',
+                        url: 'delete_and_move_to_history.php', // Create a new PHP script for this operation
+                        data: { bookingId: bookingId },
+                        success: function(response) {
+                            // Remove the row from the table
+                            $('#bookingTable tr[data-booking-id="' + bookingId + '"]').remove();
+                        },
+                        error: function(error) {
+                            console.error('Error deleting booking:', error);
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
 </body>
 </html>
