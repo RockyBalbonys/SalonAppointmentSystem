@@ -262,7 +262,6 @@ form button:hover {
     position: fixed;
     height: 30px;
     width: 30px;
-
     left: 0;
     bottom: 50%;
     text-align: center;
@@ -372,7 +371,7 @@ section .title{
 /*about section*/
 .bio{
 display: flex;
-background-image: url('assets/secondbg.png');
+background-image: url('assets/bgpage.png');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -430,7 +429,7 @@ font-family: 'Ubuntu', sans-serif;
 /*Services*/
 .project{
     color: #381d1a;
-    background: #F1DFB6;
+    background: #fcf0e1;
 }
 .project p{
     color: #111;

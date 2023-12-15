@@ -49,6 +49,7 @@
         .navbar {
             background-color: #b55e5a;
             color: #fff;
+            padding: 18px;
         }
         .container {
             margin-top: 1px;
@@ -95,10 +96,14 @@
 
             font-family: 'Ubuntu', sans-serif;
             font-size: 20px;
+            margin-right: 30px;
             
         }
         a:link {
   color: whitesmoke;
+}
+.logo{
+    margin-left:50px;
 }
 
 /* visited link */
@@ -115,7 +120,7 @@ a:visited {
 <body>
         <navbar class="navbar">
         <div class="logo"><a href="landingpage.php">recover.hair<span></span></a></div>
-            <div class="navbar-1"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">logout</a></div>
+            <div class="navbar-1"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">Logout</a></div>
         </navbar>
         <div class="container">
         

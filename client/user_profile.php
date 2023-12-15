@@ -29,6 +29,7 @@
         .navbar {
             background-color: #b55e5a;
             color: #fff;
+            padding: 18px;
         }
         .container {
             margin-top: 1px;
@@ -44,9 +45,13 @@
         .navbar-2{
             font-family: 'Ubuntu', sans-serif;
             font-size: 20px;
+            margin-right: 30px;
         }
         a:link {
   color: whitesmoke;
+}
+.logo {
+    margin-left: 50px;
 }
 
 /* visited link */
