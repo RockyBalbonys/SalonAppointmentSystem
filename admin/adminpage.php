@@ -23,10 +23,10 @@
             <div class="h2">
                 Welcome, Admin!
             </div>
-            <div class="container row text-center">
+            <div class="container row text-center mt-5 mb-5">
                 <div class="text-center col-6">
                     Upcoming Appointments: 
-                    <div class="text-center"><?php 
+                    <div class="text-center h1"><?php 
                     $countActive = "SELECT COUNT(*) AS row_count 
                    FROM `tbl_bookings` 
                    WHERE booking_status = 1";
@@ -52,7 +52,7 @@
                 </div>
                 <div class="text-center col-6">
                     <div class="text-center "></div>Finished Appointments: 
-                    <div><?php 
+                    <div class="h1"><?php 
                     $countActive = "SELECT COUNT(*) AS row_count 
                    FROM `tbl_history` 
                    WHERE booking_status = 2";
@@ -80,9 +80,13 @@
             <div>
                 <?php
                     $selectAllAppointments = "SELECT * FROM tbl_bookings 
-                     JOIN tbl_users 
-                     ON tbl_bookings.booking_user = tbl_users.user_id
-                     ORDER BY booking_date ASC, booking_time ASC;"; 
+                    JOIN tbl_users 
+                    ON tbl_bookings.booking_user = tbl_users.user_id
+                    JOIN tbl_booking_services
+                    ON tbl_bookings.booking_service = tbl_booking_services.service_id
+                    JOIN tbl_booking_status
+                    ON tbl_bookings.booking_status = tbl_booking_status.booking_status_id
+                    ORDER BY booking_date ASC, booking_time ASC;"; 
                    
                     $query = mysqli_query($conn, $selectAllAppointments);
                     
@@ -94,6 +98,7 @@
                                            <th>User</th>
                                            <th>Date</th>
                                            <th>Time</th>
+                                           <th>Service Chosen</th>
                                            <th>Status</th>
                                            <th>Buttons</th>
                                        </tr>
@@ -108,6 +113,7 @@
                                echo '<td>' .  $formattedDate . '</td>';
                                $formattedTime = date('h:i A', strtotime($row["booking_time"]));
                                echo '<td>' . $formattedTime . '</td>';
+                               echo '<td>' . $row["service"] . '</td>';
                                echo '<td>' . $row["booking_status"] . '</td>';
                                echo '<td>' . "<div class='btn delete-btn btn-primary'>Done</div>" . '</td>';
                                echo '</tr>';
