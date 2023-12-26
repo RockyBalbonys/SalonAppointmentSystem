@@ -98,7 +98,9 @@ a:visited {
                  echo $_SESSION["user_firstname"]. "'s Upcoming Appointment(s)";
                  $selectAllAppointments = "SELECT * FROM tbl_bookings 
                  JOIN tbl_users 
-                 ON tbl_bookings.booking_user = tbl_users.user_id 
+                 ON tbl_bookings.booking_user = tbl_users.user_id
+                 JOIN tbl_booking_services
+                 ON tbl_bookings.booking_service = tbl_booking_services.service_id
                  WHERE $user_id = tbl_bookings.booking_user
                  ORDER BY booking_date ASC, booking_time ASC;";
                  $query = mysqli_query($conn, $selectAllAppointments);
@@ -123,7 +125,7 @@ a:visited {
                             echo '<td>' . $formattedDate . '</td>';
                             $formattedTime = date('h:i A', strtotime($row["booking_time"]));
                             echo '<td>' . $formattedTime . '</td>';
-                            echo '<td>' . $row["booking_service"] . '</td>';
+                            echo '<td>' . $row["service"] . '</td>';
                             echo '<td>' . '<button class="btn btn-warning">Cancel</button>' . '</td>';
                             echo '</tr>';
                         }
