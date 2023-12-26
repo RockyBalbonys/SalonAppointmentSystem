@@ -1,6 +1,9 @@
 <?php
     include "connection.php";
     include "session.php";
+    if (!isset($_SESSION["user_firstname"])) {
+        header("Location: 404.php");
+    } else {    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,3 +146,6 @@ a:visited {
     
 </body>
 </html>
+<?php
+    } 
+?>

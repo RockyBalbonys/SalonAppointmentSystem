@@ -1,6 +1,6 @@
 <?php
     include "connection.php";
-    include "session.php";
+    include "sessions.php";
     session_destroy();
     header('Location: adminlogin.php');
     exit();

@@ -1,7 +1,9 @@
 <?php
-    include  "connection.php";  
+    include "connection.php";  
     include "session.php";
-    if (isset($_SESSION["user_firstname"])) {
+    if (!isset($_SESSION["user_firstname"])) {
+        header("Location: 404.php");
+    } else {    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -346,7 +348,5 @@ if (isset($_POST["book_date"])) {
 </html>
 
 <?php
-    } else {
-        header("Location: 404.php");
     }
 ?>

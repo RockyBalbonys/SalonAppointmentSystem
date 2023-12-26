@@ -1,6 +1,9 @@
 <?php
 include "connection.php";  
 include "sessions.php";
+if (!isset($_SESSION["admin_username"])) {
+    header("Location: 404.php");
+} else {
 ?>
 
 <!DOCTYPE html>
@@ -89,3 +92,6 @@ include "sessions.php";
 
 </body>
 </html>
+<?php
+    }
+?>

@@ -1,6 +1,9 @@
 <?php
     include "connection.php";
     include "sessions.php";
+    if (isset($_SESSION["admin_username"])) {
+        header("Location: adminpage.php");
+    } else {    
 ?>
 
 <!DOCTYPE html>
@@ -55,5 +58,8 @@
             echo "wrong email/password!";
         }
     }
-
+    
+?>
+<?php
+}
 ?>
