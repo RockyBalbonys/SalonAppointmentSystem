@@ -40,22 +40,26 @@
   
     if (isset( $_POST["admin_username"])) {
         $admin_username = $_POST["admin_username"];
-        $admin_password = $_POST["admin_password"];
+        $admin_password = $_POST["admin_password"];    
         $check = "SELECT * FROM tbl_admin_users WHERE `admin_username` = '$admin_username'";
         $query = mysqli_query($conn, $check);
-
+        
         if ($query->num_rows > 0) {
             $row = $query->fetch_assoc();
-             if ($admin_password ===$row['admin_password']) {
+            $hashed_admin_password = $row['admin_password'];   
+            
+            if (password_verify($admin_password, $hashed_admin_password)) {
             
                 $_SESSION["admin_username"] = $row["admin_username"];
 
                 header("Location: adminpage.php");
             } else {
                 echo "wrong email/password!";
+                echo $hashed_admin_password;
             }
         } else {
             echo "wrong email/password!";
+   
         }
     }
     
