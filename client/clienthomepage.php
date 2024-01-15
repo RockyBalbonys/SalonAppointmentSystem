@@ -135,135 +135,57 @@ a:visited {
         <label><h1>Services</h1></label>
 
             <div class= "picture-box">
-            <form method = "POST" class="form-group text-center" required>
-                <div class="card-container row">
+            <form method="POST" class="form-group text-center" required>
+    <div class="card-container row">
+        <?php
+            $services = [
+                ["Haircut (P1100)", "assets/haircut.jpg", "1"],
+                ["Hair Color (P1000)", "assets/color.jpg", "2"],
+                ["Hair Brazilian (P2000)", "assets/brazilian.jpg", "3"],
+                ["Hair Highlights (P1400)", "assets/highlights.jpg", "4"],
+                ["Hair Perm (P4000)", "assets/permhair.jpg", "5"],
+                ["Hair Extension (P3500)", "assets/extension.webp", "6"],
+                ["Blow Dry (P1000)", "assets/blowdry.jpg", "7"],
+                ["Keratin Treatment (P2500)", "assets/keratin.jpg", "8"],
+                ["Hair Styling (P3500)", "assets/hairstyles.webp", "9"]
+            ];
+
+            foreach ($services as $service) {
+        ?>
         <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" value="1" id="radioBtn" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/haircut.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Haircut (P1100)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" value="2" id="radioBtn" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/color.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Color (P1000)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="3" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/brazilian.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Brazilian (P2000)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="4" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/highlights.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Highlights (P1400)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="5" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/permhair.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Perm (P4000)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="6" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/extension.webp" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Extension (P3500)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="7" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/blowdry.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Blow Dry (P1000)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="8" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/keratin.jpg" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Keratin Treatment (P2500)
-                        </label>
-                         <br>
-                    </div>
-                    <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
-                         <input type="radio" id="radioBtn" value="9" name="service" class="sr-only">
-                        <label for="radioBtn" >
-                         <a href="#">
-                         <img src="assets/hairstyles.webp" alt="" class="h-150 w-100">
-                         </a>
-                         <br>
-                         Hair Styling (P3500)
-                        </label>
-                         <br>
-                    </div>
+            <input type="radio" value="<?= $service[2] ?>" id="radioBtn<?= $service[2] ?>" name="service" class="sr-only" required>
+            <label for="radioBtn<?= $service[2] ?>">
+                <a href="#">
+                    <img src="<?= $service[1] ?>" alt="" class="h-150 w-100">
+                </a>
+                <br>
+                <?= $service[0] ?>
+            </label>
+            <br>
+        </div>
+        <?php } ?>
+    </div>
 
-                </div>
-                   
-               
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <label for="" class="text-center">Select Time and Date:</label>
             </div>
-                
-            <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 text-center">
-      <label for="" class="text-center">Select Time and Date:</label>
+            <div class="col-12 text-center mb-100">
+                <input name="book_date" type="date" class="mb-2" required>
+                <select name="book_time" type="text" class="mb-2">
+                    <option value="9:00 AM">9:00 am - 11:00 am</option>
+                    <option value="11:00 AM">11:00 am - 1:00 pm</option>
+                    <option value="1:00 PM">1:00 pm - 3:00 pm</option>
+                    <option value="3:00 PM">3:00 pm - 5:00 pm</option>
+                    <option value="5:00 PM">5:00 pm - 7:00 pm</option>
+                </select>
+                <input type="submit" value="Book" class="btn btn-primary mb-2">
+            </div>
+        </div>
     </div>
-    <div class="col-12 text-center mb-100">
-      <input name="book_date" type="date" class="mb-2">
-      <select name="book_time" type="text" class="mb-2">
-            <option value="9:00 PM">9:00 am - 11:00 am</option>
-            <option value="11:00 PM">11:00 am - 1:00 pm</option>
-            <option value="1:00 PM">1:00 pm - 3:00 pm</option>
-            <option value="3:00 PM">3:00 pm - 5:00 pm</option>
-            <option value="5:00 PM">5:00 pm - 7:00 pm</option>
-      </select>
-        
-      <input type="submit" value="Book" class="btn btn-primary mb-2">
-    </div>
-  </div>
-</div>
+</form>
 
-                
-            </form>
            
 
             <?php

@@ -54,8 +54,7 @@
 
                 header("Location: adminpage.php");
             } else {
-                echo "wrong email/password!";
-                echo $hashed_admin_password;
+                echo "<script>alert('wrong email/password!')</script>";
             }
         } else {
             echo "wrong email/password!";
