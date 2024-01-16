@@ -209,7 +209,7 @@ include "session.php";
 
                 </form>
                 <div class="bottom-link">
-                    <!-- Already have an account? -->
+                    Already have an account?
                     <a href="#" id="login-link">Login</a>
                 </div>
             </div>
