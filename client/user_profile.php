@@ -118,17 +118,23 @@ a:visited {
                                 </thead>
                                 <tbody>';
 
-                        while ($row = mysqli_fetch_array($query)) {
-                            echo '<tr>';
-                            echo '<td>' . $row["booking_id"] . '</td>';
-                            $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
-                            echo '<td>' . $formattedDate . '</td>';
-                            $formattedTime = date('h:i A', strtotime($row["booking_time"]));
-                            echo '<td>' . $formattedTime . '</td>';
-                            echo '<td>' . $row["service"] . '</td>';
-                            echo '<td>' . '<button class="btn btn-warning">Cancel</button>' . '</td>';
-                            echo '</tr>';
-                        }
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo '<tr>';
+                                    echo '<td>' . $row["booking_id"] . '</td>';
+                                    $formattedDate = date('F j, Y', strtotime($row["booking_date"]));
+                                    echo '<td>' . $formattedDate . '</td>';
+                                    $formattedTime = date('h:i A', strtotime($row["booking_time"]));
+                                    echo '<td>' . $formattedTime . '</td>';
+                                    echo '<td>' . $row["service"] . '</td>';
+                                    echo '<td>';
+                                    echo '<form method="post" action="cancel_appointment.php">';
+                                    echo '<input type="hidden" name="booking_id" value="' . $row["booking_id"] . '">';
+                                    echo '<button type="submit" class="btn btn-warning">Cancel</button>';
+                                    echo '</form>';
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
+                                
 
                         echo '</tbody>
                             </table>';
