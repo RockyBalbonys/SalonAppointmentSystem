@@ -34,7 +34,7 @@ include "session.php";
     </div>
     <nav class="navbar z-5 left-column">
         <div class="width">
-            <div class="logo"><a href="#">recover.hair<span></span></a></div>
+            <div class="logo"><a href="#">recover.hair</a></div>
             <ul class="menu">
                 <li><a href="#home">home</a></li>
                 <li><a href="#about">about</a></li>
@@ -236,21 +236,21 @@ include "session.php";
 
 <!--About-->
 <section class="bio" id="about">
-    <div class="width">
-        <h2 class="title">About Our Salon</h2>
-        <div class="bio-subject">
-            <div class="column left">
-                
+        <div class="about-row">
+            <div class="col content-col">
+                <h1>About Our Salon</h1>
+                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
+                <a href="#" class="ctn">Know More</a>
             </div>
-            <div class="column right">
-                <div class="text">
-                   Recover <span>Hair.</span>
+            <div class="col image-col">
+                <div class="image-gallery">
+                    <img src="assets/place1.jpg" alt="">
+                    <img src="assets/place2.jpg" alt="">
+                    <img src="assets/place3.jpg" alt="">
+                    <img src="assets/place4.jpg" alt="">
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mauris et magna tincidunt consequat..<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae mauris et magna tincidunt consequat.</p>
-                <a href="file:///C:/Users/Jay%20Ann/Downloads/_Resume.pdf">View Full Details</a>
             </div>
         </div>
-    </div>
 </section>
 
 <!--Services-->

@@ -5,8 +5,9 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-html{
+body, html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .width{
@@ -39,10 +40,7 @@ html{
     font-weight: 600;
     font-size: 20px;
 }
-.navbar .logo a span{
-    color: #ffffff;
-}
-.navbar.sticky .logo a span{
+.navbar.sticky .logo a{
     color: #fff;
     transition: all 0.3s ease;
 }
@@ -58,6 +56,10 @@ html{
     font-weight: 500;
     margin-left: 25px;
     transition: color 0.3s ease;
+}
+.navbar.sticky .menu li a{
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 .navbar .menu li a:hover{
     color: #b55e5a;
@@ -344,10 +346,9 @@ form button:hover {
 }
 /*all similar styling code*/
 section{
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: #fcf0e1;
 }
-.bio .bio-subject,
 .contact .contact-content{
     display: flex;
     flex-wrap: wrap;
@@ -369,62 +370,64 @@ section .title{
 }
 
 /*about section*/
-.bio{
-display: flex;
-background-image: url('assets/bgpage.png');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-height: 100vh;
-color: #381d1a;
-min-height: 500px;
-font-family: 'Ubuntu', sans-serif;
+.about-row{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    /*background: #381d1a;*/
 }
-.bio .title{
-    color: #381d1a;
-    margin-bottom: 100px;
+.about-row .col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-.bio .bio-subject .left{
-    width: 45%;
-}
-.bio .bio-subject .left img{
-    height: 400px;
-    width: 400px;
-    object-fit: initial;
-    border-radius: 6px;
-}
-.bio .bio-subject .right{
-    width: 55%;
-}
-.bio .bio-subject .right .text{
-    font-size: 25px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: black;
-}
-.bio .bio-subject .right .text span{
-    color: #381d1a;
-}
-.bio .bio-subject .right p{
-    text-align: justify;
-    color: black;
-}
-.bio .bio-subject .right a{
-    display: inline-block;
+.ctn {
+    padding: 8px 15px;
     background: #b55e5a;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 200;
-    padding: 10px 30px;
-    margin: 5px 0;
-    border-radius: 6px;
-    border: 2px solid #b55e5a;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 30px;
+    color: whitesmoke;
+    border: 1px solid #b55e5a;
+    align-items: center;
 }
-.bio .bio-subject .right a:hover{
+.ctn:hover{
+    background-color: #ffffff;
     color: #381d1a;
-    background: none;
+}
+.bio{
+    background-color: #ffffff;
+}
+.content-col {
+    width: 50%;
+    margin-left: 50px;
+}
+.image-col{
+    width: 50%;
+}
+.bio .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+.image-gallery img{
+    max-width: 300px;
+    margin: 20px;
+}
+.content-col h1{
+    font-size: 40px;
+    font-weight: 600;
+    color: #381d1a;
+    margin-bottom: 20px;
+}
+.content-col .p{
+    padding: 0;
+    margin: 30px auto;
+}
+.content-col .ctn {
+    margin-left: -10px;
+    margin-top: 15px;
 }
 /*Services*/
 .project{
@@ -551,7 +554,7 @@ font-family: 'Ubuntu', sans-serif;
     color: #fff;
     font-size: 20px;
     font-weight: 500;
-    border-radius: 6px;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -574,6 +577,7 @@ footer{
     border: none;
     color: #ffffff;
 }
+
 
 /*popup responsive*/
 @media (max-width:950px) {
@@ -601,6 +605,25 @@ footer{
     }
 }
 @media (max-width:1104px){
+    .about-row{
+        flex-direction: column;
+    }
+    .about-row .col{
+        margin: 20px auto;
+    }
+    .bio .col {
+        width: 100%;
+    }
+    .image-gallery{
+        justify-content: center;
+        align-items: center;
+    }
+    .image-gallery img{
+        width: 50%;
+    }
+    .col img{
+        max-width: 90%;
+    }
     .bio .bio-subject .left img{
         height: 350px;
         width: 350px;
@@ -704,4 +727,12 @@ footer{
 
 .z-5 {
     z-index: 5;
+}
+/*Animation*/
+img {
+    transition: transform .3s ease;
+    cursor: pointer;
+}
+img:hover {
+    transform: scale(1.1);
 }
