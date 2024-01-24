@@ -73,7 +73,7 @@ body, html{
     outline: none;
     font-size: 15px;
     font-weight: 500;
-    padding: 8px 29px;
+    padding: 8px 15px;
     border-radius: 50px;
     cursor: pointer;
     color: #ffffff;
@@ -81,11 +81,11 @@ body, html{
     transition: all 0.3s ease;
 }
 .navbar .login-btn:hover {
-    color: #381d1a;
-    background: none;
     font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #b55e5a;
+    background: none;
 }
-
 .navbar.sticky .menu li a:hover{
     color: #fff;
 }
@@ -255,10 +255,10 @@ form button:hover {
 }
 /*menu*/
 .menu-btn{
-    color: #381d1a;
+    color: #ffffff;
     font-size: 23px;
     cursor: pointer;
-    display: none;
+    display: none;   
 }
 .soc-media{
     position: fixed;
@@ -296,7 +296,7 @@ form button:hover {
     transition: all 0.3s ease;
 }
 .scroll-up-btn.show{
-    bottom: 30px;
+    bottom: 62px;
     opacity: 1;
     pointer-events: auto;
 }
@@ -355,7 +355,7 @@ section{
     align-items: center;
     justify-content: space-between;
 }
-.bio, .project, .contact, footer{
+.login-btn, .bio, .project, .contact, footer{
     font-family: 'Poppins', sans-serif;
 }
 section .title{
@@ -387,7 +387,7 @@ section .title{
     padding: 8px 15px;
     background: #b55e5a;
     border-radius: 30px;
-    color: whitesmoke;
+    color: #ffffff;
     border: 1px solid #b55e5a;
     align-items: center;
 }
@@ -439,41 +439,65 @@ section .title{
     font-size: 20px;
     font-weight: 500;
 }
-.project .card{
+.project .carousel .card{
     background: #ffffff;
     border-radius: 6px;
-    padding: 25px 0px;
+    padding: 25px 35px;
     text-align: center;
     transition: all 0.3s ease;
+    padding: 29px;
+    cursor: pointer;
 }
-.project .card:hover{
+.project .carousel .card:hover{
     background: #fcf0e1;
     color: #381d1a;
 }
-.project .card .box{
+.project .carousel .card .box{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
-.project .card:hover .box{
+.project .carousel .card:hover .box{
     transform: scale(1.05);
 }
-.project .card .text{
-    font-size: 15px;
+.project .carousel .card .text{
+    font-size: 20px;
     font-weight: 500;
     margin: 10px 0 8px 0;
+    color: #381d1a;
 }
-.project .card img{
-    height: 100px;
+.project .carousel .card img{
+    height: 200px;
     width: 200px;
-    object-fit: initial;
+    object-fit: contain;
     border-radius: 6px;
-    border: 1px solid #fcf0e1;
     transition: all 0.3s ease;
 }
 .project .card:hover img{
     border-color: #b55e5a;
+}
+.owl-dots{
+    text-align: center;
+    margin-top: 20px;   
+}
+.owl-dot{
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none!important;
+    border-radius: 50%;
+    border: 2px solid #b55e5a!important;
+    transition: all 0.3s ease;
+}
+.owl-dot.active{
+    width: 35px;
+    border-radius: 14px;
+}
+.owl-dot.active,
+.owl:hover{
+    background: #b55e5a!important;
 }
 /* contact */
 .contact{
@@ -585,7 +609,13 @@ footer{
         font-size: 16px;
         margin-left: 0;
     }
+    .project .carousel .card{
+        background: none;
     }
+    .project .carousel .card img{
+        margin: 10px;
+    }
+}
 @media (max-width:760px) {
     .form-popup {
         width: 95%;
@@ -650,7 +680,7 @@ footer{
         width: 100%;
         left: -100%;
         top: 0;
-        background: #fcf0e1;
+        background: #111;
         text-align: center;
         padding-top: 80px;
         transition: all 0.5s ease;
@@ -665,6 +695,7 @@ footer{
         display: inline-block;
         margin: 20px 0;
         font-size: 25px;
+        color: #d06f6a;
     }
     .home .home-content .text-2{
         font-size: 75px;

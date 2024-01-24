@@ -33,11 +33,11 @@ $('.carousel').owlCarousel({
             nav: false
         },
         600:{
-         items: 4,
+         items: 2,
          nav: false
         },
         1000:{
-         items: 4,
+         items: 3,
          nav: false
         }
     }

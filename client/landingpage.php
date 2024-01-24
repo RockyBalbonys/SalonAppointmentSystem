@@ -14,17 +14,18 @@ include "session.php";
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="script.js" defer></script>
 </head>
 <body>
 <div class="soc-media">
-        <a href="https://www.facebook.com/jayannrose.g/">
+        <a href="#">
         <i class="fa-brands fa-facebook-f" style="color: #b55e5a;"></i></a>
-        <a href="https://www.instagram.com/jayannrose_/">
+        <a href="#">
         <i class="fa-brands fa-instagram" style="color: #b55e5a;"></i></a>
-        <a href="https://twitter.com/jayyyyannn">
+        <a href="#">
         <i class="fa-brands fa-x-twitter" style="color: #b55e5a;"></i></a>
         <a href="mailto:gerente.jayannrose.bscs2021@gmail.com">
         <i class="fa-thin fa-at" style="color: #b55e5a;"></i></a>
@@ -257,20 +258,12 @@ include "session.php";
 <section class="project" id="services">
     <div class="width">
         <h2 class="title">Our Services</h2>
-        <p>Gallery</p>
         <div class="carousel owl-carousel">
             <div class="card">
             <div class="box">
                 <a href="#1">
                 <img src="assets/haircut.jpg" alt="" width="600" height="600"></a>
                 <div class="text">Haircut</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#2">
-                <img src="assets/rebond.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Hair Rebond</div>
             </div>
         </div>
         <div class="card">
@@ -313,20 +306,6 @@ include "session.php";
                 <a href="#8">
                 <img src="assets/hairstyles.webp" alt="" width="600" height="600"></a>
                 <div class="text">Hairstyles</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#8">
-                <img src="assets/keratin.jpg" alt="" width="600" height="600">
-                <div class="text">Hair Keratin</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#9">
-                <img src="assets/permhair.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Hair Perm</div>
             </div>
         </div>
 
