@@ -24,17 +24,64 @@
 
 
 
-
     <style>
         /* Custom styles */
-        .card-container row {
-            width: 400px; 
-            height: 300px; 
-            background-color: lightgray;
-            border: 1px solid black;
-            padding: 20px;
+        .card-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: calc(50% - 50px);
+            height: auto;
+            margin: 50px;
+            border: 1px solid #b55e5a;
+            padding: 4px;
             box-sizing: border-box;
         }
+
+        .booking-container {
+            width: 100%;
+            padding: 50px;
+            box-sizing: border-box;
+            margin-top: 20px;
+            font-size: 30px;
+        }
+
+        .booking-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .booking-container select,
+        .booking-container input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .booking-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #b55e5a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .booking-container label,
+        .booking-container select,
+        .booking-container input[type="date"],
+        .booking-container input[type="submit"] {
+            font-size: 22px; 
+        }
+
         .card col{
             width: 300px;
             height: 300px;
@@ -54,28 +101,33 @@
             padding: 18px;
         }
         .container {
-            margin-top: 1px;
+            margin-top: 7px;
         }
         .picture-box {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 5px;
-            margin-left: 70px
+            margin-top: 3px;
+            margin-left: 70px;
         }
         .picture-item {
-            margin: 30px;
-            width: 300px;
-            height: 300px;
+            margin: 10px;
+            width: calc(30% - 30px);
+            height: auto;
             cursor: pointer;
+            max-width: 300px;
+            max-height: 300px;
         }
         .picture-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             border-radius: 1px;
             transition: border 0.3s ease-in-out;
+            max-width: none; 
+            max-height: none; 
         }
+
         .picture-item p {
             margin-top: 2px;
             font-size: 8px;
@@ -108,6 +160,19 @@
     margin-left:50px;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b55e5a;
+    color: #fff;
+    padding: 18px;
+    text-align: center;
+    margin: 0; 
+}
+
+
 /* visited link */
 a:visited {
   color: whitesmoke;
@@ -115,6 +180,10 @@ a:visited {
 
 
     </style>
+
+
+
+
 
            
 
@@ -133,7 +202,6 @@ a:visited {
 <br>
 
         <label><h1>Services</h1></label>
-
             <div class= "picture-box">
             <form method="POST" class="form-group text-center" required>
     <div class="card-container row">
@@ -166,14 +234,14 @@ a:visited {
         <?php } ?>
     </div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <label for="" class="text-center">Select Time and Date:</label>
-            </div>
-            <div class="col-12 text-center mb-100">
-                <input name="book_date" type="date" class="mb-2" required>
-                <select name="book_time" type="text" class="mb-2">
+    <form method="POST" class="booking-container form-group text-center" required>
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <label for="" class="text-center">Select Time and Date:</label>
+                    </div>
+                    <div class="col-12 text-center mb-100">
+                        <input name="book_date" type="date" class="mb-2" required>
+                        <select name="book_time" type="text" class="mb-2">
                     <option value="9:00 AM">9:00 am - 11:00 am</option>
                     <option value="11:00 AM">11:00 am - 1:00 pm</option>
                     <option value="1:00 PM">1:00 pm - 3:00 pm</option>
