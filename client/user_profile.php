@@ -67,15 +67,9 @@ a:visited {
 </head>
 <body>
 
-    <div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
-    </div>
             <navbar class="navbar">
                 <div class="logo"><a href="landingpage.php">recover.hair</a></div>
                 <div class= "navbar-2"><a href="clienthomepage.php">Services</a><span> | </span><a href="logout.php">Logout</a></div>
-            <div class="menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
             </navbar>
             <div class="container">
         
