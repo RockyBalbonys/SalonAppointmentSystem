@@ -44,7 +44,7 @@
             </nav>
 
             <div class="text-center mt-4 mb-4">
-                <h2>Messages</h2>
+                <h2>History</h2>
             </div>
 
             <div>
