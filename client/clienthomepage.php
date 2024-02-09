@@ -80,7 +80,6 @@
             width: 300px;
             height: 300px;
             padding: 20px;
-
         }
         body {
             background: #ffffff;
@@ -123,14 +122,19 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 1px;
+            border-radius: 8px;
             transition: border 0.3s ease-in-out;
             max-width: none; 
             max-height: none; 
+            border: 1px solid black;
+        }
+        .picture-item img:hover{
+            border: 3px solid #b55e5a;
+            transition: all 0.3s ease;
         }
 
         .picture-item p {
-            margin-top: 2px;
+            margin-top: 5px;
             font-size: 8px;
         }
         .picture-item.selected img {
