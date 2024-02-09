@@ -124,7 +124,7 @@
                                            <th>Time</th>
                                            <th>Service Chosen</th>
                                            <th>Status</th>
-                                           <th>Actions</th>
+                                           <th>Action</th>
                                        </tr>
                                    </thead>
                                    <tbody>';
