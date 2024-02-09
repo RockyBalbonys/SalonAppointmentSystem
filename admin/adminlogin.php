@@ -12,26 +12,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Log In</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<div class="col-md-6">
-    <p class="display">Log in as Admin</p>
-                <form method="post" class="border p-3">
+    <div class="container-lg">
+        <div class="text-center mt-5">
+            <h2>Log in as Admin</h2>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-s-6 col-lg-6 my-3">
+                <form method="post" class="border p-5 border-dark border-3 rounded-4">
                     <div class="form-group">
-                        <label for="login_email">Email:</label>
-                        <input type="text" class="form-control" name="admin_username" id="admin_username" placeholder="Enter your email">
+                        <label for="login_email"><p class="text-3 mb-2">Email:</p></label>
+                        <input type="text" class="form-control border-dark" name="admin_username" id="admin_username" placeholder="Enter your email">
                     </div>
                     <div class="form-group">
-                        <label for="login_password">Password:</label>
-                        <input type="password" class="form-control" name="admin_password" id="admin_password" placeholder="Enter your password">
+                        <label for="login_password"><p class="text-3 mb-2">Password:</p></label>
+                        <input type="password" class="form-control border-dark" name="admin_password" id="admin_password" placeholder="Enter your password">
                     </div>
-                    <button type="submit" name="btn_login" class="btn btn-primary">Log in</button>
+                    <div class="text-center mt-2"> 
+                        <button type="submit" name="btn_login" class="btn btn-sm btn-dark">Log in</button>
+                    </div>
+                    
                 </form>
             </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        </div>
+    </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 </html>
