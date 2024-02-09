@@ -41,7 +41,7 @@ body, html{
     font-size: 20px;
 }
 .navbar.sticky .logo a{
-    color: #fff;
+    color: #ffffff;
     transition: all 0.3s ease;
 }
 .navbar .menu li{

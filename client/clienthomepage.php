@@ -83,7 +83,7 @@
 
         }
         body {
-            background: #fcf0e1;
+            background: #ffffff;
             font-size: 16px;
             font-family: 'Ubuntu', sans-serif;
 
@@ -209,8 +209,10 @@ a:visited {
 <body>
         <navbar class="navbar">
         <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="landingpage.php">recover.hair</a></div>
-            <div class="navbar-1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a>
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="logout.php"><button class="btn1 btn-m ms-3 p-2"><i class="bi bi-box-arrow-right"></i> Logout</a></button></div>
+        
+        <div class="navbar-1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a>
+        
+            <a class="link-offset-2 link-underline link-underline-opacity-0" href="logout.php"><button class="btn1 btn-m ms-3 p-2"><i class="bi bi-box-arrow-right"></i> Log Out</a></button></div>
         </navbar>
         <div class="container-lg">
         
@@ -308,7 +310,7 @@ if (isset($_POST["book_date"])) {
                             VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
                 
                 if (mysqli_query($conn, $book)) {
-                    echo "<script> alert('Booked successfully!')</script>";
+                    echo "<script> alert('Booked successfully! You can check it to your profile. Thank you!')</script>";
                 } else {
                     echo "<script> alert('Error booking!')</script>";
                 }
@@ -330,12 +332,14 @@ if (isset($_POST["book_date"])) {
     Recover Hair.
     </div>
 </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <script>
-            
+
+        //Tooltip
+        const tooltips = document.querySelectorAll('.tt')
+      tooltips.forEach(t =>{
+        new bootstrap.Tooltip(t)
+      })         
             function handleImageClick(clickedElement, event) {
     // Prevent the default behavior of the click event
     event.preventDefault();
