@@ -118,13 +118,13 @@
                        echo '<table class="table table-lg table-hover table-light table-borderless" id="bookingTable">
                                    <thead class="text-center mb-3">
                                        <tr>
-                                           <th>Booking_ID</th>
+                                           <th>Booking ID</th>
                                            <th>User</th>
                                            <th>Date</th>
                                            <th>Time</th>
                                            <th>Service Chosen</th>
                                            <th>Status</th>
-                                           <th>Buttons</th>
+                                           <th>Actions</th>
                                        </tr>
                                    </thead>
                                    <tbody>';
