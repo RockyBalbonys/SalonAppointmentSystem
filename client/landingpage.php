@@ -240,8 +240,8 @@ include "session.php";
         <div class="about-row">
             <div class="col content-col">
                 <h1>About Our Salon</h1>
-                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
-                <a href="#" class="ctn">Know More</a>
+                <p>At <strong>Recover Hair Salon</strong>, we prioritize your comfort and satisfaction above all else. From the moment you step through our doors, you'll be greeted with warmth and hospitality. Our attentive staff will listen to your desires, offer expert advice, and ensure that you leave our salon feeling rejuvenated and confident.</p>
+                
             </div>
             <div class="col image-col">
                 <div class="image-gallery">
