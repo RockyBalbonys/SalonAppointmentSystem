@@ -421,9 +421,10 @@ section .title{
     color: #381d1a;
     margin-bottom: 20px;
 }
-.content-col .p{
+.content-col p{
     padding: 0;
-    margin: 30px auto;
+    margin: 5px auto;
+    width: 80%;
 }
 .content-col .ctn {
     margin-left: -10px;
