@@ -240,7 +240,23 @@ include "session.php";
         <div class="about-row">
             <div class="col content-col">
                 <h1>About Our Salon</h1>
-                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
+                <?php
+                // Assuming $conn is your database connection
+                $aboutContent = "SELECT * FROM tbl_content_about";
+                $result = $conn->query($aboutContent);
+                
+                // Check if query was successful
+                if ($result === false) {
+                    echo "No Description";
+                } else {
+                    // Fetch data and display
+                    while ($row = $result->fetch_assoc()) {
+                        echo $row["content"] . "<br>";
+                    }
+                }
+?>
+
+                
                 <a href="#" class="ctn">Know More</a>
             </div>
             <div class="col image-col">

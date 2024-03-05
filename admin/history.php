@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark fw-bold" href="history.php">History</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold" href="content.php">Content</a>
+                    </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a class="btn btn-dark" href="logout.php">Log Out</a>
                     </li>
