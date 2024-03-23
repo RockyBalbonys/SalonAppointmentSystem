@@ -67,6 +67,71 @@
                             ?>
                         </div>
                     </form>
+                    <div>
+                        <div>Edit Contact Info</div>
+                        <form method="POST">
+                            <input type="text" name="editContactName" placeholder="Name...">
+                            <input type="submit" name="" id="">
+                            <?php
+                                if (isset($_POST["editContactName"])) {
+                                    $editContactName = $_POST["editContactName"];
+                                    $editContact = "UPDATE `tbl_content_contact` SET `contact_info`='$editContactName' WHERE `contact` = 'name'"; 
+                                    if (mysqli_query($conn, $editContact)) {
+                                        echo "<script>alert('About Content Updated Successfully');</script>";
+                                    } else {
+                                        echo "<script>alert('About Content Not Updated');</script>";
+                                    }
+                                }
+                            ?>
+                        </form>
+                        <form method="POST">
+                            <input type="text" name="editContactAddress" placeholder="Address...">
+                            <input type="submit" name="" id="">
+                            <?php
+                                if (isset($_POST["editContactAddress"])) {
+                                    $editContactAddress = $_POST["editContactAddress"];
+                                    $editContact = "UPDATE `tbl_content_contact` SET `contact_info`='$editContactAddress' WHERE `contact` = 'address'"; 
+                                    
+                                    if (mysqli_query($conn, $editContact)) {
+                                        echo "<script>alert('About Content Updated Successfully');</script>";
+                                    } else {
+                                        echo "<script>alert('About Content Not Updated');</script>";
+                                    }
+                                }
+                            ?>
+                        </form>
+                        <form method="POST">
+                            <input type="text" name="editContactNumber" placeholder="Number...">
+                            <input type="submit" name="" id="">
+                            <?php
+                                if (isset($_POST["editContactNumber"])) {
+                                    $editContactNumber = $_POST["editContactNumber"];
+                                    $editContact = "UPDATE `tbl_content_contact` SET `contact_info`='$editContactNumber' WHERE `contact` = 'number'"; 
+                                    
+                                    if (mysqli_query($conn, $editContact)) {
+                                        echo "<script>alert('About Content Updated Successfully');</script>";
+                                    } else {
+                                        echo "<script>alert('About Content Not Updated');</script>";
+                                    }
+                                }
+                            ?>
+                        </form>
+                        <form method="POST">
+                            <input type="text" name="editContactEmail" placeholder="Email...">
+                            <input type="submit" name="" id="">
+                            <?php
+                                if (isset($_POST["editContactEmail"])) {
+                                    $editContactEmail = $_POST["editContactEmail"];
+                                    $editContact = "UPDATE `tbl_content_contact` SET `contact_info`='$editContactEmail' WHERE `contact` = 'email'"; 
+                                    if (mysqli_query($conn, $editContact)) {
+                                        echo "<script>alert('About Content Updated Successfully');</script>";
+                                    } else {
+                                        echo "<script>alert('About Content Not Updated');</script>";
+                                    }
+                                }
+                            ?>
+                        </form>
+                    </div>  
                 </div>
             </div>
 

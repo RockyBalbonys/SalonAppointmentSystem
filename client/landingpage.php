@@ -345,29 +345,45 @@ include "session.php";
                     <div class="row">
                         <i class="fas fa-user"></i>
                         <div class="info">
+                        <!-- <?php
+                $contentContact = "SELECT * FROM tbl_content_contact";
+                $resultContact = $conn->query($contentContact);
+                // Check if query was successful
+                if ($resultContact === false) {
+                    echo " ";
+                } else {
+                    // Fetch data and display
+                    while ($row = $resultContact->fetch_assoc()) {
+                        $name = $row["name"]; 
+                        $address = $row["address"]; 
+                        $number = $row["number"]; 
+                        $email = $row["email"]; 
+                    }//================gawin ito===================
+                }
+                        ?> -->
                             <div class="head">Name</div>
-                            <div class="sub-title">Hair Recover.</div>
+                            <div class="sub-title"><?php echo $name; ?></div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info">
                             <div class="head">Address</div>
-                            <div class="sub-title">Caloocan City</div>
+                            <div class="sub-title"><?php echo $address; ?></div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fa-solid fa-phone"></i>
                         <div class="info">
                             <div class="head">Tel No:</div>
-                            <div class="sub-title">09XXXXXXXXX</div>
+                            <div class="sub-title"><?php echo $number; ?></div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-envelope"></i>
                         <div class="info">
                             <div class="head">Email</div>
-                            <div class="sub-title">recover.hair@gmail.com</div>
+                            <div class="sub-title"><?php echo $email; ?></div>
                         </div>
                     </div>
                 </div>
