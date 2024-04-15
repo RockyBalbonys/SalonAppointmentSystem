@@ -240,7 +240,24 @@ include "session.php";
         <div class="about-row">
             <div class="col content-col">
                 <h1>About Our Salon</h1>
-                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
+                <p>
+                        <?php
+                            $contentAbout = "SELECT * FROM tbl_content_about";
+                            $resultAbout = $conn->query($contentAbout);
+                            
+                            // Check if query was successful
+                            if ($resultAbout === false) {
+                                echo "Error executing query: " . $conn->error;
+                            } else {
+                                // Fetch data and display
+                                while ($row = $resultAbout->fetch_assoc()) {
+                                    // Assuming you have a column named 'content' that you want to display
+                                    echo $row['content'];
+                                }
+                            }
+                        ?>
+
+                </p>
             </div>
             <div class="col image-col">
                 <div class="image-gallery">
