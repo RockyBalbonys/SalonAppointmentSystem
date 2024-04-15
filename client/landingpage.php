@@ -1,6 +1,9 @@
 <?php
 include "connection.php";
 include "session.php";
+
+        $contentContact = "SELECT * FROM tbl_content_contact";
+        $resultContact = $conn->query($contentContact);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -244,7 +247,7 @@ include "session.php";
                         <?php
                             $contentAbout = "SELECT * FROM tbl_content_about";
                             $resultAbout = $conn->query($contentAbout);
-                            
+
                             // Check if query was successful
                             if ($resultAbout === false) {
                                 echo "Error executing query: " . $conn->error;
@@ -341,53 +344,26 @@ include "session.php";
                 <div class="text">
                     Don't hesitate to reach out
                 </div>
+                <?php
+                
+                while($row = mysqli_fetch_assoc($resultContact)){
+                        ?> 
+
                 <div class="icons">
                     <div class="row">
-                        <i class="fas fa-user"></i>
+                       <!-- <i class="fas fa-user"></i> -->
                         <div class="info">
-                        <!-- <?php
-                $contentContact = "SELECT * FROM tbl_content_contact";
-                $resultContact = $conn->query($contentContact);
-                // Check if query was successful
-                if ($resultContact === false) {
-                    echo " ";
-                } else {
-                    // Fetch data and display
-                    while ($row = $resultContact->fetch_assoc()) {
-                        $name = $row["name"]; 
-                        $address = $row["address"]; 
-                        $number = $row["number"]; 
-                        $email = $row["email"]; 
-                    }//================gawin ito===================
+                            <div class="head"><?php echo $row["contact_info"] ?></div>
+                            <div class="sub-title"></div>
+                        </div>
+                    </div>
+                    <?php
                 }
-                        ?> -->
-                            <div class="head">Name</div>
-                            <div class="sub-title"><?php echo $name; ?></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="info">
-                            <div class="head">Address</div>
-                            <div class="sub-title"><?php echo $address; ?></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <i class="fa-solid fa-phone"></i>
-                        <div class="info">
-                            <div class="head">Tel No:</div>
-                            <div class="sub-title"><?php echo $number; ?></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <i class="fas fa-envelope"></i>
-                        <div class="info">
-                            <div class="head">Email</div>
-                            <div class="sub-title"><?php echo $email; ?></div>
-                        </div>
-                    </div>
+            ?>
+                    
                 </div>
             </div>
+            
             <div class="column right">
             <div class="text">Message us</div>
             <form method="POST">
