@@ -240,24 +240,8 @@ include "session.php";
         <div class="about-row">
             <div class="col content-col">
                 <h1>About Our Salon</h1>
-                <p>
-                        <?php
-                            $contentAbout = "SELECT * FROM tbl_content_about";
-                            $resultAbout = $conn->query($contentAbout);
-                            
-                            // Check if query was successful
-                            if ($resultAbout === false) {
-                                echo "Error executing query: " . $conn->error;
-                            } else {
-                                // Fetch data and display
-                                while ($row = $resultAbout->fetch_assoc()) {
-                                    // Assuming you have a column named 'content' that you want to display
-                                    echo $row['content'];
-                                }
-                            }
-                        ?>
-
-                </p>
+                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
+                <a href="#" class="ctn">Know More</a>
             </div>
             <div class="col image-col">
                 <div class="image-gallery">
@@ -308,7 +292,7 @@ include "session.php";
                 <a href="#6">
                 <img src="assets/extension.webp" alt="" width="600" height="600"></a>
                 <div class="text">Hair Extension</div>
-            </div>
+            </div> 
         </div>
         <div class="card">
             <div class="box">
@@ -345,45 +329,29 @@ include "session.php";
                     <div class="row">
                         <i class="fas fa-user"></i>
                         <div class="info">
-                        <!-- <?php
-                $contentContact = "SELECT * FROM tbl_content_contact";
-                $resultContact = $conn->query($contentContact);
-                // Check if query was successful
-                if ($resultContact === false) {
-                    echo " ";
-                } else {
-                    // Fetch data and display
-                    while ($row = $resultContact->fetch_assoc()) {
-                        $name = $row["name"]; 
-                        $address = $row["address"]; 
-                        $number = $row["number"]; 
-                        $email = $row["email"]; 
-                    }//================gawin ito===================
-                }
-                        ?> -->
                             <div class="head">Name</div>
-                            <div class="sub-title"><?php echo $name; ?></div>
+                            <div class="sub-title">Hair Recover.</div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info">
                             <div class="head">Address</div>
-                            <div class="sub-title"><?php echo $address; ?></div>
+                            <div class="sub-title">Caloocan City</div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fa-solid fa-phone"></i>
                         <div class="info">
                             <div class="head">Tel No:</div>
-                            <div class="sub-title"><?php echo $number; ?></div>
+                            <div class="sub-title">09XXXXXXXXX</div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-envelope"></i>
                         <div class="info">
                             <div class="head">Email</div>
-                            <div class="sub-title"><?php echo $email; ?></div>
+                            <div class="sub-title">recover.hair@gmail.com</div>
                         </div>
                     </div>
                 </div>
