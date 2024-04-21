@@ -351,9 +351,8 @@ include "session.php";
 
                 <div class="icons">
                     <div class="row">
-                       <!-- <i class="fas fa-user"></i> -->
                         <div class="info">
-                            <div class="head"><?php echo $row["contact_info"] ?></div>
+                            <div class="head"><?php echo $row["contact"] . ": " . $row["contact_info"] ?></div>
                             <div class="sub-title"></div>
                         </div>
                     </div>
