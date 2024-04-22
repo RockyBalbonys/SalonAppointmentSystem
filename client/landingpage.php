@@ -1,6 +1,9 @@
 <?php
 include "connection.php";
 include "session.php";
+
+        $contentContact = "SELECT * FROM tbl_content_contact";
+        $resultContact = $conn->query($contentContact);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -240,8 +243,24 @@ include "session.php";
         <div class="about-row">
             <div class="col content-col">
                 <h1>About Our Salon</h1>
-                <p>Hair salon dolor sit amet consectetur adipisicing elit. Aperiam iure, repudiandae nostrum dicta unde minus, distinctio vero laborum totam laboriosam quidem quas dolore, sunt dolores corrupti! Ducimus, quia magni. Quas dicta aperiam laudantium animi illum molestias aspernatur nisi dolor eaque.</p>
-                <a href="#" class="ctn">Know More</a>
+                <p>
+                        <?php
+                            $contentAbout = "SELECT * FROM tbl_content_about";
+                            $resultAbout = $conn->query($contentAbout);
+
+                            // Check if query was successful
+                            if ($resultAbout === false) {
+                                echo "Error executing query: " . $conn->error;
+                            } else {
+                                // Fetch data and display
+                                while ($row = $resultAbout->fetch_assoc()) {
+                                    // Assuming you have a column named 'content' that you want to display
+                                    echo $row['content'];
+                                }
+                            }
+                        ?>
+
+                </p>
             </div>
             <div class="col image-col">
                 <div class="image-gallery">
@@ -325,37 +344,25 @@ include "session.php";
                 <div class="text">
                     Don't hesitate to reach out
                 </div>
+                <?php
+                
+                while($row = mysqli_fetch_assoc($resultContact)){
+                        ?> 
+
                 <div class="icons">
                     <div class="row">
-                        <i class="fas fa-user"></i>
                         <div class="info">
-                            <div class="head">Name</div>
-                            <div class="sub-title">Hair Recover.</div>
+                            <div class="head"><?php echo $row["contact"] . ": " . $row["contact_info"] ?></div>
+                            <div class="sub-title"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="info">
-                            <div class="head">Address</div>
-                            <div class="sub-title">Caloocan City</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <i class="fa-solid fa-phone"></i>
-                        <div class="info">
-                            <div class="head">Tel No:</div>
-                            <div class="sub-title">09XXXXXXXXX</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <i class="fas fa-envelope"></i>
-                        <div class="info">
-                            <div class="head">Email</div>
-                            <div class="sub-title">recover.hair@gmail.com</div>
-                        </div>
-                    </div>
+                    <?php
+                }
+            ?>
+                    
                 </div>
             </div>
+            
             <div class="column right">
             <div class="text">Message us</div>
             <form method="POST">

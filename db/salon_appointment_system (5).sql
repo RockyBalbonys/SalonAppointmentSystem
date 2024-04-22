@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 07:07 PM
+-- Generation Time: Apr 21, 2024 at 06:45 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.0
 
@@ -64,7 +64,9 @@ CREATE TABLE `tbl_bookings` (
 --
 
 INSERT INTO `tbl_bookings` (`booking_id`, `booking_user`, `booking_service`, `booking_date`, `booking_time`, `booking_status`) VALUES
-(119, 10, 1, '2024-03-06', '09:00:00.000000', '1');
+(120, 10, 6, '2024-05-09', '03:00:00.000000', '1'),
+(122, 10, 2, '2024-05-30', '05:00:00.000000', '1'),
+(124, 10, 3, '2024-05-02', '03:00:00.000000', '1');
 
 -- --------------------------------------------------------
 
@@ -76,23 +78,25 @@ DROP TABLE IF EXISTS `tbl_booking_services`;
 CREATE TABLE `tbl_booking_services` (
   `service_id` int NOT NULL,
   `service` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `service_cost` int NOT NULL
+  `service_cost` int NOT NULL,
+  `image` text COLLATE utf8mb4_general_ci,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_booking_services`
 --
 
-INSERT INTO `tbl_booking_services` (`service_id`, `service`, `service_cost`) VALUES
-(1, 'Haircut', 1100),
-(2, 'Hair Color', 1000),
-(3, 'Hair Brazilian', 2000),
-(4, 'Hair Highlights', 1400),
-(5, 'Hair Perm', 1400),
-(6, 'Hair Extension', 3500),
-(7, 'Blow Dry', 1000),
-(8, 'Keratin Treatment', 2500),
-(9, 'Hair Styling', 3500);
+INSERT INTO `tbl_booking_services` (`service_id`, `service`, `service_cost`, `image`, `isActive`) VALUES
+(1, 'Hair Cut 123', 1001, 'assets/haircut.jpg', 0),
+(2, 'Hair Color', 1000, 'assets/color.jpg', 1),
+(3, 'Hair Brazilian', 20004, 'assets/brazilian.jpg', 1),
+(4, 'Hair Highlights', 1400, 'assets/highlights.jpg', 1),
+(5, 'Hair Perm', 1400, 'assets/permhair.jpg', 1),
+(6, 'Hair Extension', 3500, 'assets/extension.webp', 1),
+(7, 'Blow Dry', 1000, 'assets/blowdry.jpg', 1),
+(8, 'Keratin Treatment', 2500, 'assets/keratin.jpg', 1),
+(9, 'Hair Styling', 3500, 'assets/hairstyles.webp', 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +135,7 @@ CREATE TABLE `tbl_content_about` (
 --
 
 INSERT INTO `tbl_content_about` (`content`) VALUES
-(0x4c6f72656d20697073756d);
+(0x54657374696e672031);
 
 -- --------------------------------------------------------
 
@@ -150,7 +154,7 @@ CREATE TABLE `tbl_content_contact` (
 --
 
 INSERT INTO `tbl_content_contact` (`contact`, `contact_info`) VALUES
-('name', 'Recover.Hair'),
+('name', 'Recover hair'),
 ('address', 'blk 78 lot 123 bagong ahon, cebu'),
 ('number', '09139549850'),
 ('email', 'hair@me.com');
@@ -219,10 +223,11 @@ CREATE TABLE `tbl_messages` (
 --
 
 INSERT INTO `tbl_messages` (`mess_id`, `mess_sender`, `mess_email`, `mess_content`) VALUES
-(7, 'Prince', 'rocky@wahaha.com', 0x617364666164666164666164666166),
 (9, 'Prince', 'asdfasdfafaf@yahoo.com', 0x617364666166646166),
 (10, 'prince', 'rockybalbonys@gmail.com', 0x7761686173646866686164666861),
-(11, 'prince', 'rockybalbonys@gmail.com', 0x7761686173646866686164666861);
+(11, 'prince', 'rockybalbonys@gmail.com', 0x7761686173646866686164666861),
+(12, 'Prince', 'rocky@wahaha.com', 0x74657374696e67),
+(13, 'Prince', 'rocky@wahaha.com', 0x74657374696e672031);
 
 -- --------------------------------------------------------
 
@@ -308,7 +313,7 @@ ALTER TABLE `tbl_admin_users`
 -- AUTO_INCREMENT for table `tbl_bookings`
 --
 ALTER TABLE `tbl_bookings`
-  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `tbl_booking_services`
@@ -326,7 +331,7 @@ ALTER TABLE `tbl_booking_status`
 -- AUTO_INCREMENT for table `tbl_messages`
 --
 ALTER TABLE `tbl_messages`
-  MODIFY `mess_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `mess_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

@@ -229,7 +229,7 @@ a:visited {
             <form method="POST" class="form-group text-center" required>
     <div class="card-container row img-fluid">
         <?php
-            $services = [
+            /* $services = [
                 ["Haircut (P1100)", "assets/haircut.jpg", "1"],
                 ["Hair Color (P1000)", "assets/color.jpg", "2"],
                 ["Hair Brazilian (P2000)", "assets/brazilian.jpg", "3"],
@@ -239,31 +239,42 @@ a:visited {
                 ["Blow Dry (P1000)", "assets/blowdry.jpg", "7"],
                 ["Treatment (P2500)", "assets/keratin.jpg", "8"],
                 ["Hair Styling (P3500)", "assets/hairstyles.webp", "9"]
-            ];
+            ]; */
+            /* $selectAllUsers = "SELECT * FROM tbl_users
+                     ORDER BY user_id"; 
+                   
+                    $query = mysqli_query($conn, $selectAllUsers); */
+            $selectAllServices = "SELECT * FROM `tbl_booking_services` WHERE isActive = 1";
+            $services = mysqli_query($conn, $selectAllServices);
 
             foreach ($services as $service) {
-        ?>
-        <div class="card col-3 picture-item" onclick="handleImageClick(this, event)"
-        style="background: none;
-        border:1px solid #fff;
-        border-radius: 5px;">
-            <input type="radio" value="<?= $service[2] ?>" id="radioBtn<?= $service[2] ?>" name="service" class="sr-only" required>
-            <label for="radioBtn<?= $service[2] ?>" 
-            style="
-            font-family: 'Poppins', sans-serif;
-            font-size:15px;
-            font-weight:500;
-            padding-bottom:20px;
-            ">
-                <a href="#">
-                    <img src="<?= $service[1] ?>" alt="" class="h-150 w-100">
-                </a>
-                <br>
-                <?= $service[0] ?>
-            </label>
-            <br>
-        </div>
-        <?php } ?>
+                $serviceName = $service['service'];
+                $imagePath = $service['image'];
+                $serviceID = $service['service_id'];
+                $serviceCost = $service['service_cost'];
+            ?>
+                <div class="card col-3 picture-item" onclick="handleImageClick(this, event)"
+                    style="background: none;
+                    border:1px solid #fff;
+                    border-radius: 5px;">
+                    <input type="radio" value="<?= $serviceID ?>" id="radioBtn<?= $serviceID ?>" name="service" class="sr-only" required>
+                    <label for="radioBtn<?= $serviceID ?>" 
+                        style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size:15px;
+                        font-weight:500;
+                        padding-bottom:20px;
+                        ">
+                        <a href="#">
+                            <img src="<?= $imagePath ?>" alt="" class="h-150 w-100">
+                        </a>
+                        <br>
+                        <?= $serviceName . " - P" . $serviceCost?>
+                    </label>
+                    <br>
+                </div>
+            <?php } ?>
+            
     </div>
     <form method="POST" class="booking-container form-group text-center" required>
                 <div class="row justify-content-center mt-3">
