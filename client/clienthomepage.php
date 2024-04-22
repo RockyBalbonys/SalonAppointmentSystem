@@ -13,10 +13,17 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="img/png" href="#">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/884b91a3a4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="script.js" defer></script>
+
+
+
     <style>
         /* Custom styles */
         .card-container {
@@ -24,16 +31,15 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: baseline;
-            margin-top: 0;
         }
 
         .card {
             width: calc(50% - 50px);
             height: auto;
             margin: 50px;
-            border: none;
+            border: 1px solid #b55e5a;
             padding: 4px;
+            box-sizing: border-box;
         }
 
         .booking-container {
@@ -41,7 +47,6 @@
             padding: 50px;
             box-sizing: border-box;
             margin-top: 20px;
-            font-size: 30px;
         }
 
         .booking-container label {
@@ -80,9 +85,10 @@
             width: 300px;
             height: 300px;
             padding: 20px;
+
         }
         body {
-            background: #ffffff;
+            background: #fcf0e1;
             font-size: 16px;
             font-family: 'Ubuntu', sans-serif;
 
@@ -90,16 +96,9 @@
         }
         .navbar {
             background-color: #b55e5a;
-            color: #ffff;
-            padding: 10px;
-            font-family: 'Lucida Calligraphy', cursive;
+            color: #fff;
+            padding: 18px;
         }
-        .navbar .logo a{
-            font-weight: bolder;
-        }
-       .title h1{
-        font-family:'Ubuntu', sans-serif;
-       }
         .container {
             margin-top: 7px;
         }
@@ -111,38 +110,33 @@
             margin-left: 70px;
         }
         .picture-item {
-            margin: 20px;
+            margin: 10px;
             width: calc(30% - 30px);
             height: auto;
             cursor: pointer;
-            max-width: 200px;
-            max-height: 200px;
+            max-width: 300px;
+            max-height: 300px;
         }
         .picture-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 1px;
             transition: border 0.3s ease-in-out;
             max-width: none; 
             max-height: none; 
-            border: 1px solid black;
-        }
-        .picture-item img:hover{
-            border: 3px solid #b55e5a;
-            transition: all 0.3s ease;
         }
 
         .picture-item p {
-            margin-top: 5px;
+            margin-top: 2px;
             font-size: 8px;
         }
         .picture-item.selected img {
-            border: 8px solid #b55e5a; 
+            border: 4px solid #b55e5a; 
         }
 
         .custom-title{
-            font-size: 100px;
+            font size: 100px;
         }
         .col-3 mb-2{
             color: #381d1a;
@@ -152,15 +146,11 @@
         }
 
         .navbar-1 {
+
             font-family: 'Ubuntu', sans-serif;
-            font-weight: 200;
-            font-size: 18px;
-            margin-right: 40px;
-            transition: all 0.3s ease;
-        }
-        .navbar-1:hover{
-            text-decoration: underline;
-            transition: all 0.3s ease;
+            font-size: 20px;
+            margin-right: 30px;
+            
         }
         a:link {
   color: whitesmoke;
@@ -170,7 +160,7 @@
 }
 
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -179,29 +169,16 @@ footer {
     padding: 18px;
     text-align: center;
     margin: 0; 
-    font-family: 'Poppins', sans-serif;
 }
+
+
+/* visited link */
 a:visited {
   color: whitesmoke;
 }
-.btn1{
-    background-color: #b55e5a;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
 
-.btn{
-    background-color: #b55e5a;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-.btn:hover{
-    border: 1px solid #b55e5a;
-    transition: all 0.3s ease;
-}
-</style>
+
+    </style>
 
 
 
@@ -212,24 +189,23 @@ a:visited {
 </head>
 <body>
         <navbar class="navbar">
-        <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="landingpage.php">recover.hair</a></div>
-        
-        <div class="navbar-1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a>
-        
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="logout.php"><button class="btn1 btn-m ms-3 p-2"><i class="bi bi-box-arrow-right"></i> Log Out</a></button></div>
+        <div class="logo"><a href="landingpage.php">recover.hair<span></span></a></div>
+            <div class="navbar-1"><a href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a><span> | </span><a href="logout.php">Logout</a></div>
         </navbar>
-        <div class="container-lg">
+        <div class="container">
         
- <div class="text-center fw-bolder mt-4 mb-2">
-    <div class="title">
-        <h1>Services</h1>
-    </div>    
-    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+        <label><h1>Services</h1></label>
             <div class= "picture-box">
             <form method="POST" class="form-group text-center" required>
-    <div class="card-container row img-fluid">
+    <div class="card-container row">
         <?php
-            /* $services = [
+            $services = [
                 ["Haircut (P1100)", "assets/haircut.jpg", "1"],
                 ["Hair Color (P1000)", "assets/color.jpg", "2"],
                 ["Hair Brazilian (P2000)", "assets/brazilian.jpg", "3"],
@@ -237,63 +213,41 @@ a:visited {
                 ["Hair Perm (P4000)", "assets/permhair.jpg", "5"],
                 ["Hair Extension (P3500)", "assets/extension.webp", "6"],
                 ["Blow Dry (P1000)", "assets/blowdry.jpg", "7"],
-                ["Treatment (P2500)", "assets/keratin.jpg", "8"],
+                ["Keratin Treatment (P2500)", "assets/keratin.jpg", "8"],
                 ["Hair Styling (P3500)", "assets/hairstyles.webp", "9"]
-            ]; */
-            /* $selectAllUsers = "SELECT * FROM tbl_users
-                     ORDER BY user_id"; 
-                   
-                    $query = mysqli_query($conn, $selectAllUsers); */
-            $selectAllServices = "SELECT * FROM `tbl_booking_services` WHERE isActive = 1";
-            $services = mysqli_query($conn, $selectAllServices);
+            ];
 
             foreach ($services as $service) {
-                $serviceName = $service['service'];
-                $imagePath = $service['image'];
-                $serviceID = $service['service_id'];
-                $serviceCost = $service['service_cost'];
-            ?>
-                <div class="card col-3 picture-item" onclick="handleImageClick(this, event)"
-                    style="background: none;
-                    border:1px solid #fff;
-                    border-radius: 5px;">
-                    <input type="radio" value="<?= $serviceID ?>" id="radioBtn<?= $serviceID ?>" name="service" class="sr-only" required>
-                    <label for="radioBtn<?= $serviceID ?>" 
-                        style="
-                        font-family: 'Poppins', sans-serif;
-                        font-size:15px;
-                        font-weight:500;
-                        padding-bottom:20px;
-                        ">
-                        <a href="#">
-                            <img src="<?= $imagePath ?>" alt="" class="h-150 w-100">
-                        </a>
-                        <br>
-                        <?= $serviceName . " - P" . $serviceCost?>
-                    </label>
-                    <br>
-                </div>
-            <?php } ?>
-            
+        ?>
+        <div class="card col-3 picture-item" onclick="handleImageClick(this, event)">
+            <input type="radio" value="<?= $service[2] ?>" id="radioBtn<?= $service[2] ?>" name="service" class="sr-only" required>
+            <label for="radioBtn<?= $service[2] ?>">
+                <a href="#">
+                    <img src="<?= $service[1] ?>" alt="" class="h-150 w-100">
+                </a>
+                <br>
+                <?= $service[0] ?>
+            </label>
+            <br>
+        </div>
+        <?php } ?>
     </div>
+
     <form method="POST" class="booking-container form-group text-center" required>
-                <div class="row justify-content-center mt-3">
+                <div class="row justify-content-center">
                     <div class="col-12 text-center">
-                        <label for="" class="text-center" 
-                        style="font-family: 'Poppins', sans-serif;">
-                        Select Time and Date:</label>
+                        <label for="" class="text-center">Select Time and Date:</label>
                     </div>
-                    <div class="col-12 text-center mb-100" style="font-family:'Poppins', sans-serif">
+                    <div class="col-12 text-center mb-100">
                         <input name="book_date" type="date" class="mb-2" required>
                         <select name="book_time" type="text" class="mb-2">
-                    <option value="select time" selected>Select time</option>
                     <option value="9:00 AM">9:00 am - 11:00 am</option>
                     <option value="11:00 AM">11:00 am - 1:00 pm</option>
                     <option value="1:00 PM">1:00 pm - 3:00 pm</option>
                     <option value="3:00 PM">3:00 pm - 5:00 pm</option>
                     <option value="5:00 PM">5:00 pm - 7:00 pm</option>
                 </select>
-                <input type="submit" value="Book" class="btn mb-2">
+                <input type="submit" value="Book" class="btn btn-primary mb-2">
             </div>
         </div>
     </div>
@@ -325,7 +279,7 @@ if (isset($_POST["book_date"])) {
                             VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
                 
                 if (mysqli_query($conn, $book)) {
-                    echo "<script> alert('Booked successfully! You can check it to your profile. Thank you!')</script>";
+                    echo "<script> alert('Booked successfully!')</script>";
                 } else {
                     echo "<script> alert('Error booking!')</script>";
                 }
@@ -342,19 +296,16 @@ if (isset($_POST["book_date"])) {
         </div>
             <!--footer-->
 <footer>
-    <div class="footer-text text-start" >
-    <i class="bi bi-c-circle"></i>
-    Recover Hair.
+    <div class="footer-text" >
+        <span class="far fa-copyright"></span>Recover Hair.
     </div>
 </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <script>
-
-        //Tooltip
-        const tooltips = document.querySelectorAll('.tt')
-      tooltips.forEach(t =>{
-        new bootstrap.Tooltip(t)
-      })         
+            
             function handleImageClick(clickedElement, event) {
     // Prevent the default behavior of the click event
     event.preventDefault();
@@ -381,7 +332,6 @@ if (isset($_POST["book_date"])) {
 
 
         </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 </html>
