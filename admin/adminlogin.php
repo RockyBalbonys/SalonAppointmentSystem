@@ -16,7 +16,13 @@
     <style>
         body{
             padding: 60px 0;
+            background: #fcf0e1;
         }
+        .btn btn-sm btn-dark{
+            color: #b55e5a;
+        }
+
+
     </style>
 </head>
 <body>
