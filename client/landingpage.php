@@ -273,61 +273,36 @@ include "session.php";
         </div>
 </section>
 
+
+<?php
+// Fetching data from the database
+$sql = "SELECT * FROM tbl_booking_services WHERE isActive = 1";
+$result = $conn->query($sql);
+?>
+
 <!--Services-->
 <section class="project" id="services">
     <div class="width">
         <h2 class="title">Our Services</h2>
         <div class="carousel owl-carousel">
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+            ?>
             <div class="card">
-            <div class="box">
-                <a href="#1">
-                <img src="assets/haircut.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Haircut</div>
+                <div class="box">
+                    <a href="#<?php echo $row['service_id']; ?>">
+                        <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['service']; ?>" width="600" height="600">
+                    </a>
+                    <div class="text"><?php echo $row['service']; ?></div>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#3">
-                <img src="assets/color.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Hair Color</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#4">
-                <img src="assets/brazilian.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Hair Brazilian</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#5">
-                <img src="assets/highlights.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Highlights</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#6">
-                <img src="assets/extension.webp" alt="" width="600" height="600"></a>
-                <div class="text">Hair Extension</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#7">
-                <img src="assets/blowdry.jpg" alt="" width="600" height="600"></a>
-                <div class="text">Blow Dry</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="box">
-                <a href="#8">
-                <img src="assets/hairstyles.webp" alt="" width="600" height="600"></a>
-                <div class="text">Hairstyles</div>
-            </div>
-        </div>
-
+            <?php
+                }
+            } else {
+                echo "No services found";
+            }
+            ?>
         </div>
     </div>
 </section>

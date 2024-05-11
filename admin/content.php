@@ -13,6 +13,7 @@
     <title>Edit Content</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -133,55 +134,151 @@
         </div>
     </div>
 
-    <!-- Table for displaying services -->
     <div class="mt-4">
-        <h2>Services</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Service</th>
-                    <th>Cost</th>
-                    <th class="service-status">Active</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    // Query to fetch services data
-                    $query = "SELECT * FROM tbl_booking_services";
-                    $result = mysqli_query($conn, $query);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $serviceID = $row['service_id'];
-                        $serviceName = $row['service'];
-                        $serviceCost = $row['service_cost'];
-                        $isActive = $row['isActive'];
-                ?>
-                <tr data-service-id="<?= $serviceID ?>">
-                    <form class="update-service-form" method="post" action="update_service.php">
-                        <input type="hidden" class="service-id-input" name="service_id" value="<?= $serviceID ?>">
-                        <td>
-                            <span class="service-name-view"><?= $serviceName ?></span>
-                            <input type="text" class="service-name-edit form-control form-control-sm d-none" value="<?= $serviceName ?>">
-                            <input type="hidden" class="service-name-input" name="service_name" value="">
-                        </td>
-                        <td>
-                            <span class="service-cost-view"><?= $serviceCost ?></span>
-                            <input type="number" class="service-cost-edit form-control form-control-sm d-none" value="<?= $serviceCost ?>">
-                            <input type="hidden" class="service-cost-input" name="service_cost" value="">
-                        </td>
-                        <td class="service-status"><?= $isActive ? 'Yes' : 'No' ?></td>
-                        <td>
-                            <a href="#" class="btn btn-primary btn-sm edit-service">Edit</a>
-                            <button type="button" class="btn btn-sm <?= $isActive ? 'btn-danger' : 'btn-success' ?> toggle-service"><?= $isActive ? 'Deactivate' : 'Activate' ?></button>
-                        </td>
-                    </form>
-                </tr>
-                <?php
-                    }
-                ?>
-            </tbody>
-        </table>
+    <h2>Services</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Cost</th>
+                <th class="service-status">Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                // Query to fetch services data
+                $query = "SELECT * FROM tbl_booking_services";
+                $result = mysqli_query($conn, $query);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $serviceID = $row['service_id'];
+                    $serviceName = $row['service'];
+                    $serviceCost = $row['service_cost'];
+                    $isActive = $row['isActive'];
+            ?>
+            <tr data-service-id="<?= $serviceID ?>">
+                <form class="update-service-form" method="post" action="update_service.php">
+                    <input type="hidden" class="service-id-input" name="service_id" value="<?= $serviceID ?>">
+                    <td>
+                        <span class="service-name-view"><?= $serviceName ?></span>
+                        <input type="text" class="service-name-edit form-control form-control-sm d-none" value="<?= $serviceName ?>">
+                        <input type="hidden" class="service-name-input" name="service_name" value="">
+                    </td>
+                    <td>
+                        <span class="service-cost-view"><?= $serviceCost ?></span>
+                        <input type="number" class="service-cost-edit form-control form-control-sm d-none" value="<?= $serviceCost ?>">
+                        <input type="hidden" class="service-cost-input" name="service_cost" value="">
+                    </td>
+                    <td class="service-status"><?= $isActive ? 'Yes' : 'No' ?></td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm edit-service">Edit</a>
+                        <button type="button" class="btn btn-sm <?= $isActive ? 'btn-danger' : 'btn-success' ?> toggle-service"><?= $isActive ? 'Deactivate' : 'Activate' ?></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-service" data-service-id="<?= $serviceID ?>" data-service-name="<?= $serviceName ?>">Delete</button>
+                    </td>
+                </form>
+            </tr>
+            <?php
+                }
+            ?>
+        </tbody>
+    </table>
+
+    <!-- Add Service Button -->
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addServiceModal">Add Service</button>
+
+</div>
+
+<!-- Delete Service Modal -->
+<div class="modal fade" id="deleteServiceModal" tabindex="-1" role="dialog" aria-labelledby="deleteServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteServiceModalLabel">Delete Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span class="service-name-to-delete"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger confirm-delete-service">Delete</button>
+            </div>
+        </div>
     </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        // Delete Service Button Clicked
+        $('.delete-service').on('click', function(){
+            var serviceID = $(this).data('service-id');
+            var serviceName = $(this).data('service-name');
+            $('.service-name-to-delete').text(serviceName);
+            $('#deleteServiceModal').modal('show');
+            $('.confirm-delete-service').data('service-id', serviceID);
+        });
+
+        // Confirm Delete Service
+        $('.confirm-delete-service').on('click', function(){
+            var serviceID = $(this).data('service-id');
+            // AJAX call to delete service
+            $.ajax({
+                type: 'POST',
+                url: 'delete_service.php',
+                data: {service_id: serviceID},
+                success: function(response){
+                    if(response == 'success'){
+                        $('#deleteServiceModal').modal('hide');
+                        // Reload the page or remove the deleted row
+                        // location.reload();
+                        $('tr[data-service-id="' + serviceID + '"]').remove();
+                    } else {
+                        alert('Failed to delete service');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Add Service Modal -->
+<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addServiceModalLabel">Add Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="addServiceForm" method="post" action="add_service.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="serviceName">Service Name</label>
+                        <input type="text" class="form-control" id="serviceName" name="service_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceCost">Service Cost</label>
+                        <input type="number" class="form-control" id="serviceCost" name="service_cost">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceImage">Image</label>
+                        <input type="file" class="form-control-file" id="serviceImage" name="service_image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Service</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 
     <script>
         $(document).ready(function() {
@@ -261,6 +358,9 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
