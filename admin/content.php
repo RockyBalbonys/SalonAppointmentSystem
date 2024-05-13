@@ -138,49 +138,53 @@
     <h2>Services</h2>
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Service</th>
-                <th>Cost</th>
-                <th class="service-status">Active</th>
-                <th>Actions</th>
-            </tr>
+                <tr>
+                    <th>Service</th>
+                    <th>Cost</th>
+                    <th class="service-status">Active</th>
+                    <th>Edit Photo</th>
+                    <th>Actions</th>
+                </tr>
         </thead>
         <tbody>
-            <?php
-                // Query to fetch services data
-                $query = "SELECT * FROM tbl_booking_services";
-                $result = mysqli_query($conn, $query);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $serviceID = $row['service_id'];
-                    $serviceName = $row['service'];
-                    $serviceCost = $row['service_cost'];
-                    $isActive = $row['isActive'];
-            ?>
-            <tr data-service-id="<?= $serviceID ?>">
-                <form class="update-service-form" method="post" action="update_service.php">
-                    <input type="hidden" class="service-id-input" name="service_id" value="<?= $serviceID ?>">
-                    <td>
-                        <span class="service-name-view"><?= $serviceName ?></span>
-                        <input type="text" class="service-name-edit form-control form-control-sm d-none" value="<?= $serviceName ?>">
-                        <input type="hidden" class="service-name-input" name="service_name" value="">
-                    </td>
-                    <td>
-                        <span class="service-cost-view"><?= $serviceCost ?></span>
-                        <input type="number" class="service-cost-edit form-control form-control-sm d-none" value="<?= $serviceCost ?>">
-                        <input type="hidden" class="service-cost-input" name="service_cost" value="">
-                    </td>
-                    <td class="service-status"><?= $isActive ? 'Yes' : 'No' ?></td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-sm edit-service">Edit</a>
-                        <button type="button" class="btn btn-sm <?= $isActive ? 'btn-danger' : 'btn-success' ?> toggle-service"><?= $isActive ? 'Deactivate' : 'Activate' ?></button>
-                        <button type="button" class="btn btn-danger btn-sm delete-service" data-service-id="<?= $serviceID ?>" data-service-name="<?= $serviceName ?>">Delete</button>
-                    </td>
-                </form>
-            </tr>
-            <?php
-                }
-            ?>
-        </tbody>
+                <?php
+                    // Query to fetch services data
+                    $query = "SELECT * FROM tbl_booking_services";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $serviceID = $row['service_id'];
+                        $serviceName = $row['service'];
+                        $serviceCost = $row['service_cost'];
+                        $isActive = $row['isActive'];
+                ?>
+                <tr data-service-id="<?= $serviceID ?>">
+                    <form class="update-service-form" method="post" action="update_service.php">
+                        <input type="hidden" class="service-id-input" name="service_id" value="<?= $serviceID ?>">
+                        <td>
+                            <span class="service-name-view"><?= $serviceName ?></span>
+                            <input type="text" class="service-name-edit form-control form-control-sm d-none" value="<?= $serviceName ?>">
+                            <input type="hidden" class="service-name-input" name="service_name" value="">
+                        </td>
+                        <td>
+                            <span class="service-cost-view"><?= $serviceCost ?></span>
+                            <input type="number" class="service-cost-edit form-control form-control-sm d-none" value="<?= $serviceCost ?>">
+                            <input type="hidden" class="service-cost-input" name="service_cost" value="">
+                        </td>
+                        <td class="service-status"><?= $isActive ? 'Yes' : 'No' ?></td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm edit-photo">Edit Photo</button>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-sm edit-service">Edit</a>
+                            <button type="button" class="btn btn-sm <?= $isActive ? 'btn-danger' : 'btn-success' ?> toggle-service"><?= $isActive ? 'Deactivate' : 'Activate' ?></button>
+                            <button type="button" class="btn btn-danger btn-sm delete-service" data-service-id="<?= $serviceID ?>" data-service-name="<?= $serviceName ?>">Delete</button>
+                        </td>
+                    </form>
+                </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
     </table>
 
     <!-- Add Service Button -->
@@ -208,9 +212,40 @@
         </div>
     </div>
 </div>
+<!-- edit photo modal -->
+<div class="modal fade" id="editPhotoModal" tabindex="-1" role="dialog" aria-labelledby="editPhotoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPhotoModalLabel">Edit Photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editPhotoForm" method="post" action="edit_photo.php" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input type="hidden" class="service-id-input" name="service_id" value="">
+                        <div class="form-group">
+                            <label for="servicePhoto">Service Photo</label>
+                            <input type="file" class="form-control-file" id="servicePhoto" name="service_photo">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Photo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <script>
     $(document).ready(function(){
+        $('.edit-photo').on('click', function(){
+                var serviceID = $(this).closest('tr').data('service-id');
+                $('#editPhotoModal').modal('show');
+                $('.service-id-input').val(serviceID);
+            });
         // Delete Service Button Clicked
         $('.delete-service').on('click', function(){
             var serviceID = $(this).data('service-id');
