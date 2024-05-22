@@ -116,7 +116,7 @@
             <h2>Welcome, Admin!</h2>
         </div>
 
-        <div class="container row justify-content-center align-items-center text-center mt-5 mb-5 border border-dark rounded p-4">
+        <div class="container row justify-content-center align-items-center text-center mt-5 mb-5 ms-5 border border-dark rounded p-4">
             <div class=" lead text-center col-6">
             Upcoming Appointments: 
             <div class="text-center h1"><?php 

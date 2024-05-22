@@ -54,6 +54,7 @@
         font-size: 20px;
         margin-left: 10px; 
     }
+    
 
 
 
@@ -71,7 +72,7 @@
         ?></div>
             <hr style="border: 1px solid black;">
                     <ul class="nav flex-column mt-4">
-                        <li class="nav-item text-dark">
+                        <li class="nav-item text-light">
                             <a class="nav-link text-dark fw-bold" href="adminpage.php">Bookings</a>
                         </li>
                         <li class="nav-item">
@@ -97,9 +98,9 @@
             <h2>Edit Content</h2>
             <form method="POST">
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Content..." id="floatingTextarea" style="height: 100px" name="inputAboutContent"></textarea>
+                    <textarea class="form-control" placeholder="Content..." id="floatingTextarea" style="height: 100px;" name="inputAboutContent"></textarea>
                     <label for="floatingTextarea">Update About Content</label>
-                    <input type="submit">
+                    <input type="submit" class="btn btn-success mt-3 mb-5">
                     <?php
                         if (isset($_POST["inputAboutContent"])) {
                             $inputAboutContent = $_POST["inputAboutContent"];
@@ -115,10 +116,12 @@
                 </div>
             </form>
             <div>
-                <div>Edit Contact Info</div>
-                <form method="POST">
-                    <input type="text" name="editContactName" placeholder="Name...">
-                    <input type="submit">
+                <div>
+                    <h2> Edit Contact Info</h2>
+                </div>
+                <form method="POST" class="mb-2">
+                    <input type="text" name="editContactName" placeholder="Name..." class="rounded">
+                    <input type="submit" class="btn-success">
                     <?php
                         if (isset($_POST["editContactName"])) {
                             $editContactName = $_POST["editContactName"];
@@ -131,9 +134,9 @@
                         }
                     ?>
                 </form>
-                <form method="POST">
-                    <input type="text" name="editContactAddress" placeholder="Address...">
-                    <input type="submit">
+                <form method="POST" class="mb-2">
+                    <input type="text" name="editContactAddress" placeholder="Address..." class="rounded">
+                    <input type="submit" class="btn-success">
                     <?php
                         if (isset($_POST["editContactAddress"])) {
                             $editContactAddress = $_POST["editContactAddress"];
@@ -147,9 +150,9 @@
                         }
                     ?>
                 </form>
-                <form method="POST">
-                    <input type="text" name="editContactNumber" placeholder="Number...">
-                    <input type="submit">
+                <form method="POST" class="mb-2">
+                    <input type="text" name="editContactNumber" placeholder="Number..." class="rounded">
+                    <input type="submit" class="btn-success">
                     <?php
                         if (isset($_POST["editContactNumber"])) {
                             $editContactNumber = $_POST["editContactNumber"];
@@ -164,8 +167,8 @@
                     ?>
                 </form>
                 <form method="POST">
-                    <input type="text" name="editContactEmail" placeholder="Email...">
-                    <input type="submit">
+                    <input type="text" name="editContactEmail" placeholder="Email..." class="rounded">
+                    <input type="submit" class="btn-success">
                     <?php
                         if (isset($_POST["editContactEmail"])) {
                             $editContactEmail = $_POST["editContactEmail"];
@@ -179,50 +182,53 @@
                     ?>
                 </form>
 
-                    <div class="content">
-                        <div class="text-center mt-5">
-                            <h2>Stylists</h2>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Stylist ID</th>
-                                        <th>Stylist Name</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $query = "SELECT * FROM tbl_stylists";
-                                        $result = mysqli_query($conn, $query);
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $stylistID = $row['stylist_id'];
-                                            $stylistName = $row['stylist_name'];
-                                    ?>
-                                    <tr data-stylist-id="<?= $stylistID ?>">
-                                        <td><?= $stylistID ?></td>
-                                        <td>
-                                            <span class="stylist-name-view"><?= $stylistName ?></span>
-                                            <input type="text" class="stylist-name-edit form-control form-control-sm d-none" value="<?= $stylistName ?>">
-                                            <input type="hidden" class="stylist-name-input" name="stylist_name" value="">
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-secondary btn-sm edit-stylist">Edit</button>
-                                            <button type="submit" class="btn btn-primary btn-sm save-stylist d-none">Save</button>
-                                            <button type="button" class="btn btn-danger btn-sm delete-stylist" data-toggle="modal" data-target="#deleteStylistModal" data-stylist-id="<?= $stylistID ?>">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStylistModal">Add New Stylist</button>
-                        </div>
-                    </div>
+                <div class="content">
+    <div class="d-flex flex-column align-items-center mt-5 me-5">
+        <h2>Stylists</h2>
+        <div class="table-responsive">
+            <table class="table table-striped m-auto rounder-4">
+                <thead>
+                    <tr>
+                        <th>Stylist ID</th>
+                        <th>Stylist Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $query = "SELECT * FROM tbl_stylists";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $stylistID = $row['stylist_id'];
+                            $stylistName = $row['stylist_name'];
+                    ?>
+                    <tr data-stylist-id="<?= $stylistID ?>">
+                        <td><?= $stylistID ?></td>
+                        <td>
+                            <span class="stylist-name-view"><?= $stylistName ?></span>
+                            <input type="text" class="stylist-name-edit form-control form-control-sm d-none" value="<?= $stylistName ?>">
+                            <input type="hidden" class="stylist-name-input" name="stylist_name" value="">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm edit-stylist">Edit</button>
+                            <button type="submit" class="btn btn-primary btn-sm save-stylist d-none">Save</button>
+                            <button type="button" class="btn btn-danger btn-sm delete-stylist" data-toggle="modal" data-target="#deleteStylistModal" data-stylist-id="<?= $stylistID ?>">Delete</button>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-success mt-3" data-toggle="modal" data-target="#addStylistModal">Add New Stylist</button>
+    </div>
+</div>
 
 
             </div>  
         </div>
+        
     </div>
 <div class= "content">
     <div class="text-center mt-5">
@@ -279,7 +285,7 @@
     </table>
 
     <!-- Add Service Button -->
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addServiceModal">Add Service</button>
+    <button type="button" class="btn btn-success mb-5" data-toggle="modal" data-target="#addServiceModal">Add Service</button>
 
 </div>
 
