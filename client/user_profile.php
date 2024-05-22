@@ -97,7 +97,7 @@
 <body>
 
             <navbar class="navbar">
-                <div class="logo"><a class="fw-bolder" href="landingpage.php">recover.hair</a></div>
+                <div class="logo"><a class="fw-bolder" href="index.php">recover.hair</a></div>
                 <div class= "navbar-2 d-sm-none d-md-block"><a href="clienthomepage.php">Services</a>
                 <a href="logout.php"><button class= "btn1 btn-m ms-3 p-2"><i class="bi bi-box-arrow-right"></i> Log Out</button></a></div>
             </navbar>

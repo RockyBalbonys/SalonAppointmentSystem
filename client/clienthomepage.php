@@ -212,7 +212,7 @@ a:visited {
 </head>
 <body>
         <navbar class="navbar">
-        <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="landingpage.php">recover.hair</a></div>
+        <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="index.php">recover.hair</a></div>
         
         <div class="navbar-1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a>
         
