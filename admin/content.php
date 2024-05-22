@@ -43,6 +43,10 @@
         padding: 20px;
     }
 
+    .content1 {
+        margin-left: 100px;
+        padding: 20px;
+    }
 
  
     .logo{
@@ -175,7 +179,7 @@
                     ?>
                 </form>
 
-                <div class="content">
+                <div class="content1">
     <div class="d-flex flex-column align-items-center mt-5 me-5">
         <h2>Stylists</h2>
         <div class="table-responsive">
