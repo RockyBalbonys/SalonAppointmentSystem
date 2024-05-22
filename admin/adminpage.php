@@ -172,8 +172,10 @@
             ON tbl_bookings.booking_service = tbl_booking_services.service_id
             JOIN tbl_booking_status
             ON tbl_bookings.booking_status = tbl_booking_status.booking_status_id
+            JOIN tbl_stylists
+            ON  tbl_bookings.booking_stylist = tbl_stylists.stylist_id
             ORDER BY booking_date ASC, booking_time ASC;"; 
-                   
+
             $query = mysqli_query($conn, $selectAllAppointments);
                     
             if (mysqli_query($conn, $selectAllAppointments)) {
@@ -186,6 +188,7 @@
                                     <th>Time</th>
                                     <th>Service Chosen</th>
                                     <th>Status</th>
+                                    <th>Stylist</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -201,13 +204,12 @@
                         echo '<td class="text-center">' . $formattedTime . '</td>';
                         echo '<td class="text-center">' . $row["service"] . '</td>';
                         echo '<td class="text-center">' . $row["booking_status"] . '</td>';
+                        echo '<td class="text-center">' . $row["stylist_name"] . '</td>';
                         echo '<td class="text-center">' . "<div class='btn btn-sm px-2 delete-btn btn-outline-dark'>Done</div>" . '</td>';
                         echo '</tr>';
                     }
-   
                     echo '</tbody>
                         </table>';
-   
                 }
             ?>
         </div>

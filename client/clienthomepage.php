@@ -212,7 +212,7 @@ a:visited {
 </head>
 <body>
         <navbar class="navbar">
-        <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="landingpage.php">recover.hair</a></div>
+        <div class="logo"><a class="text-light link-offset-2 link-underline link-underline-opacity-0" href="index.php">recover.hair</a></div>
         
         <div class="navbar-1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="user_profile.php"><?php echo $_SESSION["user_firstname"]; ?></a>
         
@@ -229,21 +229,6 @@ a:visited {
             <form method="POST" class="form-group text-center" required>
     <div class="card-container row img-fluid">
         <?php
-            /* $services = [
-                ["Haircut (P1100)", "assets/haircut.jpg", "1"],
-                ["Hair Color (P1000)", "assets/color.jpg", "2"],
-                ["Hair Brazilian (P2000)", "assets/brazilian.jpg", "3"],
-                ["Hair Highlights (P1400)", "assets/highlights.jpg", "4"],
-                ["Hair Perm (P4000)", "assets/permhair.jpg", "5"],
-                ["Hair Extension (P3500)", "assets/extension.webp", "6"],
-                ["Blow Dry (P1000)", "assets/blowdry.jpg", "7"],
-                ["Treatment (P2500)", "assets/keratin.jpg", "8"],
-                ["Hair Styling (P3500)", "assets/hairstyles.webp", "9"]
-            ]; */
-            /* $selectAllUsers = "SELECT * FROM tbl_users
-                     ORDER BY user_id"; 
-                   
-                    $query = mysqli_query($conn, $selectAllUsers); */
             $selectAllServices = "SELECT * FROM `tbl_booking_services` WHERE isActive = 1";
             $services = mysqli_query($conn, $selectAllServices);
 
@@ -281,54 +266,85 @@ a:visited {
                     <div class="col-12 text-center">
                         <label for="" class="text-center" 
                         style="font-family: 'Poppins', sans-serif;">
-                        Select Time and Date:</label>
+                        Select Time, Date, and Stylist:</label>
                     </div>
                     <div class="col-12 text-center mb-100" style="font-family:'Poppins', sans-serif">
                         <input name="book_date" type="date" class="mb-2" required>
-                        <select name="book_time" type="text" class="mb-2">
-                    <option value="select time" selected>Select time</option>
-                    <option value="9:00 AM">9:00 am - 11:00 am</option>
-                    <option value="11:00 AM">11:00 am - 1:00 pm</option>
-                    <option value="1:00 PM">1:00 pm - 3:00 pm</option>
-                    <option value="3:00 PM">3:00 pm - 5:00 pm</option>
-                    <option value="5:00 PM">5:00 pm - 7:00 pm</option>
-                </select>
-                <input type="submit" value="Book" class="btn mb-2">
-            </div>
+                            <select name="book_time" type="text" class="mb-2">
+                                <option value="select time" selected>Select time</option>
+                                <option value="9:00 AM">9:00 am - 11:00 am</option>
+                                <option value="11:00 AM">11:00 am - 1:00 pm</option>
+                                <option value="1:00 PM">1:00 pm - 3:00 pm</option>
+                                <option value="3:00 PM">3:00 pm - 5:00 pm</option>
+                                <option value="5:00 PM">5:00 pm - 7:00 pm</option>
+                            </select>
+                            <?php
+                                $query = "SELECT stylist_id, stylist_name FROM tbl_stylists";
+                                $result = mysqli_query($conn, $query);
+
+                                $stylists = [];
+                                if ($result && mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $stylists[] = $row;
+                                    }
+                                }
+                                ?>
+                        <select name="book_stylist" type="text" class="mb-2">
+                            <option value="select stylist" selected>Select Stylist</option>
+                            <?php foreach ($stylists as $stylist): ?>
+                        <option value="<?= htmlspecialchars($stylist['stylist_id']) ?>"><?= htmlspecialchars($stylist['stylist_name']) ?></option>
+                    <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Book" class="btn mb-2">
+                    </div>
         </div>
     </div>
 </form>
 
-           
-
-            <?php
+<?php
 if (isset($_POST["book_date"])) {
     $service = $_POST["service"];
     $book_date = $_POST["book_date"];
     $book_time = $_POST["book_time"];
+    $book_stylist = $_POST["book_stylist"];
     $book_weekday = date('w', strtotime($book_date));
     $formattedbookdate = strtotime($book_date);
     $dateTime = new DateTime($book_time);
-    $formattedbooktime = $dateTime->format('h:i a');
+    $formattedbooktime = $dateTime->format('H:i:s'); // Ensure the format matches the database
     $currentdate = strtotime(date("Y-m-d"));
 
     if ($book_weekday != 0) {
         if ($formattedbookdate > $currentdate) {
             // Check if there is an existing booking with the same date and time
-            $existingBookingQuery = "SELECT * FROM `tbl_bookings` WHERE `booking_date` = '$book_date' AND `booking_time` = '$formattedbooktime'";
-            $existingBookingResult = mysqli_query($conn, $existingBookingQuery);
-            if (mysqli_num_rows($existingBookingResult) > 0) {
-                echo "<script> alert('Booking conflict! Please choose a different date and time.')</script>";
-            } else {
-                // If no conflict, proceed with the booking
-                $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`) 
-                            VALUES ('{$_SESSION["user_id"]}', '$service','$book_date', '$book_time')";
-                
-                if (mysqli_query($conn, $book)) {
-                    echo "<script> alert('Booked successfully! You can check it to your profile. Thank you!')</script>";
+            $existingBookingQuery = "SELECT * FROM `tbl_bookings` WHERE `booking_date` = ? AND `booking_time` = ? AND `booking_stylist` = ?";
+            if ($stmt = mysqli_prepare($conn, $existingBookingQuery)) {
+                mysqli_stmt_bind_param($stmt, "sss", $book_date, $formattedbooktime, $book_stylist);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) > 0) {
+                    echo "<script> alert('Booking conflict! Please choose a different date/time/stylist.')</script>";
                 } else {
-                    echo "<script> alert('Error booking!')</script>";
+                    // If no conflict, proceed with the booking
+                    $book = "INSERT INTO `tbl_bookings`(`booking_user`, `booking_service`, `booking_date`, `booking_time`, `booking_stylist`) 
+                                VALUES (?, ?, ?, ?, ?)";
+                    
+                    if ($insert_stmt = mysqli_prepare($conn, $book)) {
+                        mysqli_stmt_bind_param($insert_stmt, "sssss", $_SESSION["user_id"], $service, $book_date, $formattedbooktime, $book_stylist);
+                        
+                        if (mysqli_stmt_execute($insert_stmt)) {
+                            echo "<script> alert('Booked successfully! You can check it on your profile. Thank you!')</script>";
+                        } else {
+                            echo "<script> alert('Error booking!')</script>";
+                        }
+                        
+                        mysqli_stmt_close($insert_stmt);
+                    }
                 }
+
+                mysqli_stmt_close($stmt);
+            } else {
+                echo "<script> alert('Failed to prepare the SQL statement.')</script>";
             }
         } else {
             echo "<script> alert('Invalid Date! Please try again.')</script>";
@@ -338,6 +354,7 @@ if (isset($_POST["book_date"])) {
     }
 }
 ?>
+
 
         </div>
             <!--footer-->

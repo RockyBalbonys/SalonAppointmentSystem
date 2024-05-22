@@ -7,6 +7,6 @@
 </head>
 <body>
     <H1>404 NOT FOUND!</H1>
-    <a href="landingpage.php">go to safe page</a>
+    <a href="index.php">go to safe page</a>
 </body>
 </html>

@@ -97,7 +97,7 @@
 <body>
 
             <navbar class="navbar">
-                <div class="logo"><a class="fw-bolder" href="landingpage.php">recover.hair</a></div>
+                <div class="logo"><a class="fw-bolder" href="index.php">recover.hair</a></div>
                 <div class= "navbar-2 d-sm-none d-md-block"><a href="clienthomepage.php">Services</a>
                 <a href="logout.php"><button class= "btn1 btn-m ms-3 p-2"><i class="bi bi-box-arrow-right"></i> Log Out</button></a></div>
             </navbar>
@@ -115,17 +115,19 @@
                 echo "<div class='h1'>" . $user_firstname . ' ' . "$user_lastname </div>";
                 echo "<div class='label'> $user_phonenumber </div>";
 
-                 echo $_SESSION["user_firstname"]. "'s Upcoming Appointment(s)";
-                 $selectAllAppointments = "SELECT * FROM tbl_bookings 
-                 JOIN tbl_users 
-                 ON tbl_bookings.booking_user = tbl_users.user_id
-                 JOIN tbl_booking_services
-                 ON tbl_bookings.booking_service = tbl_booking_services.service_id
-                 WHERE $user_id = tbl_bookings.booking_user
-                 ORDER BY booking_date ASC, booking_time ASC;";
-                 $query = mysqli_query($conn, $selectAllAppointments);
-                 
-                 if (mysqli_query($conn, $selectAllAppointments)) {
+                echo $_SESSION["user_firstname"]. "'s Upcoming Appointment(s)";
+                $selectAllAppointments = "SELECT * FROM tbl_bookings 
+                JOIN tbl_users 
+                ON tbl_bookings.booking_user = tbl_users.user_id
+                JOIN tbl_booking_services
+                ON tbl_bookings.booking_service = tbl_booking_services.service_id
+                JOIN tbl_stylists
+                ON  tbl_bookings.booking_stylist = tbl_stylists.stylist_id
+                WHERE $user_id = tbl_bookings.booking_user
+                ORDER BY booking_date ASC, booking_time ASC;";
+                $query = mysqli_query($conn, $selectAllAppointments);
+                
+                if (mysqli_query($conn, $selectAllAppointments)) {
                     echo '<table class="table table-bordered text-center mt-5" style="">
                                 <thead>
                                     <tr style="border: 3px solid #fff">
@@ -143,6 +145,9 @@
                                         color: #fff;">Service Chosen</th>
                                         <th style="border: 3px solid #fff;
                                         background-color: #b55e5a;
+                                        color: #fff;">Stylist</th>
+                                        <th style="border: 3px solid #fff;
+                                        background-color: #b55e5a;
                                         color: #fff;">Actions</th>
                                     </tr>
                                 </thead>
@@ -156,6 +161,7 @@
                                     $formattedTime = date('h:i A', strtotime($row["booking_time"]));
                                     echo '<td style="border: 2px solid #fff">' . $formattedTime . '</td>';
                                     echo '<td style="border: 2px solid #fff">' . $row["service"] . '</td>';
+                                    echo '<td style="border: 2px solid #fff">' . $row["stylist_name"] . '</td>';
                                     echo '<td style="border: 2px solid #fff">';
                                     echo '<form method="post" action="cancel_appointment.php">';
                                     echo '<input type="hidden" name="booking_id" value="' . $row["booking_id"] . '">';

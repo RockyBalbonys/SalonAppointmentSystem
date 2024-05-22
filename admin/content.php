@@ -14,14 +14,56 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    body {
+        background-color: #fcf0e1;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    .sidebar {
+        background-color: #f8d7da; 
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; 
+        padding: 20px;
+    }
+
+    .sidebar a {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+
+
+ 
+    .logo{
+        font-family: 'Lucida Calligraphy', cursive;
+        margin-top: 20px; 
+        margin-bottom: 30px;
+        color: #381d1a;
+        font-weight: 600;
+        font-size: 20px;
+        margin-left: 10px; 
+    }
+
+
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container-lg">
-                <span class="fw-bold text-dark align-center justify-content-start d-none d-md-inline">Admin Page</span>
-                <div class="justify-content-end d-none d-sm-inline">
-                    <ul class="nav justify-content-end">
+    <div class="sidebar">
+            <div class="logo">recover.hair</div>
+            <hr style="border: 1px solid black;">
+                    <ul class="nav flex-column mt-4">
                         <li class="nav-item text-dark">
                             <a class="nav-link text-dark fw-bold" href="adminpage.php">Bookings</a>
                         </li>
@@ -41,11 +83,10 @@
                             <a class="btn btn-dark" href="logout.php">Log Out</a>
                         </li>
                     </ul>
-                </div>
             </div>      
         </nav>
-
-        <div class="text-center mt-4 mb-4">
+        <div class= "content">
+        <div class="text-center mt-5">
             <h2>Edit Content</h2>
             <form method="POST">
                 <div class="form-floating">
@@ -130,11 +171,54 @@
                         }
                     ?>
                 </form>
+
+                    <div class="content">
+                        <div class="text-center mt-5">
+                            <h2>Stylists</h2>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Stylist ID</th>
+                                        <th>Stylist Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $query = "SELECT * FROM tbl_stylists";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $stylistID = $row['stylist_id'];
+                                            $stylistName = $row['stylist_name'];
+                                    ?>
+                                    <tr data-stylist-id="<?= $stylistID ?>">
+                                        <td><?= $stylistID ?></td>
+                                        <td>
+                                            <span class="stylist-name-view"><?= $stylistName ?></span>
+                                            <input type="text" class="stylist-name-edit form-control form-control-sm d-none" value="<?= $stylistName ?>">
+                                            <input type="hidden" class="stylist-name-input" name="stylist_name" value="">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-secondary btn-sm edit-stylist">Edit</button>
+                                            <button type="submit" class="btn btn-primary btn-sm save-stylist d-none">Save</button>
+                                            <button type="button" class="btn btn-danger btn-sm delete-stylist" data-toggle="modal" data-target="#deleteStylistModal" data-stylist-id="<?= $stylistID ?>">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStylistModal">Add New Stylist</button>
+                        </div>
+                    </div>
+
+
             </div>  
         </div>
     </div>
-
-    <div class="mt-4">
+<div class= "content">
+    <div class="text-center mt-5">
     <h2>Services</h2>
     <table class="table table-striped">
         <thead>
@@ -212,6 +296,57 @@
         </div>
     </div>
 </div>
+
+ <!-- Add Stylist Modal -->
+ <div class="modal fade" id="addStylistModal" tabindex="-1" role="dialog" aria-labelledby="addStylistModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStylistModalLabel">Add New Stylist</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="addStylistForm" method="post" action="add_stylist.php">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="newStylistName">Stylist Name</label>
+                            <input type="text" class="form-control" id="newStylistName" name="new_stylist_name" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Stylist</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Stylist Modal -->
+    <div class="modal fade" id="deleteStylistModal" tabindex="-1" role="dialog" aria-labelledby="deleteStylistModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteStylistModalLabel">Delete Stylist</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this stylist?
+                </div>
+                <div class="modal-footer">
+                    <form id="deleteStylistForm" method="post" action="delete_stylist.php">
+                        <input type="hidden" id="deleteStylistID" name="stylist_id">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!-- edit photo modal -->
 <div class="modal fade" id="editPhotoModal" tabindex="-1" role="dialog" aria-labelledby="editPhotoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -241,6 +376,48 @@
 
 <script>
     $(document).ready(function(){
+        $(".edit-stylist").on("click", function() {
+    var row = $(this).closest("tr");
+    row.find(".stylist-name-view, .edit-stylist").addClass("d-none");
+    row.find(".stylist-name-edit, .save-stylist").removeClass("d-none");
+});
+
+$(".save-stylist").on("click", function(e) {
+    e.preventDefault();
+    var row = $(this).closest("tr");
+    var stylistName = row.find(".stylist-name-edit").val();
+
+    $.ajax({
+        type: "POST",
+        url: "update_stylist.php",
+        data: {
+            stylist_id: row.data("stylist-id"),
+            stylist_name: stylistName
+        },
+        dataType: "json", // Ensure the response is parsed as JSON
+        success: function(response) {
+            if (response.success) {
+                row.find(".stylist-name-view").text(stylistName);
+                row.find(".stylist-name-edit").addClass("d-none");
+                row.find(".stylist-name-view, .edit-stylist").removeClass("d-none");
+                row.find(".save-stylist").addClass("d-none");
+            } else {
+                alert("Failed to update stylist");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX error:", status, error);
+            alert("Failed to update stylist due to an error");
+        }
+    });
+});
+
+
+            $(".delete-stylist").on("click", function() {
+                var stylistID = $(this).data("stylist-id");
+                $("#deleteStylistID").val(stylistID);
+            });
+
         $('.edit-photo').on('click', function(){
                 var serviceID = $(this).closest('tr').data('service-id');
                 $('#editPhotoModal').modal('show');
