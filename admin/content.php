@@ -14,14 +14,56 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    body {
+        background-color: #fcf0e1;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    .sidebar {
+        background-color: #f8d7da; 
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; 
+        padding: 20px;
+    }
+
+    .sidebar a {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+
+
+ 
+    .logo{
+        font-family: 'Lucida Calligraphy', cursive;
+        margin-top: 20px; 
+        margin-bottom: 30px;
+        color: #381d1a;
+        font-weight: 600;
+        font-size: 20px;
+        margin-left: 10px; 
+    }
+
+
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container-lg">
-                <span class="fw-bold text-dark align-center justify-content-start d-none d-md-inline">Admin Page</span>
-                <div class="justify-content-end d-none d-sm-inline">
-                    <ul class="nav justify-content-end">
+    <div class="sidebar">
+            <div class="logo">recover.hair</div>
+            <hr style="border: 1px solid black;">
+                    <ul class="nav flex-column mt-4">
                         <li class="nav-item text-dark">
                             <a class="nav-link text-dark fw-bold" href="adminpage.php">Bookings</a>
                         </li>
@@ -41,11 +83,10 @@
                             <a class="btn btn-dark" href="logout.php">Log Out</a>
                         </li>
                     </ul>
-                </div>
             </div>      
         </nav>
-
-        <div class="text-center mt-4 mb-4">
+        <div class= "content">
+        <div class="text-center mt-5">
             <h2>Edit Content</h2>
             <form method="POST">
                 <div class="form-floating">
@@ -133,8 +174,8 @@
             </div>  
         </div>
     </div>
-
-    <div class="mt-4">
+<div class= "content">
+    <div class="text-center mt-5">
     <h2>Services</h2>
     <table class="table table-striped">
         <thead>
