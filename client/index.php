@@ -8,10 +8,19 @@ include "session.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recover.hair</title>
-  <link rel="icon" type="png/jpg" href="assets/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    <?php
+            $nameQuery = "SELECT * FROM tbl_content_contact WHERE contact = 'name'";
+            $query = mysqli_query($conn, $nameQuery);
+            while ($row = mysqli_fetch_array($query)) {
+                echo $row["contact_info"];
+            }
+            
+        ?>
+    </title>
+    <link rel="icon" type="png/jpg" href="assets/logo.png">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,7 +47,16 @@ include "session.php";
     </div>
     <nav class="navbar z-5 left-column">
         <div class="width">
-            <div class="logo"><a href="#">recover.hair</a></div>
+            <div class="logo"><a href="#">
+            <?php
+            $nameQuery = "SELECT * FROM tbl_content_contact WHERE contact = 'name'";
+            $query = mysqli_query($conn, $nameQuery);
+            while ($row = mysqli_fetch_array($query)) {
+                echo $row["contact_info"];
+            }
+            
+        ?>
+            </a></div>
             <ul class="menu">
                 <li><a href="#home">home</a></li>
                 <li><a href="#about">about</a></li>
@@ -247,7 +265,6 @@ include "session.php";
                         <?php
                             $contentAbout = "SELECT * FROM tbl_content_about";
                             $resultAbout = $conn->query($contentAbout);
-
                             // Check if query was successful
                             if ($resultAbout === false) {
                                 echo "Error executing query: " . $conn->error;
@@ -320,7 +337,7 @@ $result = $conn->query($sql);
                     Don't hesitate to reach out
                 </div>
                 <?php
-                
+                                            //here
                 while($row = mysqli_fetch_assoc($resultContact)){
                         ?> 
 

@@ -61,7 +61,14 @@
 </head>
 <body>
     <div class="sidebar">
-            <div class="logo">recover.hair</div>
+            <div class="logo"><?php
+            $nameQuery = "SELECT * FROM tbl_content_contact WHERE contact = 'name'";
+            $query = mysqli_query($conn, $nameQuery);
+            while ($row = mysqli_fetch_array($query)) {
+                echo $row["contact_info"];
+            }
+            
+        ?></div>
             <hr style="border: 1px solid black;">
                     <ul class="nav flex-column mt-4">
                         <li class="nav-item text-dark">

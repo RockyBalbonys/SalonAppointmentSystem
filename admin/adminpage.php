@@ -78,8 +78,15 @@
 </head>
 <body>
 <div class="sidebar">
-     <div class="logo">recover.hair</div>
-     <hr>
+    <div class="logo"><?php
+            $nameQuery = "SELECT * FROM tbl_content_contact WHERE contact = 'name'";
+            $query = mysqli_query($conn, $nameQuery);
+            while ($row = mysqli_fetch_array($query)) {
+                echo $row["contact_info"];
+            }
+            
+        ?></div>
+    <hr>
 
         <ul class="nav flex-column mt-4">
             <li class="nav-item text-dark">
@@ -121,10 +128,9 @@
             if ($result) {
                 // Fetch the result as an associative array
                 $row = mysqli_fetch_assoc($result);
-                   
+
                 // Access the count
                 $rowCount = $row['row_count'];
-                   
                 // Output the count
                 echo $rowCount;
                    
