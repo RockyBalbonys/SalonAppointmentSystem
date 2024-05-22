@@ -117,8 +117,8 @@
                     <h2> Edit Contact Info</h2>
                 </div>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactName" placeholder="Name..." class="rounded py-1" style="width: 50%">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactName" placeholder="Name..." class="rounded py-2 px-2 mt-3" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactName"])) {
                             $editContactName = $_POST["editContactName"];
@@ -132,8 +132,8 @@
                     ?>
                 </form>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactAddress" placeholder="Address..." class="rounded py-1" style="width: 50%"">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactAddress" placeholder="Address..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactAddress"])) {
                             $editContactAddress = $_POST["editContactAddress"];
@@ -148,8 +148,8 @@
                     ?>
                 </form>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactNumber" placeholder="Number..." class="rounded py-1" style="width: 50%"">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactNumber" placeholder="Number..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactNumber"])) {
                             $editContactNumber = $_POST["editContactNumber"];
@@ -164,8 +164,8 @@
                     ?>
                 </form>
                 <form method="POST">
-                    <input type="text" name="editContactEmail" placeholder="Email..." class="rounded py-1" style="width: 50%"">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactEmail" placeholder="Email..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactEmail"])) {
                             $editContactEmail = $_POST["editContactEmail"];
