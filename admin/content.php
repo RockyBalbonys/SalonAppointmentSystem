@@ -43,6 +43,10 @@
         padding: 20px;
     }
 
+    .content1 {
+        margin-left: 100px;
+        padding: 20px;
+    }
 
  
     .logo{
@@ -120,8 +124,8 @@
                     <h2> Edit Contact Info</h2>
                 </div>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactName" placeholder="Name..." class="rounded">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactName" placeholder="Name..." class="rounded py-2 px-2 mt-3" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactName"])) {
                             $editContactName = $_POST["editContactName"];
@@ -135,8 +139,8 @@
                     ?>
                 </form>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactAddress" placeholder="Address..." class="rounded">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactAddress" placeholder="Address..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactAddress"])) {
                             $editContactAddress = $_POST["editContactAddress"];
@@ -151,8 +155,8 @@
                     ?>
                 </form>
                 <form method="POST" class="mb-2">
-                    <input type="text" name="editContactNumber" placeholder="Number..." class="rounded">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactNumber" placeholder="Number..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactNumber"])) {
                             $editContactNumber = $_POST["editContactNumber"];
@@ -167,8 +171,8 @@
                     ?>
                 </form>
                 <form method="POST">
-                    <input type="text" name="editContactEmail" placeholder="Email..." class="rounded">
-                    <input type="submit" class="btn-success">
+                    <input type="text" name="editContactEmail" placeholder="Email..." class="rounded py-2 px-2" style="width: 20%">
+                    <input type="submit" class="btn btn-success">
                     <?php
                         if (isset($_POST["editContactEmail"])) {
                             $editContactEmail = $_POST["editContactEmail"];
@@ -182,7 +186,7 @@
                     ?>
                 </form>
 
-                <div class="content">
+                <div class="content1">
     <div class="d-flex flex-column align-items-center mt-5 me-5">
         <h2>Stylists</h2>
         <div class="table-responsive">
